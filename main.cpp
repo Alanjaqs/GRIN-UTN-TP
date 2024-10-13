@@ -12,6 +12,7 @@ int main()
     // Jugador
     Player player;
     float gravity = 0.5f;
+    float winWidth = 1280.0f, winHeight = 720.0f;
 
     // Mapeado
     Map map;
@@ -19,6 +20,7 @@ int main()
     // Ventana
     sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
     window.setFramerateLimit(60);
+    sf::Vector2f camPosition;
 
     // Musica
     sf::Music music;
@@ -55,7 +57,10 @@ int main()
         
         
         // Camara sigue player
-        view.setCenter(player.getPlayerPosition().x, player.getPlayerPosition().y - 240);
+        camPosition = player.getPlayerPosition();
+        // Evita que salga la camara para la izquierda (x < 0)
+        if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
+        view.setCenter(camPosition.x, camPosition.y - 240);
         window.setView(view);
 
         // Dibujar background 3 veces consecutivas
