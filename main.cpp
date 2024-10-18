@@ -4,25 +4,24 @@
 #include "Map.h"
 #include "MenuScene.h"
 
-int main()
+int main() 
 {
     // Menu
     MenuScene menu;
 
     // Jugador
     Player player;
+    
+    Map map(&player);
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
 
-    // Mapeado
-    Map map;
 
     // Ventana
     sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
     window.setFramerateLimit(60);
     sf::Vector2f camPosition;
 
-    // Musica
     sf::Music music;
     music.openFromFile("audio\\backMusic.mp3");
     music.play();
@@ -48,6 +47,9 @@ int main()
         player.moveJump(gravity);
         player.detectFloor();
 
+        // Detectar colisiones para DoubleJump
+        map.detectCollisions(&player);
+
         window.clear();
 
         // Render Menu
@@ -64,23 +66,34 @@ int main()
         window.setView(view);
 
         // Dibujar background 3 veces consecutivas
-        
+
         map.setMapPosition(map.getBackground(), 0, 0);
         window.draw(map.getBackground());
         map.setMapPosition(map.getBackground(), 1280, 0);
         window.draw(map.getBackground());
         map.setMapPosition(map.getBackground(), 2560, 0);
         window.draw(map.getBackground());
-        
+
         // Dibujar mapeado plataformas
         map.setMapPosition(map.getPlatform(1), 0, 650);
         window.draw(map.getPlatform(1));
         map.setMapPosition(map.getPlatform(1), 300, 600);
         window.draw(map.getPlatform(1));
 
+        // Dibujar DoubleJump si no ha sido eliminado
+        sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
+        if (doubleJumpSprite) { // Verifica si no es nullptr
+            map.setMapPosition(*doubleJumpSprite, 280, 500);
+            window.draw(*doubleJumpSprite);
+        }
+        else {
+            // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
+        }
+
+
         // Dibujar Player
         window.draw(player);
-        
+
 
         window.display();
     }

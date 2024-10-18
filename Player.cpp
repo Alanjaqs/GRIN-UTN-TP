@@ -1,5 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include <iostream>
+#pragma once 
 
 		// Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
 		Player::Player() {
@@ -11,7 +13,7 @@
 			sprite.setOrigin(sprite.getGlobalBounds().width / 2, 0);
 		}
 		// Metodos
-		void Player::update() {		
+		void Player::update() {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 				setVelocity(6);
 				isMoving = true;
@@ -22,9 +24,26 @@
 				isMoving = true;
 				sprite.move(velocityX, 0);
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isJumping == false) {
-				velocityY = jumpForce;
-				isJumping = true;		
+
+			// Verificar si el espacio está presionado
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+				if (spaceReleased) {  // Solo si se soltó antes
+					if (!isJumping) {
+						// Primer salto
+						velocityY = jumpForce;
+						isJumping = true;
+						spaceReleased = false;  // Marcar como presionado
+					}
+					else if (hasDoubleJump && !hasAlreadyJumped) {
+						// Doble salto
+						velocityY = jumpForce;
+						hasAlreadyJumped = true;
+						std::cout << "Doble salto realizado" << std::endl;
+					}
+				}
+			}
+			else {
+				spaceReleased = true;  // Marcar que se soltó la tecla
 			}
 			if (sprite.getGlobalBounds().left < 0) {
 				sprite.setPosition(sprite.getOrigin().x, sprite.getPosition().y);
@@ -38,7 +57,7 @@
 			else if (velocityX > 0) {
 				sprite.setScale(1, 1);
 			}
-
+		
 		}
 		void Player::setVelocity(float v) {
 			velocityX = v;
@@ -58,19 +77,25 @@
 			if (sprite.getPosition().y >= 600) {
 				sprite.setPosition(sprite.getPosition().x, 600);
 				isJumping = false;
+				hasAlreadyJumped = false;  // Permitir un nuevo doble salto
 				velocityY = 0;
-				if (isMoving == false) {
-					Player::sprite.setTexture(textureIdle);
+
+				if (!isMoving) {
+					sprite.setTexture(textureIdle);
 				}
-				if (isMoving == true) {
-					Player::sprite.setTexture(textureMove);
+				else {
+					sprite.setTexture(textureMove);
 					isMoving = false;
 				}
-
 			}
 		}
 		sf::Vector2f Player::getPlayerPosition() {
 			return sprite.getPosition();
 		}
 
-
+		void Player::setHasDoubleJump(bool hasIt) {
+			hasDoubleJump = hasIt;
+		}
+		void Player::setHasAlreadyJumped(bool hasIt) {
+			hasAlreadyJumped = hasIt;
+		}
