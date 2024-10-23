@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "MenuScene.h"
+#include <iostream>
 
 // Constructor
 MenuScene::MenuScene() {
@@ -22,20 +23,46 @@ MenuScene::MenuScene() {
 	MenuScene::salirSelTexture.loadFromFile("images\\salirSelected.png");
 	MenuScene::salirSelSprite.setTexture(salirSelTexture);
 	salirSelSprite.setPosition(400, 520);
+	// Audio
+	soundSel.openFromFile("audio\\menuSel.mp3");
 }
 
-// Getters
+// Getters generales
+int MenuScene::getOpc() { return opcionMenu; }
+bool MenuScene::getJugar() { return jugar; }
+bool MenuScene::getSalir() { return salir; }
 // Getters sprites
-sf::Sprite& MenuScene::getMenuBack(){
-	return menuSprite;
-}
-sf::Sprite& MenuScene::getJugarButton(int opc) {
-	if(opc == 0) return jugarSprite;
-	if(opc == 1) return jugarSelSprite;
-}
-sf::Sprite& MenuScene::getSalirButton(int opc) {
-	if(opc == 0) return salirSprite;
-	if (opc == 1) return salirSelSprite;
-}
+sf::Sprite& MenuScene::getMenuBack() { return menuSprite; }
+sf::Sprite& MenuScene::getJugarSelButton() { return jugarSelSprite; }
+sf::Sprite& MenuScene::getJugarButton() { return jugarSprite; }
+sf::Sprite& MenuScene::getSalirButton() { return salirSprite; }
+sf::Sprite& MenuScene::getSalirSelButton() { return salirSelSprite; }
 
 // Setters
+void MenuScene::setJugar(int v) {
+	jugar = v;
+}
+void MenuScene::setSalir(int v) {
+	salir = v;
+}
+
+// Comando
+void MenuScene::MenuUpdate() {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+		opcionMenu = 1;
+		soundSel.play();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		opcionMenu = 0;
+		soundSel.play();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		if (opcionMenu == 1) {
+			setJugar(1);
+		}
+		else if (opcionMenu == 0) {
+			setSalir(1);
+		}
+	}
+
+}

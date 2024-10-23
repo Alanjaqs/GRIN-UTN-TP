@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class MenuScene {
 
@@ -17,15 +18,33 @@ class MenuScene {
 		sf::Sprite jugarSelSprite;
 		sf::Texture salirSelTexture;
 		sf::Sprite salirSelSprite;
-		// opcion 1 = jugar / opcion 0 = salir
-		int opcion = 1;
+		// Atributos para manejar si esta seleccionado Jugar(1) o Salir(0) en el main
+		// Los booleanos se activan si se presiono Enter en la opcion seleccionada
+		int opcionMenu = 1;
+		bool jugar = false;
+		bool salir = false;
+		// AudioMenu
+		sf::Music soundSel;
 
 	public:
 		// Constructor
 		MenuScene();
+
 		// Getters
+		int getOpc();
+		bool getJugar();
+		bool getSalir();
+
 		sf::Sprite& getMenuBack();
-		sf::Sprite& getJugarButton(int opc);
-		sf::Sprite& getSalirButton(int opc);
+		sf::Sprite& getJugarButton();
+		sf::Sprite& getJugarSelButton();
+		sf::Sprite& getSalirButton();
+		sf::Sprite& getSalirSelButton();
+
 		// Setters
+		void setJugar(int v);
+		void setSalir(int v);
+
+		// Metodos
+		void MenuUpdate();
 };

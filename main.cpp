@@ -1,18 +1,27 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <iostream>
 #include "Player.h"
 #include "Map.h"
+#include "Platform.h"
 #include "MenuScene.h"
+#include "GameScene.h"
+#include "SpeedItem.h"
 
 int main() 
 {
     // Menu
     MenuScene menu;
+    // Game
+    GameScene game;
 
     // Jugador
     Player player;
     
+    Platform platform;
+
     Map map(&player);
+    SpeedItem speedIt;
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
 
@@ -20,17 +29,21 @@ int main()
     // Ventana
     sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
     window.setFramerateLimit(60);
-    sf::Vector2f camPosition;
 
-    sf::Music music;
+    sf::Music music, soundSel;
     music.openFromFile("audio\\backMusic.mp3");
     music.play();
     music.setLoop(true);
 
     // Camera
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
+    sf::Vector2f camPosition;
 
     // Game Loop (update del juego)
+    // Definir estado para menu
+    game.setGameState(1);
+
+
     while(window.isOpen())
     {
         // ReadInput Actualizar los estados de los perifericos de entrada
@@ -42,58 +55,119 @@ int main()
                 window.close();
         }
 
-        // CMD (comandos) - Joy
-        player.update();
-        player.moveJump(gravity);
-        player.detectFloor();
-
-        // Detectar colisiones para DoubleJump
-        map.detectCollisions(&player);
 
         window.clear();
 
         // Render Menu
-        //window.draw(menu.getMenuBack());
-        //window.draw(menu.getJugarButton(1));
-        //window.draw(menu.getSalirButton(0));
-        
-        
-        // Camara sigue player
-        camPosition = player.getPlayerPosition();
-        // Evita que salga la camara para la izquierda (x < 0)
-        if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
-        view.setCenter(camPosition.x, camPosition.y - 240);
-        window.setView(view);
-
-        // Dibujar background 3 veces consecutivas
-
-        map.setMapPosition(map.getBackground(), 0, 0);
-        window.draw(map.getBackground());
-        map.setMapPosition(map.getBackground(), 1280, 0);
-        window.draw(map.getBackground());
-        map.setMapPosition(map.getBackground(), 2560, 0);
-        window.draw(map.getBackground());
-
-        // Dibujar mapeado plataformas
-        map.setMapPosition(map.getPlatform(1), 0, 650);
-        window.draw(map.getPlatform(1));
-        map.setMapPosition(map.getPlatform(1), 300, 600);
-        window.draw(map.getPlatform(1));
-
-        // Dibujar DoubleJump si no ha sido eliminado
-        sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
-        if (doubleJumpSprite) { // Verifica si no es nullptr
-            map.setMapPosition(*doubleJumpSprite, 280, 500);
-            window.draw(*doubleJumpSprite);
+        if (game.getGameState() == 1)
+        {
+            menu.MenuUpdate();
+            window.draw(menu.getMenuBack());
+            if (menu.getOpc() == 1) {
+                window.draw(menu.getJugarSelButton());
+                window.draw(menu.getSalirButton());
+            }
+            else if (menu.getOpc() == 0) {
+                window.draw(menu.getJugarButton());
+                window.draw(menu.getSalirSelButton());
+            }
+            if (menu.getSalir()) {
+                window.close();
+            }
+            if (menu.getJugar()) {
+                game.setGameState(2);
+            } 
+            
         }
-        else {
-            // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
+   
+        // Render Tutorial
+        if (game.getGameState() == 2) {
+            // CMD (comandos) - Joy
+            player.update();
+            player.moveJump(gravity);
+
+            // Detectar colisiones para DoubleJump
+            map.detectCollisions(&player);
+            map.collisionFloorCheck(player, platform);
+
+            // Camara sigue player
+            camPosition = player.getPlayerPosition();
+            // Evita que salga la camara para la izquierda (x < 0)
+            if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
+            view.setCenter(camPosition.x, 358);
+            window.setView(view);
+
+            // Dibujar background 3 veces consecutivas
+            map.setMapPosition(map.getBackground(), 0, 0);
+            window.draw(map.getBackground());
+            map.setMapPosition(map.getBackground(), 1280, 0);
+            window.draw(map.getBackground());
+            map.setMapPosition(map.getBackground(), 2560, 0);
+            window.draw(map.getBackground());
+            map.setMapPosition(map.getBackground(), 3840, 0);
+            window.draw(map.getBackground());
+
+            // Dibujar chats
+            map.setChatSprite(1);
+            map.setMapPosition(map.getChat(), 380, 200);
+            window.draw(map.getChat());
+            map.setChatSprite(2);
+            map.setMapPosition(map.getChat(), 1400, 200);
+            window.draw(map.getChat());
+            map.setChatSprite(3);
+            map.setMapPosition(map.getChat(), 2000, 200);
+            window.draw(map.getChat());
+            map.setChatSprite(4);
+            map.setMapPosition(map.getChat(), 3200, 200);
+            window.draw(map.getChat());
+
+
+            // Dibujar ground
+            map.setMapPosition(map.getGround(), 0, 650);
+            window.draw(map.getGround());
+            map.setMapPosition(map.getGround(), 1280, 650);
+            window.draw(map.getGround());
+            map.setMapPosition(map.getGround(), 2560, 650);
+            window.draw(map.getGround());
+            map.setMapPosition(map.getGround(), 3840, 650);
+            window.draw(map.getGround());
+
+            // Dibujar DoubleJump si no ha sido eliminado
+            sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
+            if (doubleJumpSprite) { // Verifica si no es nullptr
+                map.setMapPosition(*doubleJumpSprite, 2150, 500);
+                window.draw(*doubleJumpSprite);
+            }
+            else {
+                // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
+            }
+
+            // Dibujar SpeedItem (por ahora dibujado asi nomas)
+           
+            map.setMapPosition(speedIt.getSpeedSprite(), 3350, 500);
+            window.draw(speedIt.getSpeedSprite());
+
+            // Dibujar Player
+            window.draw(player);
+
         }
 
+        // Render Level 1
+        if (game.getGameState() == 3) {
+            // Dibujar DoubleJump si no ha sido eliminado
+            sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
+            if (doubleJumpSprite) { // Verifica si no es nullptr
+                map.setMapPosition(*doubleJumpSprite, 280, 500);
+                window.draw(*doubleJumpSprite);
+            }
+            else {
+                // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
+            }
 
-        // Dibujar Player
-        window.draw(player);
-
+            map.setMapPosition(platform.getPlatform(1), 550, 500);
+            window.draw(platform.getPlatform(1));
+        }
+        
 
         window.display();
     }

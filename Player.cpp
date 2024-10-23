@@ -10,17 +10,19 @@
 			Player::textureMove.loadFromFile("images\\playerMove.png");
 			Player::sprite.setTexture(textureIdle);
 			sprite.setPosition(200, 500);
-			sprite.setOrigin(sprite.getGlobalBounds().width / 2, 0);
+			Player::updateHitbox();
+			sprite.setOrigin(getHitbox().width / 2, 0);
 		}
 		// Metodos
 		void Player::update() {
+			updateHitbox();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				setVelocity(6);
+				setVelocityX(6);
 				isMoving = true;
 				sprite.move(velocityX, 0);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				setVelocity(-6);
+				setVelocityX(-6);
 				isMoving = true;
 				sprite.move(velocityX, 0);
 			}
@@ -48,22 +50,27 @@
 			if (sprite.getGlobalBounds().left < 0) {
 				sprite.setPosition(sprite.getOrigin().x, sprite.getPosition().y);
 			}
-			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 2000) {
-				sprite.setPosition(2000 - sprite.getGlobalBounds().width, sprite.getPosition().y);
+			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 5000) {
+				sprite.setPosition(5000 - sprite.getGlobalBounds().width, sprite.getPosition().y);
 			}
 			if (velocityX < 0) {
 				sprite.setScale(-1, 1);
 			}
 			else if (velocityX > 0) {
 				sprite.setScale(1, 1);
-			}
-		
+			}	
 		}
-		void Player::setVelocity(float v) {
+		void Player::setVelocityX(float v) {
 			velocityX = v;
 		}
-		float Player::getVelocity() {
+		float Player::getVelocityX() {
 			return velocityX;
+		}
+		void Player::setVelocityY(float v) {
+			velocityY = v;
+		}
+		float Player::getVelocityY() {
+			return velocityY;
 		}
 		void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 			target.draw(sprite, states);
@@ -72,10 +79,9 @@
 			Player::sprite.setTexture(textureJump);
 			velocityY += g;
 			sprite.move(0, velocityY);
+			updateHitbox();
 		}
-		void Player::detectFloor() {
-			if (sprite.getPosition().y >= 600) {
-				sprite.setPosition(sprite.getPosition().x, 600);
+		void Player::onFloor() {
 				isJumping = false;
 				hasAlreadyJumped = false;  // Permitir un nuevo doble salto
 				velocityY = 0;
@@ -87,7 +93,6 @@
 					sprite.setTexture(textureMove);
 					isMoving = false;
 				}
-			}
 		}
 		sf::Vector2f Player::getPlayerPosition() {
 			return sprite.getPosition();
@@ -99,3 +104,14 @@
 		void Player::setHasAlreadyJumped(bool hasIt) {
 			hasAlreadyJumped = hasIt;
 		}
+
+		sf::Sprite& Player::getPlayerSprite() {
+			return sprite;
+		}
+
+		// *** Fijarse como ajustar mejor la hitbox ***
+		void Player::updateHitbox() {
+			hitbox = sf::FloatRect(sprite.getGlobalBounds().left, sprite.getGlobalBounds().top, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height - 15);
+		}
+
+		sf::FloatRect Player::getHitbox() { return hitbox; }

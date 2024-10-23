@@ -6,21 +6,26 @@
 class Player : public sf::Drawable
 {
 private:
-    // Atributos
+    // Atributos varios
     float velocityX = 1;
     float velocityY = 0;
     float jumpForce = -10;
     bool isJumping = false;
     bool isMoving = false;
+
+    // Texturas
     sf::Texture textureIdle;
     sf::Texture textureJump;
     sf::Texture textureMove;
     sf::Sprite sprite;
-    bool spaceReleased = true;
+
+    // Hitbox, para predefinir las medidas del sprite
+    sf::FloatRect hitbox;
 
     // Doble salto
     bool hasDoubleJump = false;
     bool hasAlreadyJumped = false;
+    bool spaceReleased = true;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
@@ -28,20 +33,27 @@ public:
     // Metodos
     void update();
     // Set & get velocity
-    void setVelocity(float v);
-    float getVelocity();
+    void setVelocityX(float v);
+    float getVelocityX();
+    void setVelocityY(float v);
+    float getVelocityY();
     // Dibujar sprite con metodo de Drawable
     void draw(sf::RenderTarget& target, sf::RenderStates states)const override;
     /* Explicacion: velocityY esta en negativo por la jumpForce aplicada, personaje subiendo
     se acumula la gravedad con valor positivo hasta que velocityY llega a 0
     cuando llega a 0, velocityY comienza a ser positivo por ende el sprite empieza a bajar */
     void moveJump(float g);
-    void detectFloor();
-    // Obtener la posición del jugador
+    // Deteccion de suelo, ya sea predeterminado o plataforma
+    void onFloor();
+    // Obtener la posición del jugador y el sprite
     sf::Vector2f getPlayerPosition();
+    sf::Sprite& getPlayerSprite();
     // Métodos para gestionar el doble salto
     void setHasDoubleJump(bool hasIt);
     void setHasAlreadyJumped(bool hasIt);
+    // Metodos Hitbox
+    void updateHitbox();
+    sf::FloatRect getHitbox();
 };
 
 #endif 

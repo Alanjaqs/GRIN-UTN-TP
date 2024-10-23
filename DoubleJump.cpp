@@ -2,7 +2,7 @@
 #include <iostream>
 
 DoubleJump::DoubleJump(Player* player) : player(player) {
-    entityTexture.loadFromFile("images\\DoubleJump.png");
+    entityTexture.loadFromFile("images\\doubleJump.png");
     sprite.setTexture(entityTexture);
 }
 
