@@ -7,6 +7,7 @@
 #include "MenuScene.h"
 #include "GameScene.h"
 #include "SpeedItem.h"
+#include "Enemy.h"
 
 int main() 
 {
@@ -17,6 +18,9 @@ int main()
 
     // Jugador
     Player player;
+    
+    //Enemigo
+    Enemy enemy;
     
     Platform platform;
 
@@ -153,6 +157,9 @@ int main()
             map.detectSpeedCollision(player, speedIt);
             // Dibujar Player
             window.draw(player);
+
+            enemy.respawnmanual(600, 633);
+            window.draw(enemy);
 
         }
 
