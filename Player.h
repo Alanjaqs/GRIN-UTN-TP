@@ -7,16 +7,19 @@ class Player : public sf::Drawable
 {
 private:
     // Atributos varios
-    float velocityX = 1;
+    float velocityX = 0;
     float velocityY = 0;
     float jumpForce = -10;
     bool isJumping = false;
     bool isMoving = false;
+    bool isRunning = false;
 
     // Texturas
     sf::Texture textureIdle;
     sf::Texture textureJump;
     sf::Texture textureMove;
+    sf::Texture textureRun;
+    sf::Texture textureRunJump;
     sf::Sprite sprite;
 
     // Hitbox, para predefinir las medidas del sprite
@@ -26,6 +29,7 @@ private:
     bool hasDoubleJump = false;
     bool hasAlreadyJumped = false;
     bool spaceReleased = true;
+    bool hasSpeed = false;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
@@ -51,6 +55,9 @@ public:
     // Métodos para gestionar el doble salto
     void setHasDoubleJump(bool hasIt);
     void setHasAlreadyJumped(bool hasIt);
+    // Metodos para gestionar speed boost
+    void setHasSpeed(bool hasIt);
+    bool getHasSpeed();
     // Metodos Hitbox
     void updateHitbox();
     sf::FloatRect getHitbox();

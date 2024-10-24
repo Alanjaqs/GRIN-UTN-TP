@@ -10,6 +10,7 @@ Map::Map(Player* player) {
     chatTexture2.loadFromFile("images\\chatTexto2.png");
     chatTexture3.loadFromFile("images\\chatTexto3.png");
     chatTexture4.loadFromFile("images\\chatTexto4.png");
+    chatTexture5.loadFromFile("images\\chatTexto5.png");
 
     doubleJump = new DoubleJump(player);  // Iniciar DoubleJump
     doubleJump->getSprite().setPosition(2150, 500);
@@ -46,6 +47,7 @@ void Map::setChatSprite(int n) {
     if (n == 2) { chatSprite.setTexture(chatTexture2); }
     if (n == 3) { chatSprite.setTexture(chatTexture3); }
     if (n == 4) { chatSprite.setTexture(chatTexture4); }
+    if (n == 5) { chatSprite.setTexture(chatTexture5); }
 }
 
 // Settea sprite en la posicion elegida en x/y
@@ -53,12 +55,21 @@ void Map::setMapPosition(sf::Sprite& sprite, float x, float y) {
     sprite.setPosition(x, y);
 }
 
+// Detect collision double jump
 void Map::detectCollisions(Player* player) {
     if (doubleJump && doubleJump->detectCollision()) {
         // Si hay colisión, da el poder, borra el objeto y lo iguala a nullptr para que no se siga usando
         player->setHasDoubleJump(true); 
         delete doubleJump;
         doubleJump = nullptr;
+    }
+}
+
+// Detect collision speed item
+void Map::detectSpeedCollision(Player& player, SpeedItem& speedIt) {
+    if(player.getHitbox().intersects(speedIt.getSpeedSprite().getGlobalBounds())) {
+        speedIt.setVisible(false);
+        player.setHasSpeed(true);
     }
 }
 

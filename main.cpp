@@ -120,6 +120,9 @@ int main()
             map.setChatSprite(4);
             map.setMapPosition(map.getChat(), 3200, 200);
             window.draw(map.getChat());
+            map.setChatSprite(5);
+            map.setMapPosition(map.getChat(), 3800, 200);
+            window.draw(map.getChat());
 
 
             // Dibujar ground
@@ -143,10 +146,11 @@ int main()
             }
 
             // Dibujar SpeedItem (por ahora dibujado asi nomas)
-           
-            map.setMapPosition(speedIt.getSpeedSprite(), 3350, 500);
-            window.draw(speedIt.getSpeedSprite());
-
+            if (speedIt.getVisible()) {
+                map.setMapPosition(speedIt.getSpeedSprite(), 3550, 500);
+                window.draw(speedIt.getSpeedSprite());
+            } 
+            map.detectSpeedCollision(player, speedIt);
             // Dibujar Player
             window.draw(player);
 

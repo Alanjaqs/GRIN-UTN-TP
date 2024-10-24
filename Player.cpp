@@ -8,6 +8,8 @@
 			Player::textureIdle.loadFromFile("images\\playerIdle.png");
 			Player::textureJump.loadFromFile("images\\playerJump.png");
 			Player::textureMove.loadFromFile("images\\playerMove.png");
+			Player::textureRun.loadFromFile("images\\playerRun.png");
+			Player::textureRunJump.loadFromFile("images\\playerRunJump.png");
 			Player::sprite.setTexture(textureIdle);
 			sprite.setPosition(200, 500);
 			Player::updateHitbox();
@@ -17,12 +19,26 @@
 		void Player::update() {
 			updateHitbox();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				setVelocityX(6);
+				if (!getHasSpeed()) setVelocityX(6);
+				else {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+						setVelocityX(9);
+						isRunning = true;
+					}
+					else setVelocityX(6);
+				}
 				isMoving = true;
 				sprite.move(velocityX, 0);
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				setVelocityX(-6);
+				if (!getHasSpeed()) setVelocityX(-6);
+				else {
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+						setVelocityX(-9);
+						isRunning = true;
+					}
+					else setVelocityX(-6);
+				}
 				isMoving = true;
 				sprite.move(velocityX, 0);
 			}
@@ -76,7 +92,10 @@
 			target.draw(sprite, states);
 		}
 		void Player::moveJump(float g) {
-			Player::sprite.setTexture(textureJump);
+			if (!isRunning)
+				Player::sprite.setTexture(textureJump);
+			else
+				Player::sprite.setTexture(textureRunJump);
 			velocityY += g;
 			sprite.move(0, velocityY);
 			updateHitbox();
@@ -86,17 +105,23 @@
 				hasAlreadyJumped = false;  // Permitir un nuevo doble salto
 				velocityY = 0;
 
-				if (!isMoving) {
+				if (!isMoving) {						// Si no se esta moviendo
 					sprite.setTexture(textureIdle);
 				}
-				else {
-					sprite.setTexture(textureMove);
-					isMoving = false;
+				else {									// Si se esta moviendo
+					if (!isRunning)
+						sprite.setTexture(textureMove);
+					else
+						sprite.setTexture(textureRun);
 				}
+				isMoving = false;
+				isRunning = false;
 		}
 		sf::Vector2f Player::getPlayerPosition() {
 			return sprite.getPosition();
 		}
+
+		// Double Jump
 
 		void Player::setHasDoubleJump(bool hasIt) {
 			hasDoubleJump = hasIt;
@@ -105,6 +130,13 @@
 			hasAlreadyJumped = hasIt;
 		}
 
+		// Speed Boost
+
+		void Player::setHasSpeed(bool hasIt) {
+			hasSpeed = hasIt;
+		}
+		bool Player::getHasSpeed() { return hasSpeed; }
+		//
 		sf::Sprite& Player::getPlayerSprite() {
 			return sprite;
 		}

@@ -5,6 +5,7 @@
 #include "DoubleJump.h"
 #include "Player.h"
 #include "Platform.h"
+#include "SpeedItem.h"
 
 class Map 
 {
@@ -18,6 +19,7 @@ private:
     sf::Texture chatTexture2;
     sf::Texture chatTexture3;
     sf::Texture chatTexture4;
+    sf::Texture chatTexture5;
     sf::Sprite chatSprite;
 
     // Ground
@@ -43,6 +45,7 @@ public:
 
     // Deteccion de colisiones varias
     void detectCollisions(Player* player); // DoubleJump
+    void detectSpeedCollision(Player& player, SpeedItem& speedIt);
     void collisionFloorCheck(Player& player, Platform platform); // Suelo y plataformas
 };
 
