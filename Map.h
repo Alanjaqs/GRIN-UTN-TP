@@ -2,10 +2,13 @@
 #define MAP_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "DoubleJump.h"
 #include "Player.h"
 #include "Platform.h"
 #include "SpeedItem.h"
+#include "Enemy.h"
+#include <iostream>
 
 class Map 
 {
@@ -20,6 +23,8 @@ private:
     sf::Texture chatTexture3;
     sf::Texture chatTexture4;
     sf::Texture chatTexture5;
+    sf::Texture chatTexture6;
+    sf::Texture chatTexture7;
     sf::Sprite chatSprite;
 
     // Ground
@@ -27,6 +32,9 @@ private:
     sf::Sprite groundSprite;
 
     DoubleJump* doubleJump;  // Puntero que puede ser nullptr tras una colisión
+
+    // Audio
+    sf::Music smashSound;
 public:
     Map(Player* player);
     ~Map();
@@ -47,6 +55,7 @@ public:
     void detectCollisions(Player* player); // DoubleJump
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
     void collisionFloorCheck(Player& player, Platform platform); // Suelo y plataformas
+    void collisionEnemyCheck(Player& player, Enemy& enemy);
 };
 
 #endif  // MAP_H

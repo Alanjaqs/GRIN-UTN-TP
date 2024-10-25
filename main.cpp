@@ -110,6 +110,8 @@ int main()
             window.draw(map.getBackground());
             map.setMapPosition(map.getBackground(), 3840, 0);
             window.draw(map.getBackground());
+            map.setMapPosition(map.getBackground(), 5120, 0);
+            window.draw(map.getBackground());
 
             // Dibujar chats
             map.setChatSprite(1);
@@ -127,6 +129,12 @@ int main()
             map.setChatSprite(5);
             map.setMapPosition(map.getChat(), 3800, 200);
             window.draw(map.getChat());
+            map.setChatSprite(6);
+            map.setMapPosition(map.getChat(), 5000, 200);
+            window.draw(map.getChat());
+            map.setChatSprite(7);
+            map.setMapPosition(map.getChat(), 5600, 200);
+            window.draw(map.getChat());
 
 
             // Dibujar ground
@@ -138,11 +146,13 @@ int main()
             window.draw(map.getGround());
             map.setMapPosition(map.getGround(), 3840, 650);
             window.draw(map.getGround());
+            map.setMapPosition(map.getGround(), 5120, 650);
+            window.draw(map.getGround());
 
             // Dibujar DoubleJump si no ha sido eliminado
             sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
             if (doubleJumpSprite) { // Verifica si no es nullptr
-                map.setMapPosition(*doubleJumpSprite, 2150, 500);
+                map.setMapPosition(*doubleJumpSprite, 1850, 500);
                 window.draw(*doubleJumpSprite);
             }
             else {
@@ -151,15 +161,23 @@ int main()
 
             // Dibujar SpeedItem (por ahora dibujado asi nomas)
             if (speedIt.getVisible()) {
-                map.setMapPosition(speedIt.getSpeedSprite(), 3550, 500);
+                map.setMapPosition(speedIt.getSpeedSprite(), 3650, 500);
                 window.draw(speedIt.getSpeedSprite());
             } 
             map.detectSpeedCollision(player, speedIt);
             // Dibujar Player
             window.draw(player);
 
-            enemy.respawnmanual(600, 633);
-            window.draw(enemy);
+            // Dibujar Enemy
+            if (enemy.getSpawned()) {
+                enemy.respawnmanual(5600, 630);
+                enemy.setSpawned(false);
+            }       
+            if (enemy.getVisible()) {
+                enemy.update();
+                window.draw(enemy);
+            }
+            map.collisionEnemyCheck(player, enemy);
 
         }
 

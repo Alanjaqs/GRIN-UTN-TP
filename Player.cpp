@@ -14,6 +14,7 @@
 			sprite.setPosition(200, 500);
 			Player::updateHitbox();
 			sprite.setOrigin(getHitbox().width / 2, 0);
+			jumpSound.openFromFile("audio\\jump.mp3");
 		}
 		// Metodos
 		void Player::update() {
@@ -47,12 +48,14 @@
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				if (spaceReleased) {  // Solo si se soltó antes
 					if (!isJumping) {
+						jumpSound.play();
 						// Primer salto
 						velocityY = jumpForce;
 						isJumping = true;
 						spaceReleased = false;  // Marcar como presionado
 					}
 					else if (hasDoubleJump && !hasAlreadyJumped) {
+						jumpSound.play();
 						// Doble salto
 						velocityY = jumpForce;
 						hasAlreadyJumped = true;
@@ -66,8 +69,8 @@
 			if (sprite.getGlobalBounds().left < 0) {
 				sprite.setPosition(sprite.getOrigin().x, sprite.getPosition().y);
 			}
-			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 5000) {
-				sprite.setPosition(5000 - sprite.getGlobalBounds().width, sprite.getPosition().y);
+			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 8000) {
+				sprite.setPosition(8000 - sprite.getGlobalBounds().width, sprite.getPosition().y);
 			}
 			if (velocityX < 0) {
 				sprite.setScale(-1, 1);

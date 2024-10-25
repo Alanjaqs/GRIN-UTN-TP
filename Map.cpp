@@ -11,9 +11,13 @@ Map::Map(Player* player) {
     chatTexture3.loadFromFile("images\\chatTexto3.png");
     chatTexture4.loadFromFile("images\\chatTexto4.png");
     chatTexture5.loadFromFile("images\\chatTexto5.png");
+    chatTexture6.loadFromFile("images\\chatTexto6.png");
+    chatTexture7.loadFromFile("images\\chatTexto7.png");
 
     doubleJump = new DoubleJump(player);  // Iniciar DoubleJump
     doubleJump->getSprite().setPosition(2150, 500);
+
+    smashSound.openFromFile("audio\\smash.mp3");
 }
 
 Map::~Map() {
@@ -48,6 +52,8 @@ void Map::setChatSprite(int n) {
     if (n == 3) { chatSprite.setTexture(chatTexture3); }
     if (n == 4) { chatSprite.setTexture(chatTexture4); }
     if (n == 5) { chatSprite.setTexture(chatTexture5); }
+    if (n == 6) { chatSprite.setTexture(chatTexture6); }
+    if (n == 7) { chatSprite.setTexture(chatTexture7); }
 }
 
 // Settea sprite en la posicion elegida en x/y
@@ -87,4 +93,14 @@ void Map::collisionFloorCheck(Player& player, Platform platform) {
 
     }
        
+}
+
+void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
+    if (enemy.getVisible()) {
+        if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
+            enemy.setVisible(false);
+            smashSound.play();
+        }
+    }
+    
 }

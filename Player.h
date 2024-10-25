@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Player : public sf::Drawable
 {
@@ -30,6 +31,9 @@ private:
     bool hasAlreadyJumped = false;
     bool spaceReleased = true;
     bool hasSpeed = false;
+    
+    // AudioPlayer
+    sf::Music jumpSound;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
