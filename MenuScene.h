@@ -5,24 +5,33 @@ class MenuScene {
 
 	// Atributos
 	private:
-		// Background
-		sf::Texture menuTexture;
-		sf::Sprite menuSprite;
-		// Texturas normales
-		sf::Texture jugarTexture;
-		sf::Sprite jugarSprite;
-		sf::Texture salirTexture;
-		sf::Sprite salirSprite;
-		// Texturas selected
-		sf::Texture jugarSelTexture;
-		sf::Sprite jugarSelSprite;
-		sf::Texture salirSelTexture;
-		sf::Sprite salirSelSprite;
+		// Background 1 y 2
+		sf::Texture menuTexture, menuTexture2;
+		sf::Sprite menuSprite, menuSprite2;
+		// Texturas botones normales
+		sf::Texture jugarTexture, salirTexture, comenzarTexture, rankTexture, volverTexture;
+		sf::Sprite jugarSprite, salirSprite, comenzarSprite, rankSprite, volverSprite;
+		// Texturas botones selected
+		sf::Texture jugarSelTexture, salirSelTexture, comenzarSelTexture, rankSelTexture, volverSelTexture;
+		sf::Sprite jugarSelSprite, salirSelSprite, comenzarSelSprite, rankSelSprite, volverSelSprite;
 		// Atributos para manejar si esta seleccionado Jugar(1) o Salir(0) en el main
 		// Los booleanos se activan si se presiono Enter en la opcion seleccionada
+
+		// IDEA DE TIPOS DE MENU:
+		// 1. Menu Principal: Jugar - Salir
+		// 2. Sub Menu: Comenzar - Rank - Volver
+		// 3. Rank Menu: Cinco casilleros donde iran los nombres con puntajes
+		// Cuando aun no haya nombres podria haber algo como "1. AAAAA 0 pts"
+		// 4. Menu Comenzar: Seleccion de nombre del jugador (maximo 5 caracteres)
+
+		// NOTA: en el sub menu, tambien deberia estar la opcion continuar, si se hizo un save
+		int tipoMenu = 1;
+		// opcionMenu se encarga que sprites de botones se muestran segun seleccion con W y S
 		int opcionMenu = 1;
-		bool jugar = false;
 		bool salir = false;
+		bool comenzar = false;
+		bool keyReleased;
+		bool enterReleased;
 		// AudioMenu
 		sf::Music soundSel;
 
@@ -31,18 +40,27 @@ class MenuScene {
 		MenuScene();
 
 		// Getters
-		int getOpc();
-		bool getJugar();
 		bool getSalir();
+		bool getComenzar();
+		int getOpc();
+		int getTipoMenu();
 
 		sf::Sprite& getMenuBack();
+		sf::Sprite& getMenu2Back();
 		sf::Sprite& getJugarButton();
 		sf::Sprite& getJugarSelButton();
 		sf::Sprite& getSalirButton();
 		sf::Sprite& getSalirSelButton();
+		sf::Sprite& getComenzarButton();
+		sf::Sprite& getComenzarSelButton();
+		sf::Sprite& getRankButton();
+		sf::Sprite& getRankSelButton();
+		sf::Sprite& getVolverButton();
+		sf::Sprite& getVolverSelButton();
 
 		// Setters
-		void setJugar(int v);
+		void setOpc(int v);
+		void setTipoMenu(int v);
 		void setSalir(int v);
 
 		// Metodos

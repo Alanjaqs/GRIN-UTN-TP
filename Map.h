@@ -34,8 +34,10 @@ private:
     DoubleJump* doubleJump;  // Puntero que puede ser nullptr tras una colisión
 
     // Audio
-    sf::Music smashSound;
+    sf::Music menuMusic, tutorialMusic, smashSound;
+
 public:
+
     Map(Player* player);
     ~Map();
 
@@ -47,15 +49,16 @@ public:
 
     // Settea sprite en la posicion elegida en x/y
     void setMapPosition(sf::Sprite& sprite, float x, float y);
-
     void setChatSprite(int n);
-    
 
     // Deteccion de colisiones varias
     void detectCollisions(Player* player); // DoubleJump
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
     void collisionFloorCheck(Player& player, Platform platform); // Suelo y plataformas
     void collisionEnemyCheck(Player& player, Enemy& enemy);
+
+    // Music
+    sf::Music& getMusic(int v);
 };
 
 #endif  // MAP_H

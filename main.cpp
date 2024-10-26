@@ -29,22 +29,24 @@ int main()
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
 
+    // Music
+    // Hice que la musica general la tenga la clase Map
+    // Por ahora hay 2 canciones, la idea es una para el menu y otra para el tutorial
+    // Pero si se llama el play dentro del loop del juego se realentiza todo
+    // Ver mas adelante como solucionar
+    map.getMusic(2).play();
+    map.getMusic(2).setLoop(1);
 
     // Ventana
     sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
     window.setFramerateLimit(60);
-
-    sf::Music music, soundSel;
-    music.openFromFile("audio\\backMusic.mp3");
-    music.play();
-    music.setLoop(true);
 
     // Camera
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
     sf::Vector2f camPosition;
 
     // Game Loop (update del juego)
-    // Definir estado para menu
+    // Definir estado para menu inicial
     game.setGameState(1);
 
 
@@ -59,33 +61,61 @@ int main()
                 window.close();
         }
 
-
         window.clear();
 
-        // Render Menu
+        // Estado 1: Render Menu
         if (game.getGameState() == 1)
         {
             menu.MenuUpdate();
-            window.draw(menu.getMenuBack());
-            if (menu.getOpc() == 1) {
-                window.draw(menu.getJugarSelButton());
-                window.draw(menu.getSalirButton());
+            // Tipo Menu 1
+            if (menu.getTipoMenu() == 1) {
+                // Se dibuja fondo y botones seleccionados segun opcion
+                window.draw(menu.getMenuBack());
+                if (menu.getOpc() == 1) {
+                    window.draw(menu.getJugarSelButton());
+                    window.draw(menu.getSalirButton());
+                }
+                else if (menu.getOpc() == 2) {
+                    window.draw(menu.getJugarButton());
+                    window.draw(menu.getSalirSelButton());
+                }
+                // Si salir presionado ciera juego
+                if (menu.getSalir()) {
+                    window.close();
+                }
             }
-            else if (menu.getOpc() == 0) {
-                window.draw(menu.getJugarButton());
-                window.draw(menu.getSalirSelButton());
-            }
-            if (menu.getSalir()) {
-                window.close();
-            }
-            if (menu.getJugar()) {
-                game.setGameState(2);
-            } 
-            
+            // Tipo Menu 2
+            else if (menu.getTipoMenu() == 2) {
+                // Se dibuja fondo y botones seleccionados segun opcion
+                window.draw(menu.getMenu2Back());   
+                if (menu.getOpc() == 3) {
+                    window.draw(menu.getComenzarSelButton());
+                    window.draw(menu.getRankButton());
+                    window.draw(menu.getVolverButton());
+                }
+                else if (menu.getOpc() == 4) {
+                    window.draw(menu.getComenzarButton());
+                    window.draw(menu.getRankSelButton());
+                    window.draw(menu.getVolverButton());
+                }
+                else if (menu.getOpc() == 5) {
+                    window.draw(menu.getComenzarButton());
+                    window.draw(menu.getRankButton());
+                    window.draw(menu.getVolverSelButton());
+                }
+                // Si se presiona comenzar, cambia a estado de juego 2 - tutorial
+                // Nota: por ahora esta asi, pero la idea es que cuando le de comenzar
+                // haya un sistema para ingresar el nombre del jugador y luego empezar el juego
+                if (menu.getComenzar()) {
+                    game.setGameState(2);
+                }
+                
+            }         
         }
    
-        // Render Tutorial
+        // Estado 2: Render Tutorial
         if (game.getGameState() == 2) {
+
             // CMD (comandos) - Joy
             player.update();
             player.moveJump(gravity);

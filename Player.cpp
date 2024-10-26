@@ -14,7 +14,10 @@
 			sprite.setPosition(200, 500);
 			Player::updateHitbox();
 			sprite.setOrigin(getHitbox().width / 2, 0);
+
+			// Sounds
 			jumpSound.openFromFile("audio\\jump.mp3");
+
 		}
 		// Metodos
 		void Player::update() {
@@ -26,7 +29,9 @@
 						setVelocityX(9);
 						isRunning = true;
 					}
-					else setVelocityX(6);
+					else {
+						setVelocityX(6);
+					}
 				}
 				isMoving = true;
 				sprite.move(velocityX, 0);
@@ -38,7 +43,9 @@
 						setVelocityX(-9);
 						isRunning = true;
 					}
-					else setVelocityX(-6);
+					else {
+						setVelocityX(-6);
+					}
 				}
 				isMoving = true;
 				sprite.move(velocityX, 0);

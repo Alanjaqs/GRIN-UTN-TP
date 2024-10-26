@@ -17,7 +17,10 @@ Map::Map(Player* player) {
     doubleJump = new DoubleJump(player);  // Iniciar DoubleJump
     doubleJump->getSprite().setPosition(2150, 500);
 
+    // Music and sounds
     smashSound.openFromFile("audio\\smash.mp3");
+    menuMusic.openFromFile("audio\\backMusic.mp3");
+    tutorialMusic.openFromFile("audio\\tutoMusic.mp3");
 }
 
 Map::~Map() {
@@ -103,4 +106,10 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
         }
     }
     
+}
+
+// Music
+sf::Music& Map::getMusic(int v) {
+     if(v==1) return menuMusic;
+     if (v == 2) return tutorialMusic;
 }
