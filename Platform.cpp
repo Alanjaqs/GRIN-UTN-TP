@@ -8,6 +8,16 @@ Platform::Platform() {
 
 // Obtener el sprite del tipo de plataforma requerido
 sf::Sprite& Platform::getPlatform(int tipoPlataforma) {
-    if (tipoPlataforma == 1) return platSprite1;
-    return platSprite1;
+    if (tipoPlataforma == 1) {
+        return platSprite1;
+    }
+
+}
+void Platform::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+    target.draw(platSprite1, states);
+}
+void Platform::setPlatPosition(float x, float y)
+{
+    platSprite1.setPosition(x, y);
 }

@@ -14,6 +14,7 @@ private:
     bool isJumping = false;
     bool isMoving = false;
     bool isRunning = false;
+    bool isDashKeyPressed = false;
 
     // Texturas
     sf::Texture textureIdle;
@@ -34,6 +35,7 @@ private:
     
     // AudioPlayer
     sf::Music jumpSound;
+    sf::Music dashSound;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)

@@ -17,6 +17,7 @@
 
 			// Sounds
 			jumpSound.openFromFile("audio\\jump.mp3");
+			dashSound.openFromFile("audio\\dash.mp3");
 
 		}
 		// Metodos
@@ -26,11 +27,16 @@
 				if (!getHasSpeed()) setVelocityX(6);
 				else {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+						if (!isDashKeyPressed) {
+							dashSound.play();
+							isDashKeyPressed = true;
+						}
 						setVelocityX(9);
 						isRunning = true;
 					}
 					else {
 						setVelocityX(6);
+						isDashKeyPressed = false;
 					}
 				}
 				isMoving = true;
@@ -40,11 +46,16 @@
 				if (!getHasSpeed()) setVelocityX(-6);
 				else {
 					if (sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
+						if (!isDashKeyPressed) {
+							dashSound.play();
+							isDashKeyPressed = true;
+						}
 						setVelocityX(-9);
 						isRunning = true;
 					}
 					else {
 						setVelocityX(-6);
+						isDashKeyPressed = false;
 					}
 				}
 				isMoving = true;

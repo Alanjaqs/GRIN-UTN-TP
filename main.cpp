@@ -209,6 +209,14 @@ int main()
             }
             map.collisionEnemyCheck(player, enemy);
 
+            
+            //Dibujar plataforma
+            platform.setPlatPosition(800, 600);
+            window.draw(platform);
+            
+
+
+
         }
 
         // Render Level 1
