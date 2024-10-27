@@ -161,10 +161,18 @@
 		sf::Sprite& Player::getPlayerSprite() {
 			return sprite;
 		}
+		bool Player::getIsJumping() { return isJumping; }
 
-		// *** Fijarse como ajustar mejor la hitbox ***
+		// Hitbox
 		void Player::updateHitbox() {
-			hitbox = sf::FloatRect(sprite.getGlobalBounds().left, sprite.getGlobalBounds().top, sprite.getGlobalBounds().width, sprite.getGlobalBounds().height - 15);
+			playerTop = sprite.getGlobalBounds().top;
+			playerBottom = sprite.getGlobalBounds().top + sprite.getGlobalBounds().height;
+			playerLeft = sprite.getGlobalBounds().left;
+			playerRight = sprite.getGlobalBounds().left + sprite.getGlobalBounds().width;
+			hitbox = sprite.getGlobalBounds();
 		}
-
 		sf::FloatRect Player::getHitbox() { return hitbox; }
+		float Player::getPlayerTop() { return playerTop; }
+		float Player::getPlayerBottom() { return playerBottom; }
+		float Player::getPlayerLeft() { return playerLeft; }
+		float Player::getPlayerRight() { return playerRight; }

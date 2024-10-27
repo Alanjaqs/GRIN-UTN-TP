@@ -22,7 +22,7 @@ int main()
     //Enemigo
     Enemy enemy;
     
-    Platform platform;
+    Platform platform, platform2, platform3, platform4;
 
     Map map(&player);
     SpeedItem speedIt;
@@ -63,7 +63,7 @@ int main()
 
         window.clear();
 
-        // Estado 1: Render Menu
+        // ESTADO 1: RENDER MENU
         if (game.getGameState() == 1)
         {
             menu.MenuUpdate();
@@ -113,16 +113,12 @@ int main()
             }         
         }
    
-        // Estado 2: Render Tutorial
+        // ESTADO 2: RENDER TUTORIAL
         if (game.getGameState() == 2) {
 
-            // CMD (comandos) - Joy
+            // Player update
             player.update();
             player.moveJump(gravity);
-
-            // Detectar colisiones para DoubleJump
-            map.detectCollisions(&player);
-            map.collisionFloorCheck(player, platform);
 
             // Camara sigue player
             camPosition = player.getPlayerPosition();
@@ -154,7 +150,7 @@ int main()
             map.setMapPosition(map.getChat(), 2000, 200);
             window.draw(map.getChat());
             map.setChatSprite(4);
-            map.setMapPosition(map.getChat(), 3200, 200);
+            map.setMapPosition(map.getChat(), 3150, 200);
             window.draw(map.getChat());
             map.setChatSprite(5);
             map.setMapPosition(map.getChat(), 3800, 200);
@@ -165,7 +161,6 @@ int main()
             map.setChatSprite(7);
             map.setMapPosition(map.getChat(), 5600, 200);
             window.draw(map.getChat());
-
 
             // Dibujar ground
             map.setMapPosition(map.getGround(), 0, 650);
@@ -179,22 +174,51 @@ int main()
             map.setMapPosition(map.getGround(), 5120, 650);
             window.draw(map.getGround());
 
+
+            //Dibujar plataforma
+            platform.updateHitbox();
+            platform.setPlatPosition(1500, 560);
+            window.draw(platform);
+
+            platform2.updateHitbox();
+            platform2.setPlatPosition(1800, 500);
+            window.draw(platform2);
+
+            platform3.updateHitbox();
+            platform3.setPlatPosition(3300, 500);
+            window.draw(platform3);
+
+            platform4.updateHitbox();
+            platform4.setPlatPosition(3600, 350);
+            window.draw(platform4);
+
             // Dibujar DoubleJump si no ha sido eliminado
             sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
             if (doubleJumpSprite) { // Verifica si no es nullptr
-                map.setMapPosition(*doubleJumpSprite, 1850, 500);
+                map.setMapPosition(*doubleJumpSprite, 1850, 420);
                 window.draw(*doubleJumpSprite);
             }
             else {
                 // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
             }
+            // Detectar colisiones para DoubleJump
+            map.detectCollisions(&player);
 
-            // Dibujar SpeedItem (por ahora dibujado asi nomas)
+            // Dibujar SpeedItem
             if (speedIt.getVisible()) {
-                map.setMapPosition(speedIt.getSpeedSprite(), 3650, 500);
+                map.setMapPosition(speedIt.getSpeedSprite(), 3650, 270);
                 window.draw(speedIt.getSpeedSprite());
-            } 
+            }
+            // Colision Speed Item
             map.detectSpeedCollision(player, speedIt);
+
+            // Colision suelo y plataformas
+            map.collisionFloorCheck(player);
+            map.collisionPlatCheck(player, platform);
+            map.collisionPlatCheck(player, platform2);
+            map.collisionPlatCheck(player, platform3);
+            map.collisionPlatCheck(player, platform4);
+
             // Dibujar Player
             window.draw(player);
 
@@ -207,13 +231,8 @@ int main()
                 enemy.update();
                 window.draw(enemy);
             }
+            // Colision Enemy
             map.collisionEnemyCheck(player, enemy);
-
-            
-            //Dibujar plataforma
-            platform.setPlatPosition(800, 600);
-            window.draw(platform);
-            
 
 
 

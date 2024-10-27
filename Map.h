@@ -54,7 +54,8 @@ public:
     // Deteccion de colisiones varias
     void detectCollisions(Player* player); // DoubleJump
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
-    void collisionFloorCheck(Player& player, Platform platform); // Suelo y plataformas
+    void collisionFloorCheck(Player& player); // Suelo
+    void collisionPlatCheck(Player& player, Platform& platform); // Plataformas
     void collisionEnemyCheck(Player& player, Enemy& enemy);
 
     // Music

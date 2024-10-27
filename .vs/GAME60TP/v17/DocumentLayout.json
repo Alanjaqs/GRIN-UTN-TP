@@ -1,85 +1,85 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "N:\\Desktop\\Grin\\",
+  "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:PickableItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Platform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\MenuScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:MenuScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\MenuScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:MenuScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\GameScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\GameScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\SpeedItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:SpeedItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\DoubleJump.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:DoubleJump.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\DoubleJump.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:DoubleJump.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\SpeedItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:SpeedItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\PickableItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:PickableItem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|N:\\Desktop\\Grin\\PickableItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:PickableItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -97,33 +97,34 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Microsoft.CppCommon.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2024-10-26T02:17:03.351Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "Enemy.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\Enemy.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.cpp",
               "RelativeToolTip": "Enemy.cpp",
               "ViewState": "AgIAABgAAAAAAAAAAAAAADAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-24T23:26:46.254Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-24T23:26:46.254Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Enemy.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Enemy.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
-              "ToolTip": "N:\\Desktop\\Grin\\Enemy.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Enemy.h",
               "RelativeToolTip": "Enemy.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -131,37 +132,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Platform.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Platform.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.cpp",
               "RelativeDocumentMoniker": "Platform.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\Platform.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.cpp",
               "RelativeToolTip": "Platform.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAADwvyQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-21T15:57:24.797Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Platform.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Platform.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.h",
               "RelativeDocumentMoniker": "Platform.h",
-              "ToolTip": "N:\\Desktop\\Grin\\Platform.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Platform.h",
               "RelativeToolTip": "Platform.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-10-21T15:55:38.436Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "DoubleJump.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\DoubleJump.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.cpp",
               "RelativeDocumentMoniker": "DoubleJump.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\DoubleJump.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.cpp",
               "RelativeToolTip": "DoubleJump.cpp",
               "ViewState": "AgIAAAgAAAAAAAAAAAAmwB8AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -169,23 +170,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 4,
               "Title": "PickableItem.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\PickableItem.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.cpp",
               "RelativeDocumentMoniker": "PickableItem.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\PickableItem.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.cpp",
               "RelativeToolTip": "PickableItem.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-19T03:31:46.08Z"
+              "WhenOpened": "2024-10-19T03:31:46.08Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "PickableItem.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\PickableItem.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.h",
               "RelativeDocumentMoniker": "PickableItem.h",
-              "ToolTip": "N:\\Desktop\\Grin\\PickableItem.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\PickableItem.h",
               "RelativeToolTip": "PickableItem.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -193,11 +195,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "DoubleJump.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\DoubleJump.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.h",
               "RelativeDocumentMoniker": "DoubleJump.h",
-              "ToolTip": "N:\\Desktop\\Grin\\DoubleJump.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\DoubleJump.h",
               "RelativeToolTip": "DoubleJump.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -205,11 +207,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "MenuScene.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\MenuScene.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.cpp",
               "RelativeDocumentMoniker": "MenuScene.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\MenuScene.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.cpp",
               "RelativeToolTip": "MenuScene.cpp",
               "ViewState": "AgIAAHsAAAAAAAAAAAAAAFMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -217,11 +219,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "MenuScene.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\MenuScene.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.h",
               "RelativeDocumentMoniker": "MenuScene.h",
-              "ToolTip": "N:\\Desktop\\Grin\\MenuScene.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\MenuScene.h",
               "RelativeToolTip": "MenuScene.h",
               "ViewState": "AgIAABsAAAAAAAAAAAAAABgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -229,36 +231,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 1,
               "Title": "Map.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Map.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.cpp",
               "RelativeDocumentMoniker": "Map.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\Map.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.cpp",
               "RelativeToolTip": "Map.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAAAHYAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-22T16:26:45.822Z"
+              "WhenOpened": "2024-09-22T16:26:45.822Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\main.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAMAAAAAAAAAAAAAAANcAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAM0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-22T14:46:28.197Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "GameScene.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\GameScene.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.h",
               "RelativeDocumentMoniker": "GameScene.h",
-              "ToolTip": "N:\\Desktop\\Grin\\GameScene.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.h",
               "RelativeToolTip": "GameScene.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -266,11 +269,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "GameScene.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\GameScene.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.cpp",
               "RelativeDocumentMoniker": "GameScene.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\GameScene.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\GameScene.cpp",
               "RelativeToolTip": "GameScene.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -278,23 +281,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "Map.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Map.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.h",
               "RelativeDocumentMoniker": "Map.h",
-              "ToolTip": "N:\\Desktop\\Grin\\Map.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Map.h",
               "RelativeToolTip": "Map.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACgAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-22T16:25:42.571Z"
+              "WhenOpened": "2024-09-22T16:25:42.571Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "SpeedItem.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\SpeedItem.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.h",
               "RelativeDocumentMoniker": "SpeedItem.h",
-              "ToolTip": "N:\\Desktop\\Grin\\SpeedItem.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.h",
               "RelativeToolTip": "SpeedItem.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -302,11 +306,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "SpeedItem.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\SpeedItem.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.cpp",
               "RelativeDocumentMoniker": "SpeedItem.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\SpeedItem.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\SpeedItem.cpp",
               "RelativeToolTip": "SpeedItem.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -314,26 +318,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Player.cpp",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "N:\\Desktop\\Grin\\Player.cpp",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAKoAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-09-22T14:46:13.909Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Player.h",
-              "DocumentMoniker": "N:\\Desktop\\Grin\\Player.h",
+              "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
-              "ToolTip": "N:\\Desktop\\Grin\\Player.h",
+              "ToolTip": "C:\\Users\\Usuario\\Desktop\\Cursada Programacion\\Segundo Cuatrimestre\\Programacion II\\GameTPSFML\\GAME60TP\\Player.h",
               "RelativeToolTip": "Player.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACUAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-09-22T16:25:45.732Z",
               "EditorCaption": ""

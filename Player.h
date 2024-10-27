@@ -16,6 +16,12 @@ private:
     bool isRunning = false;
     bool isDashKeyPressed = false;
 
+    // Lados Player
+    float playerTop;
+    float playerBottom;
+    float playerLeft;
+    float playerRight;
+
     // Texturas
     sf::Texture textureIdle;
     sf::Texture textureJump;
@@ -64,9 +70,14 @@ public:
     // Metodos para gestionar speed boost
     void setHasSpeed(bool hasIt);
     bool getHasSpeed();
+    bool getIsJumping();
     // Metodos Hitbox
     void updateHitbox();
     sf::FloatRect getHitbox();
+    float getPlayerTop();
+    float getPlayerBottom();
+    float getPlayerLeft();
+    float getPlayerRight();
 };
 
 #endif 
