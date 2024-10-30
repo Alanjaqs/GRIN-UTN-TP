@@ -176,3 +176,8 @@
 		float Player::getPlayerBottom() { return playerBottom; }
 		float Player::getPlayerLeft() { return playerLeft; }
 		float Player::getPlayerRight() { return playerRight; }
+
+		void Player::setIsDead(int v) {
+			isDead = v;
+		}
+		bool Player::getIsDead() { return isDead; }

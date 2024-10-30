@@ -9,6 +9,8 @@ MenuScene::MenuScene() {
 	MenuScene::menuSprite.setTexture(menuTexture);
 	MenuScene::menuTexture2.loadFromFile("images\\backMenu2.png");
 	MenuScene::menuSprite2.setTexture(menuTexture2);
+	MenuScene::gameOverTexture.loadFromFile("images\\gameOver.png");
+	MenuScene::gameOverSprite.setTexture(gameOverTexture);
 	// Buttons
 	MenuScene::jugarTexture.loadFromFile("images\\jugarButton.png");
 	MenuScene::jugarSprite.setTexture(jugarTexture);
@@ -55,6 +57,7 @@ bool MenuScene::getComenzar() { return comenzar; }
 // Getters sprites
 sf::Sprite& MenuScene::getMenuBack() { return menuSprite; }
 sf::Sprite& MenuScene::getMenu2Back() { return menuSprite2; }
+sf::Sprite& MenuScene::getGameOver() { return gameOverSprite; }
 sf::Sprite& MenuScene::getJugarSelButton() { return jugarSelSprite; }
 sf::Sprite& MenuScene::getJugarButton() { return jugarSprite; }
 sf::Sprite& MenuScene::getSalirButton() { return salirSprite; }
@@ -72,6 +75,9 @@ void MenuScene::setOpc(int v) {
 }
 void MenuScene::setSalir(int v) {
 	salir = v;
+}
+void MenuScene::setComenzar(int v) {
+	comenzar = v;
 }
 void MenuScene::setTipoMenu(int v) {
 	tipoMenu = v;
@@ -135,6 +141,12 @@ void MenuScene::MenuUpdate() {
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}
-
-
+	if (tipoMenu == 6) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
+			opcionMenu = 1;
+			tipoMenu = 1;
+			enterReleased = false;
+		}
+		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
+	}
 }

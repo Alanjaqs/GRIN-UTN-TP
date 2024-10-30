@@ -15,6 +15,7 @@ private:
     bool isMoving = false;
     bool isRunning = false;
     bool isDashKeyPressed = false;
+    bool isDead = false;
 
     // Lados Player
     float playerTop;
@@ -78,6 +79,8 @@ public:
     float getPlayerBottom();
     float getPlayerLeft();
     float getPlayerRight();
+    void setIsDead(int v);
+    bool getIsDead();
 };
 
 #endif 

@@ -18,6 +18,7 @@ int main()
 
     // Jugador
     Player player;
+    sf::Clock gameOverClock;
     
     //Enemigo
     Enemy enemy;
@@ -44,6 +45,7 @@ int main()
     // Camera
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
     sf::Vector2f camPosition;
+    
 
     // Game Loop (update del juego)
     // Definir estado para menu inicial
@@ -61,6 +63,7 @@ int main()
                 window.close();
         }
 
+        // CLEAR
         window.clear();
 
         // ESTADO 1: RENDER MENU
@@ -110,11 +113,19 @@ int main()
                     game.setGameState(2);
                 }
                 
-            }         
+            }
+            else if (menu.getTipoMenu() == 6) {
+                window.draw(menu.getGameOver());
+                view.setCenter(winWidth / 2, winHeight / 2);
+                window.setView(view);
+                player.setIsDead(0);
+                menu.setComenzar(0);
+                menu.setSalir(0);
+            }
         }
    
         // ESTADO 2: RENDER TUTORIAL
-        if (game.getGameState() == 2) {
+        else if (game.getGameState() == 2) {
 
             // Player update
             player.update();
@@ -233,28 +244,24 @@ int main()
             }
             // Colision Enemy
             map.collisionEnemyCheck(player, enemy);
-
+            // Comprobar si player perdio
+            if (player.getIsDead()) {
+                map.getMusic(2).stop();
+                map.getMusic(3).play();
+                menu.setTipoMenu(6);
+                enemy.setVisible(0);
+                game.setGameState(1);
+            }
 
 
         }
 
-        // Render Level 1
-        if (game.getGameState() == 3) {
-            // Dibujar DoubleJump si no ha sido eliminado
-            sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
-            if (doubleJumpSprite) { // Verifica si no es nullptr
-                map.setMapPosition(*doubleJumpSprite, 280, 500);
-                window.draw(*doubleJumpSprite);
-            }
-            else {
-                // Manejo opcional si doubleJump no existe (puedes dejarlo vacío o imprimir un mensaje)
-            }
-
-            map.setMapPosition(platform.getPlatform(1), 550, 500);
-            window.draw(platform.getPlatform(1));
+        // RENDER LEVEL 1
+        else if (game.getGameState() == 3) {
+         
         }
         
-
+        // DISPLAY
         window.display();
     }
 

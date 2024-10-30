@@ -21,6 +21,7 @@ Map::Map(Player* player) {
     smashSound.openFromFile("audio\\smash.mp3");
     menuMusic.openFromFile("audio\\backMusic.mp3");
     tutorialMusic.openFromFile("audio\\tutoMusic.mp3");
+    gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
 }
 
 Map::~Map() {
@@ -135,12 +136,16 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
             enemy.setVisible(false);
             smashSound.play();
         }
+        if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() == 0) {
+            player.setIsDead(1);
+        }
     }
     
 }
 
 // Music
 sf::Music& Map::getMusic(int v) {
-     if(v==1) return menuMusic;
+     if (v == 1) return menuMusic;
      if (v == 2) return tutorialMusic;
+     if (v == 3) return gameOverMusic;
 }

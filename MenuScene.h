@@ -6,8 +6,12 @@ class MenuScene {
 	// Atributos
 	private:
 		// Background 1 y 2
-		sf::Texture menuTexture, menuTexture2;
-		sf::Sprite menuSprite, menuSprite2;
+		sf::Texture menuTexture;
+		sf::Texture menuTexture2;
+		sf::Texture gameOverTexture;
+		sf::Sprite menuSprite;
+		sf::Sprite menuSprite2;
+		sf::Sprite gameOverSprite;
 		// Texturas botones normales
 		sf::Texture jugarTexture, salirTexture, comenzarTexture, rankTexture, volverTexture;
 		sf::Sprite jugarSprite, salirSprite, comenzarSprite, rankSprite, volverSprite;
@@ -30,8 +34,8 @@ class MenuScene {
 		int opcionMenu = 1;
 		bool salir = false;
 		bool comenzar = false;
-		bool keyReleased;
-		bool enterReleased;
+		bool keyReleased = true;
+		bool enterReleased = true;
 		// AudioMenu
 		sf::Music soundSel;
 
@@ -47,6 +51,7 @@ class MenuScene {
 
 		sf::Sprite& getMenuBack();
 		sf::Sprite& getMenu2Back();
+		sf::Sprite& getGameOver();
 		sf::Sprite& getJugarButton();
 		sf::Sprite& getJugarSelButton();
 		sf::Sprite& getSalirButton();
@@ -62,6 +67,7 @@ class MenuScene {
 		void setOpc(int v);
 		void setTipoMenu(int v);
 		void setSalir(int v);
+		void setComenzar(int v);
 
 		// Metodos
 		void MenuUpdate();
