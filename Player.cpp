@@ -72,7 +72,7 @@
 						isJumping = true;
 						spaceReleased = false;  // Marcar como presionado
 					}
-					else if (hasDoubleJump && !hasAlreadyJumped) {
+					else if (hasDoubleJump && !hasAlreadyJumped && doubleJumpClock.getElapsedTime().asSeconds() < doubleJumpDuration) {
 						jumpSound.play();
 						// Doble salto
 						velocityY = jumpForce;
@@ -146,6 +146,7 @@
 
 		void Player::setHasDoubleJump(bool hasIt) {
 			hasDoubleJump = hasIt;
+			doubleJumpClock.restart();
 		}
 		void Player::setHasAlreadyJumped(bool hasIt) {
 			hasAlreadyJumped = hasIt;

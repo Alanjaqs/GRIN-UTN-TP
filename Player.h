@@ -39,7 +39,11 @@ private:
     bool hasAlreadyJumped = false;
     bool spaceReleased = true;
     bool hasSpeed = false;
-    
+
+    //Tiempo de doble salto
+    sf::Clock doubleJumpClock;
+    float doubleJumpDuration = 5.0f; //Segundos
+
     // AudioPlayer
     sf::Music jumpSound;
     sf::Music dashSound;
