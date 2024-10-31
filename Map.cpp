@@ -94,7 +94,7 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
         // Plataformas
         if (player.getHitbox().intersects(platform.getHitbox())) {
             // Top 
-            if (player.getPlayerBottom() > platform.getPlatTop() && player.getPlayerTop() < platform.getPlatTop()) {
+            if (player.getPlayerBottom() > platform.getPlatTop() && player.getPlayerTop() <= platform.getPlatTop()) {
                 if (player.getVelocityY() > 0) {
                     player.onFloor();
                     player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatTop() - player.getHitbox().height + 13);
@@ -107,19 +107,30 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
                     player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatBottom() - 15);
                 }
             }
-
+           
             // Left (no funciona bien, ver solucion)
-            /*
-            if(player.getPlayerRight() > platform.getPlatLeft() && player.getPlayerLeft() < platform.getPlatLeft()) {
+            
+            
+
+            /*else if (player.getPlayerRight() > platform.getPlatLeft() && player.getPlayerLeft() < platform.getPlatLeft()) {
                 if (player.getVelocityX() > 0) {
                     player.setVelocityX(0);
-                    player.getPlayerSprite().setPosition((platform.getPlatLeft() - player.getHitbox().width)+30, player.getPlayerPosition().y);
+                    player.getPlayerSprite().setPosition((platform.getPlatLeft() - player.getHitbox().width), player.getPlayerPosition().y);
 
                 }
+            }*/
+            
+        }
+        /*if (p.getdraw().getglobanbounds().intersects(ob.getdraw().getglobalbounds(){
+            if(p.getprevposition().x<p.getdraw().getposition().x{
+                p.quieto(ob.getdraw().getglobalbounds().left-p.getdraw().getglobalbounds().width,p.getdraw().getposition().y;
+                      
             }
-            */
-}
-
+            else if(p.getprevposition().x>p.getdraw().getposition().x{
+                p.quieto(ob.getdraw().getglobalbounds().left+ob.getdraw().getglobalbounds().width, p.getdraw().getpoistion().y); 
+            
+            } 
+        }*/
   
 
 

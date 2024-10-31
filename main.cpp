@@ -8,12 +8,30 @@
 #include "GameScene.h"
 #include "SpeedItem.h"
 #include "Enemy.h"
+#include "DataPlayer.h"
 
 int main() 
 {
     // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
+
+    //fuente de texto prueba
+    sf::Font font;
+    font.loadFromFile("pixel.otf");
+    sf::Text textPuntos;
+    textPuntos.setFont(font);
+
+    sf::Text text;
+    text.setFont(font);
+
+    //inicializacion de puntos prueba
+    int puntos=1000;
+
+    sf::Clock clock;
+    float decrementIntervalo = 1.0f; // Reducir el puntaje cada 1 segundo
+    float elapsedTime = 0.0f;
+
 
     // Inicializacion de objetos
     MenuScene menu;
@@ -146,6 +164,8 @@ int main()
 
             // Camara sigue player
             camPosition = player.getPlayerPosition();
+
+            
             // Evita que salga la camara para la izquierda (x < 0)
             if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
             view.setCenter(camPosition.x, 358);
@@ -246,6 +266,18 @@ int main()
             // Dibujar Player
             window.draw(player);
 
+
+            elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
+            if (elapsedTime >= decrementIntervalo) {
+                puntos-=10; // Reduce el puntaje cada segundo
+                elapsedTime = 0.0f; // Reinicia el contador
+                if (puntos < 0) {
+                    puntos = 0;
+                }
+            }
+
+            
+
             // Dibujar Enemy
             if (enemy.getSpawned()) {
                 enemy.respawnmanual(5600, 630);
@@ -255,6 +287,15 @@ int main()
                 enemy.update();
                 window.draw(enemy);
             }
+            //Dibujar texto
+            window.setView(window.getDefaultView());
+            textPuntos.setString("Puntos:");
+            window.draw(textPuntos);
+            text.setString(std::to_string(puntos));
+            text.setPosition(180, 0);
+            window.draw(text);
+
+
             // Colision Enemy
             map.collisionEnemyCheck(player, enemy);
             // Comprobar si player perdio

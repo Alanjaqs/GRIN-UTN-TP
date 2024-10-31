@@ -42,7 +42,7 @@ private:
 
     //Tiempo de doble salto
     sf::Clock doubleJumpClock;
-    float doubleJumpDuration = 5.0f; //Segundos
+    float doubleJumpDuration = 10.0f; //Segundos
 
     // AudioPlayer
     sf::Music jumpSound;
