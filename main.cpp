@@ -11,50 +11,41 @@
 
 int main() 
 {
-    // Menu
-    MenuScene menu;
-    // Game
-    GameScene game;
-
-    // Jugador
-    Player player;
-    sf::Clock gameOverClock;
-    
-    //Enemigo
-    Enemy enemy;
-    
-    Platform platform, platform2, platform3, platform4;
-
-    Map map(&player);
-    SpeedItem speedIt;
+    // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
 
+    // Inicializacion de objetos
+    MenuScene menu;
+    GameScene game;
+    Player player;
+    Enemy enemy;
+    // Plataformas tutorial
+    Platform platform, platform2, platform3, platform4;
+    // Map render
+    Map map(&player);
+    SpeedItem speedIt;
+    // Ventana
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
+    window.setFramerateLimit(60);
+    // Camera
+    sf::View view(sf::FloatRect(0, 0, 1280, 720));
+    sf::Vector2f camPosition;
+
     // Music
     // Hice que la musica general la tenga la clase Map
-    // Por ahora hay 2 canciones, la idea es una para el menu y otra para el tutorial
+    // Por ahora hay 3 canciones, la idea es una para el menu y otra para el tutorial
     // Pero si se llama el play dentro del loop del juego se realentiza todo
     // Ver mas adelante como solucionar
     map.getMusic(2).play();
     map.getMusic(2).setLoop(1);
 
-    // Ventana
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
-    window.setFramerateLimit(60);
-
-    // Camera
-    sf::View view(sf::FloatRect(0, 0, 1280, 720));
-    sf::Vector2f camPosition;
-    
-
-    // Game Loop (update del juego)
     // Definir estado para menu inicial
     game.setGameState(1);
 
-
+    // Game Loop (update del juego)
     while(window.isOpen())
     {
-        // ReadInput Actualizar los estados de los perifericos de entrada
         // "pollEvent" Leer la cola de mensajes/eventos en la ventana
         sf::Event event;
         while(window.pollEvent(event))
@@ -114,6 +105,28 @@ int main()
                 }
                 
             }
+            // Tipo Menu 3
+            else if (menu.getTipoMenu() == 3) {
+                // Se dibuja fondo y botones seleccionados segun opcion
+                window.draw(menu.getMenu2Back());
+                if (menu.getOpc() == 6) {
+                    window.draw(menu.getVerRankSelButton());
+                    window.draw(menu.getBorrarRankButton());
+                    window.draw(menu.getVolverButton());
+                }
+                else if (menu.getOpc() == 7) {
+                    window.draw(menu.getVerRankButton());
+                    window.draw(menu.getBorrarRankSelButton());
+                    window.draw(menu.getVolverButton());
+                }
+                else if (menu.getOpc() == 8) {
+                    window.draw(menu.getVerRankButton());
+                    window.draw(menu.getBorrarRankButton());
+                    window.draw(menu.getVolverSelButton());
+                }
+
+            }
+            // Tipo Menu 6 Game Over
             else if (menu.getTipoMenu() == 6) {
                 window.draw(menu.getGameOver());
                 view.setCenter(winWidth / 2, winHeight / 2);
@@ -138,7 +151,7 @@ int main()
             view.setCenter(camPosition.x, 358);
             window.setView(view);
 
-            // Dibujar background 3 veces consecutivas
+            // Dibujar background x veces consecutivas
             map.setMapPosition(map.getBackground(), 0, 0);
             window.draw(map.getBackground());
             map.setMapPosition(map.getBackground(), 1280, 0);
@@ -249,11 +262,9 @@ int main()
                 map.getMusic(2).stop();
                 map.getMusic(3).play();
                 menu.setTipoMenu(6);
-                enemy.setVisible(0);
+                player.getPlayerSprite().setPosition(200, 500);
                 game.setGameState(1);
             }
-
-
         }
 
         // RENDER LEVEL 1

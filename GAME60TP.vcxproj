@@ -132,8 +132,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DataPlayer.cpp" />
     <ClCompile Include="DoubleJump.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameArchive.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -144,8 +146,10 @@
     <ClCompile Include="SpeedItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataPlayer.h" />
     <ClInclude Include="DoubleJump.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameArchive.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuScene.h" />

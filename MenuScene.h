@@ -13,11 +13,11 @@ class MenuScene {
 		sf::Sprite menuSprite2;
 		sf::Sprite gameOverSprite;
 		// Texturas botones normales
-		sf::Texture jugarTexture, salirTexture, comenzarTexture, rankTexture, volverTexture;
-		sf::Sprite jugarSprite, salirSprite, comenzarSprite, rankSprite, volverSprite;
+		sf::Texture jugarTexture, salirTexture, comenzarTexture, rankTexture, volverTexture, verRankTexture, borrarRankTexture;
+		sf::Sprite jugarSprite, salirSprite, comenzarSprite, rankSprite, volverSprite, verRankSprite, borrarRankSprite;
 		// Texturas botones selected
-		sf::Texture jugarSelTexture, salirSelTexture, comenzarSelTexture, rankSelTexture, volverSelTexture;
-		sf::Sprite jugarSelSprite, salirSelSprite, comenzarSelSprite, rankSelSprite, volverSelSprite;
+		sf::Texture jugarSelTexture, salirSelTexture, comenzarSelTexture, rankSelTexture, volverSelTexture, verRankSelTexture, borrarRankSelTexture;
+		sf::Sprite jugarSelSprite, salirSelSprite, comenzarSelSprite, rankSelSprite, volverSelSprite, verRankSelSprite, borrarRankSelSprite;
 		// Atributos para manejar si esta seleccionado Jugar(1) o Salir(0) en el main
 		// Los booleanos se activan si se presiono Enter en la opcion seleccionada
 
@@ -62,6 +62,10 @@ class MenuScene {
 		sf::Sprite& getRankSelButton();
 		sf::Sprite& getVolverButton();
 		sf::Sprite& getVolverSelButton();
+		sf::Sprite& getVerRankButton();
+		sf::Sprite& getVerRankSelButton();
+		sf::Sprite& getBorrarRankButton();
+		sf::Sprite& getBorrarRankSelButton();
 
 		// Setters
 		void setOpc(int v);
