@@ -4,20 +4,21 @@
 void DataPlayer::setPosicion(int pos) {
 	posicion = pos;
 }
-
-bool DataPlayer::setNombre(std::string name) {
-	if (name.length() >= 1 && name.length() <= 5) {
-		nombre = name;
-		return true;
-	}
-	else return false;
+void DataPlayer::setNombre(char* name) {
+		strcpy(nombre, name);
 }
-
 void DataPlayer::setPuntaje(float p) {
 	puntaje = p;
 }
 
 // Getters
 int DataPlayer::getPosicion() { return posicion; }
-std::string DataPlayer::getNombre() { return nombre; }
+char* DataPlayer::getNombre() { return nombre; }
 float DataPlayer::getPuntaje() { return puntaje; }
+
+//
+void DataPlayer::resetData(int pos) {
+	posicion = pos;
+	strcpy(nombre, "AAAAA");
+	puntaje = 0;
+}

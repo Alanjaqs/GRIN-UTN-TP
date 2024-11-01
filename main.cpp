@@ -9,20 +9,19 @@
 #include "SpeedItem.h"
 #include "Enemy.h"
 #include "DataPlayer.h"
+#include "GameArchive.h"
 
 int main() 
 {
     // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
-
+  
     //fuente de texto prueba
     sf::Font font;
     font.loadFromFile("pixel.otf");
-    sf::Text textPuntos;
+    sf::Text textPuntos, text;
     textPuntos.setFont(font);
-
-    sf::Text text;
     text.setFont(font);
 
     //inicializacion de puntos prueba
@@ -49,6 +48,9 @@ int main()
     // Camera
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
     sf::Vector2f camPosition;
+    // Data y Archive
+    DataPlayer data;
+    GameArchive archive;
 
     // Music
     // Hice que la musica general la tenga la clase Map
@@ -58,7 +60,13 @@ int main()
     map.getMusic(2).play();
     map.getMusic(2).setLoop(1);
 
-    // Definir estado para menu inicial
+    // Creacion de primer archivo
+    archive.iniciarRank();
+
+    // Lectura en consola temporal para ver funcionamiento
+    archive.leerRank();
+
+   // Definir estado para menu inicial
     game.setGameState(1);
 
     // Game Loop (update del juego)
@@ -77,7 +85,7 @@ int main()
 
         // ESTADO 1: RENDER MENU
         if (game.getGameState() == 1)
-        {
+        {      
             menu.MenuUpdate();
             // Tipo Menu 1
             if (menu.getTipoMenu() == 1) {
@@ -266,7 +274,7 @@ int main()
             // Dibujar Player
             window.draw(player);
 
-
+            // Sistema de reduccion de puntaje
             elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
             if (elapsedTime >= decrementIntervalo) {
                 puntos-=10; // Reduce el puntaje cada segundo
@@ -274,9 +282,7 @@ int main()
                 if (puntos < 0) {
                     puntos = 0;
                 }
-            }
-
-            
+            }    
 
             // Dibujar Enemy
             if (enemy.getSpawned()) {
@@ -287,7 +293,8 @@ int main()
                 enemy.update();
                 window.draw(enemy);
             }
-            //Dibujar texto
+
+            //Dibujar texto "Puntos" y el puntaje decreciendo
             window.setView(window.getDefaultView());
             textPuntos.setString("Puntos:");
             window.draw(textPuntos);

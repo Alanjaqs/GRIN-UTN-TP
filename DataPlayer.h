@@ -5,16 +5,18 @@
 class DataPlayer {
 private:
 	int posicion;
-	std::string nombre;
+	char nombre[6];
 	float puntaje;
 
 public:
 	// Setters
 	void setPosicion(int pos);
-	bool setNombre(std::string name);
+	void setNombre(char* name);
 	void setPuntaje(float p);
 	// Getters
 	int getPosicion();
-	std::string getNombre();
+	char* getNombre();
 	float getPuntaje();
+	// Data player default
+	void resetData(int pos);
 };

@@ -5,6 +5,7 @@ Map::Map(Player* player) {
     backSprite.setTexture(backTexture);
     groundTexture.loadFromFile("images\\ground.png");
     groundSprite.setTexture(groundTexture);
+
     //Chats
     chatTexture1.loadFromFile("images\\chatTexto1.png");
     chatTexture2.loadFromFile("images\\chatTexto2.png");
@@ -14,7 +15,8 @@ Map::Map(Player* player) {
     chatTexture6.loadFromFile("images\\chatTexto6.png");
     chatTexture7.loadFromFile("images\\chatTexto7.png");
 
-    doubleJump = new DoubleJump(player);  // Iniciar DoubleJump
+    // Iniciar DoubleJump
+    doubleJump = new DoubleJump(player);
     doubleJump->getSprite().setPosition(2150, 500);
 
     // Music and sounds
@@ -35,19 +37,15 @@ Map::~Map() {
 sf::Sprite& Map::getBackground() {
     return backSprite;
 }
-
 sf::Sprite& Map::getGround() {
     return groundSprite;
 }
-
 sf::Sprite& Map::getChat() {
     return chatSprite;
 }
-
 sf::Sprite* Map::getDoubleJump() {
     return doubleJump ? &doubleJump->getSprite() : nullptr;  // Retorna nullptr si no existe
 }
-
 
 // Set chat
 void Map::setChatSprite(int n) {
@@ -83,15 +81,16 @@ void Map::detectSpeedCollision(Player& player, SpeedItem& speedIt) {
     }
 }
 
+// Detect collision floor
 void Map::collisionFloorCheck(Player& player) {
-    // Suelo predeterminado
     if (player.getPlayerPosition().y >= 600) {
         player.getPlayerSprite().setPosition(player.getPlayerPosition().x, 600);
         player.onFloor();
     }
 }
+
+// Detect collision platforms
 void Map::collisionPlatCheck(Player & player, Platform & platform) {
-        // Plataformas
         if (player.getHitbox().intersects(platform.getHitbox())) {
             // Top 
             if (player.getPlayerBottom() > platform.getPlatTop() && player.getPlayerTop() <= platform.getPlatTop()) {
@@ -140,7 +139,7 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
         player.onFloor(); */
 }
        
-
+// Detect collision enemy
 void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
     if (enemy.getVisible()) {
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
