@@ -141,14 +141,22 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
        
 // Detect collision enemy
 void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
+    float TIME_BEFORE_DAMAGE = 1.0f;
     if (enemy.getVisible()) {
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
             enemy.setVisible(false);
             smashSound.play();
         }
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() == 0) {
-            player.setIsDead(1);
+            if (player.getCurrentLife() < 1 && player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+                player.setIsDead(1);
+            }
+            else if (player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+                player.doDamage(1);
+                player.getDamageClock().restart();
+            }
         }
+
     }
     
 }
@@ -158,4 +166,25 @@ sf::Music& Map::getMusic(int v) {
      if (v == 1) return menuMusic;
      if (v == 2) return tutorialMusic;
      if (v == 3) return gameOverMusic;
+}
+
+void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex) {
+    float heartSize = 40.0f;  // Tamaño de cada corazón
+    float xOffset = window.getSize().x - heartSize - 10.0f; // Inicial desde la esquina derecha
+    float yOffset = 10.0f; // Posición vertical en la parte superior
+
+    for (int i = 0; i < totalLife; i++) {
+        sf::Sprite heartSprite;
+        if (i < currentLife) {
+            heartSprite.setTexture(fullHeartTex);
+        }
+        else {
+            heartSprite.setTexture(emptyHeartTex);
+        }
+
+        heartSprite.setPosition(xOffset - i * (heartSize + 5), yOffset); // Espaciado entre corazones
+        heartSprite.setScale(heartSize / heartSprite.getTexture()->getSize().x, heartSize / heartSprite.getTexture()->getSize().y);
+
+        window.draw(heartSprite);
+    }
 }

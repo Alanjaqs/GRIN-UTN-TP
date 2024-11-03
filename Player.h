@@ -48,6 +48,12 @@ private:
     sf::Music jumpSound;
     sf::Music dashSound;
 
+    //Vida
+    int life = 3;
+    int totalLife = 3;
+    sf::Clock damageClock;
+
+
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
     Player();
@@ -85,6 +91,14 @@ public:
     float getPlayerRight();
     void setIsDead(int v);
     bool getIsDead();
+    
+    //Vida
+    void doDamage(int damage = 1);
+    int getCurrentLife();
+    int getTotalLife();
+    void setTotalLife(int newTotalLife);
+    void healLife(int healing = 1);
+    sf::Clock& getDamageClock();
 };
 
 #endif 

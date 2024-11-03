@@ -182,3 +182,23 @@
 			isDead = v;
 		}
 		bool Player::getIsDead() { return isDead; }
+
+
+		void Player::doDamage(int damage) {
+			life -= 1;
+		}
+		int Player::getCurrentLife() {
+			return life;
+		}
+		int Player::getTotalLife() {
+			return totalLife;
+		}
+		void Player::setTotalLife(int newTotalLife) {
+			totalLife = newTotalLife;
+		}
+		void Player::healLife(int healing) {
+			life += healing;
+		}
+		sf::Clock& Player::getDamageClock(){
+			return damageClock;
+		}

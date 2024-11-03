@@ -60,6 +60,9 @@ public:
 
     // Music
     sf::Music& getMusic(int v);
+
+    // Renderizar corazones
+    void renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex);
 };
 
 #endif  // MAP_H

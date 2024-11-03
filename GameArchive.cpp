@@ -22,11 +22,11 @@ bool GameArchive::leerRank() {
     FILE* pData;
     pData = fopen(nombreArchivo, "rb");
     if (pData == NULL) return false;
-    while (fread(&data, sizeof(DataPlayer), 1, pData) == 1) {
+    /*while (fread(&data, sizeof(DataPlayer), 1, pData) == 1) {
         std::cout << "Posicion: " << data.getPosicion() << std::endl;
         std::cout << "Nombre: " << data.getNombre() << std::endl;
         std::cout << "Puntaje: " << data.getPuntaje() << std::endl;
-    }
+    }*/
     fclose(pData);
     return true;
 }

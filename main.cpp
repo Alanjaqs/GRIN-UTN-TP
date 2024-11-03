@@ -16,7 +16,8 @@ int main()
     // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
-  
+    sf::Texture fullHeartTex, emptyHeartTex;
+
     //fuente de texto prueba
     sf::Font font;
     font.loadFromFile("pixel.otf");
@@ -301,6 +302,13 @@ int main()
             text.setString(std::to_string(puntos));
             text.setPosition(180, 0);
             window.draw(text);
+
+            //Dibujar 
+            emptyHeartTex.loadFromFile("images\\empty_heart.png");
+            fullHeartTex.loadFromFile("images\\full_heart.png");
+            int currentLife = player.getCurrentLife();
+            int totalLife = player.getTotalLife();
+            map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
 
 
             // Colision Enemy
