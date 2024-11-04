@@ -6,17 +6,17 @@ class DataPlayer {
 private:
 	int posicion;
 	char nombre[6];
-	float puntaje;
+	int puntaje;
 
 public:
 	// Setters
 	void setPosicion(int pos);
 	void setNombre(char* name);
-	void setPuntaje(float p);
+	void setPuntaje(int p);
 	// Getters
 	int getPosicion();
 	char* getNombre();
-	float getPuntaje();
+	int getPuntaje();
 	// Data player default
 	void resetData(int pos);
 };

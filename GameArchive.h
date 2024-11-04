@@ -22,5 +22,5 @@ public:
 	// Inicio rank por default
 	bool iniciarRank();
 	// Lectura rank por consola temporalmente
-	bool leerRank();
+	bool leerRank(DataPlayer* vec);
 };

@@ -6,12 +6,8 @@ class MenuScene {
 	// Atributos
 	private:
 		// Background 1 y 2
-		sf::Texture menuTexture;
-		sf::Texture menuTexture2;
-		sf::Texture gameOverTexture;
-		sf::Sprite menuSprite;
-		sf::Sprite menuSprite2;
-		sf::Sprite gameOverSprite;
+		sf::Texture menuTexture, menuTexture2, gameOverTexture;
+		sf::Sprite menuSprite, menuSprite2, gameOverSprite;
 		// Texturas botones normales
 		sf::Texture jugarTexture, salirTexture, comenzarTexture, rankTexture, volverTexture, verRankTexture, borrarRankTexture;
 		sf::Sprite jugarSprite, salirSprite, comenzarSprite, rankSprite, volverSprite, verRankSprite, borrarRankSprite;

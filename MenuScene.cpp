@@ -192,9 +192,10 @@ void MenuScene::MenuUpdate() {
 		}
 		
 		// ENTER
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && keyReleased) {
 			if (opcionMenu == 6 && enterReleased) {
 				std::cout << "Ver Rank" << std::endl;
+				setTipoMenu(4);
 				enterReleased = false;
 			}
 			else if (opcionMenu == 7 && enterReleased) {
@@ -206,6 +207,14 @@ void MenuScene::MenuUpdate() {
 				tipoMenu = 2;
 				enterReleased = false;
 			}
+		}
+		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
+	}
+	if (tipoMenu == 4) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
+			setTipoMenu(3);
+			opcionMenu = 6;
+			enterReleased = false;
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}

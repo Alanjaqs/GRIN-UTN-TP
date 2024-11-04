@@ -7,14 +7,14 @@ void DataPlayer::setPosicion(int pos) {
 void DataPlayer::setNombre(char* name) {
 		strcpy(nombre, name);
 }
-void DataPlayer::setPuntaje(float p) {
+void DataPlayer::setPuntaje(int p) {
 	puntaje = p;
 }
 
 // Getters
 int DataPlayer::getPosicion() { return posicion; }
 char* DataPlayer::getNombre() { return nombre; }
-float DataPlayer::getPuntaje() { return puntaje; }
+int DataPlayer::getPuntaje() { return puntaje; }
 
 //
 void DataPlayer::resetData(int pos) {

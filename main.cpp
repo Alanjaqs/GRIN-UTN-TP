@@ -18,12 +18,29 @@ int main()
     float winWidth = 1280.0f, winHeight = 720.0f;
     sf::Texture fullHeartTex, emptyHeartTex;
 
-    //fuente de texto prueba
+    // Manejo de textos en main
+    // Fuente de texto puntaje
+    sf::Color color(0xD1CB95FF);
     sf::Font font;
-    font.loadFromFile("pixel.otf");
     sf::Text textPuntos, text;
+    font.loadFromFile("pixel.otf");
+    text.setFillColor(color);
+    textPuntos.setFillColor(color);
     textPuntos.setFont(font);
     text.setFont(font);
+    // Textos Rank
+    sf::Text textPos, textName, textPoints;
+    textPos.setFont(font);
+    textName.setFont(font);
+    textPoints.setFont(font);
+    textPos.setFillColor(color);
+    textName.setFillColor(color);
+    textPoints.setFillColor(color);
+    // Texto enter back
+    sf::Text textEnter;
+    textEnter.setFont(font);
+    textEnter.setFillColor(color);
+    textEnter.setString("Presiona ENTER para volver");
 
     //inicializacion de puntos prueba
     int puntos=1000;
@@ -50,6 +67,10 @@ int main()
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
     sf::Vector2f camPosition;
     // Data y Archive
+    int cantReg = 5;
+    DataPlayer *vecData;
+    vecData = new DataPlayer[cantReg];
+    
     DataPlayer data;
     GameArchive archive;
 
@@ -63,9 +84,6 @@ int main()
 
     // Creacion de primer archivo
     archive.iniciarRank();
-
-    // Lectura en consola temporal para ver funcionamiento
-    archive.leerRank();
 
    // Definir estado para menu inicial
     game.setGameState(1);
@@ -153,9 +171,57 @@ int main()
                 }
 
             }
+            // Tipo Menu 4 Rank
+            else if (menu.getTipoMenu() == 4) {
+                window.draw(menu.getMenu2Back());
+                // Leer archivo y cargar vector dinamico
+                archive.leerRank(vecData);
+                // Textos del rank
+                textPos.setString("Posicion");
+                textPos.setPosition(500, 50);
+                window.draw(textPos);
+                textName.setString("Nombre");
+                textName.setPosition(780, 50);
+                window.draw(textName);
+                textPoints.setString("Puntaje");
+                textPoints.setPosition(980, 50);
+                window.draw(textPoints);
+                // Boton enter back
+                textEnter.setPosition(500, 600);
+                window.draw(textEnter);
+                // Textos de registros
+                for (int i = 0; i < cantReg; i++){
+                    // Primer posicionamiento
+                    if (i == 0) {
+                        textPos.setString(std::to_string(vecData[i].getPosicion()));
+                        textPos.setPosition(500, 100);
+                        window.draw(textPos);
+                        textName.setString(vecData[i].getNombre());
+                        textName.setPosition(780, 100);
+                        window.draw(textName);
+                        textPoints.setString(std::to_string(vecData[i].getPuntaje()));
+                        textPoints.setPosition(980, 100);
+                        window.draw(textPoints);
+                    }
+                    // Demas posicionamientos 
+                    else {
+                        textPos.setString(std::to_string(vecData[i].getPosicion()));
+                        textPos.setPosition(500, ((i * 100)+100));
+                        window.draw(textPos);
+                        textName.setString(vecData[i].getNombre());
+                        textName.setPosition(780, ((i * 100) + 100));
+                        window.draw(textName);
+                        textPoints.setString(std::to_string(vecData[i].getPuntaje()));
+                        textPoints.setPosition(980, ((i * 100) + 100));
+                        window.draw(textPoints);
+                    }
+                }
+            }
             // Tipo Menu 6 Game Over
             else if (menu.getTipoMenu() == 6) {
                 window.draw(menu.getGameOver());
+                textEnter.setPosition(300, 600);
+                window.draw(textEnter);
                 view.setCenter(winWidth / 2, winHeight / 2);
                 window.setView(view);
                 player.setIsDead(0);

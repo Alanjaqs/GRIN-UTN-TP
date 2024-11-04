@@ -17,16 +17,16 @@ bool GameArchive::iniciarRank() {
     return true;
 }
 
-bool GameArchive::leerRank() {
-    DataPlayer data;
+bool GameArchive::leerRank(DataPlayer* vec) {
+    int i = 0;
+    DataPlayer dataRead;
     FILE* pData;
     pData = fopen(nombreArchivo, "rb");
     if (pData == NULL) return false;
-    /*while (fread(&data, sizeof(DataPlayer), 1, pData) == 1) {
-        std::cout << "Posicion: " << data.getPosicion() << std::endl;
-        std::cout << "Nombre: " << data.getNombre() << std::endl;
-        std::cout << "Puntaje: " << data.getPuntaje() << std::endl;
-    }*/
+    while (fread(&dataRead, sizeof(DataPlayer), 1, pData) == 1) {
+        vec[i] = dataRead;
+        i++;
+    }
     fclose(pData);
     return true;
 }
