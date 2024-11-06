@@ -11,7 +11,7 @@
 			Player::textureRun.loadFromFile("images\\playerRun.png");
 			Player::textureRunJump.loadFromFile("images\\playerRunJump.png");
 			Player::sprite.setTexture(textureIdle);
-			sprite.setPosition(200, 500);
+			sprite.setPosition(6500, 500);
 			Player::updateHitbox();
 			sprite.setOrigin(getHitbox().width / 2, 0);
 
@@ -197,6 +197,9 @@
 		}
 		int Player::getTotalLife() {
 			return totalLife;
+		}
+		void Player::setCurrentLife(int l) {
+			life = l;
 		}
 		void Player::setTotalLife(int newTotalLife) {
 			totalLife = newTotalLife;

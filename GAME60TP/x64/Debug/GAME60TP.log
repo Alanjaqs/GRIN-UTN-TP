@@ -1,6 +1,3 @@
-﻿  main.cpp
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(225,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(228,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(231,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(90,16): warning C4101: 'data': variable local sin referencia
+﻿  Map.cpp
+C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Map.cpp(182,1): warning C4715: 'Map::getMusic': no todas las rutas de acceso de control devuelven un valor
   GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\x64\Debug\GAME60TP.exe

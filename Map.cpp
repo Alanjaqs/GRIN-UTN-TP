@@ -19,6 +19,7 @@ Map::Map(Player* player) {
     portalTexture.loadFromFile("images\\portal.png");
     portalSprite.setTexture(portalTexture);
 
+   
     // Iniciar DoubleJump
     doubleJump = new DoubleJump(player);
     doubleJump->getSprite().setPosition(2150, 500);
@@ -55,7 +56,6 @@ sf::Sprite* Map::getDoubleJump() {
 sf::Sprite& Map::getPortal() {
     return portalSprite;
 }
-
 // Set chat
 void Map::setChatSprite(int n) {
     if (n == 1) { chatSprite.setTexture(chatTexture1); }
@@ -210,6 +210,17 @@ void Map::detectGemColission(Player& player, Gem& gem) {
             gem.setVisible(false);
             gem.setHasBeenPicked(true);
             player.addPuntaje();
+        }
+    }
+}
+
+void Map::collisionSpikeCheck(Player& player, Spike& spike) {
+    if (player.getHitbox().intersects(spike.getSpikeFive().getGlobalBounds())) {
+        // Top 
+        if (player.getPlayerBottom() > spike.getSpikeFive().getGlobalBounds().top && player.getPlayerTop() <= spike.getSpikeFive().getGlobalBounds().top) {
+            if (player.getVelocityY() > 0) {
+                player.setIsDead(true);
+            }
         }
     }
 }

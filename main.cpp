@@ -11,6 +11,8 @@
 #include "DataPlayer.h"
 #include "GameArchive.h"
 #include "Gem.h"
+#include "Spike.h"
+
 
 int main() 
 {
@@ -26,6 +28,7 @@ int main()
 
     // Manejo de textos en main
     // Fuente de texto puntaje
+
     sf::Color color(0xD1CB95FF);
     sf::Font font;
     sf::Text textPuntos, text;
@@ -69,6 +72,7 @@ int main()
     GameScene game;
     Player player;
     Enemy enemy, enemy2;
+    Spike spike;
     // Plataformas tutorial
     Platform platform, platform2, platform3, platform4, platform5, platform6, platform7;
     // Gemas tutorial
@@ -95,8 +99,8 @@ int main()
     // Por ahora hay 3 canciones, la idea es una para el menu y otra para el tutorial
     // Pero si se llama el play dentro del loop del juego se realentiza todo
     // Ver mas adelante como solucionar
-    map.getMusic(2).play();
-    map.getMusic(2).setLoop(1);
+    //map.getMusic(2).play();
+    //map.getMusic(2).setLoop(1);
 
     // Creacion de primer archivo
     archive.iniciarRank();
@@ -377,6 +381,11 @@ int main()
             platform7.setPlatPosition(7000, 350);
             window.draw(platform7);
 
+            // Dibujar Spikes
+            map.setMapPosition(spike.getSpikeFive(), 6820, 625);
+            window.draw(spike.getSpikeFive());
+            map.collisionSpikeCheck(player, spike);
+
             // Dibujar gemas
             if(gem1.getVisible()){
                 map.setMapPosition(gem1.getGemSprite(), 950, 550);
@@ -452,6 +461,7 @@ int main()
             // Deteccion Portal
             if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
                 player.getPlayerSprite().setPosition(300, 400);
+                player.setCurrentLife(3);
                 game.setGameState(3);
             }
 
@@ -523,6 +533,7 @@ int main()
         // RENDER LEVEL 1
         else if (game.getGameState() == 3) {
 
+         
 
             // Reiniciar Camara
             view.setCenter(winWidth / 2, winHeight / 2);
@@ -554,6 +565,37 @@ int main()
             // Dibujar Player
             window.draw(player);
 
+            // Sistema de reduccion de puntaje
+            int puntos = player.getPuntaje();
+            elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
+            if (elapsedTime >= decrementIntervalo) {
+                player.quitarPuntaje(10); // Reduce el puntaje cada segundo
+                elapsedTime = 0.0f; // Reinicia el contador
+                if (puntos < 0) {
+                    player.setPuntaje(0);
+                }
+            }
+            
+            // Dibujar texto "Puntos" y el puntaje decreciendo
+            window.setView(window.getDefaultView());
+            textPuntos.setString("Puntos:");
+            window.draw(textPuntos);
+            text.setString(std::to_string(puntos));
+            text.setPosition(180, 0);
+            window.draw(text);
+
+            // Dibujar nombre player
+            textNuevoNombre.setPosition(600, 0);
+            window.draw(textNuevoNombre);
+
+            //Dibujar Hearts
+            int currentLife = player.getCurrentLife();
+            int totalLife = player.getTotalLife();
+            map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
+
+            textIngresarNombre.setPosition(300, 300);
+            window.draw(textIngresarNombre);
+       
 
         }
         

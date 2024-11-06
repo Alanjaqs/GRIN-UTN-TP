@@ -97,6 +97,7 @@ public:
     
     //Vida
     void doDamage(int damage = 1);
+    void setCurrentLife(int l);
     int getCurrentLife();
     int getTotalLife();
     void setTotalLife(int newTotalLife);

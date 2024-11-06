@@ -9,6 +9,7 @@
 #include "SpeedItem.h"
 #include "Gem.h"
 #include "Enemy.h"
+#include "Spike.h"
 #include <iostream>
 
 class Map 
@@ -32,6 +33,7 @@ private:
     // Portal
     sf::Texture portalTexture;
     sf::Sprite portalSprite;
+
 
     // Ground
     sf::Texture groundTexture;
@@ -67,6 +69,7 @@ public:
     void collisionFloorCheck(Player& player); // Suelo
     void collisionPlatCheck(Player& player, Platform& platform); // Plataformas
     void collisionEnemyCheck(Player& player, Enemy& enemy);
+    void collisionSpikeCheck(Player& player, Spike& spike);
 
     // Music
     sf::Music& getMusic(int v);
