@@ -73,7 +73,7 @@
 						isJumping = true;
 						spaceReleased = false;  // Marcar como presionado
 					}
-					else if (hasDoubleJump && !hasAlreadyJumped && doubleJumpClock.getElapsedTime().asSeconds() < doubleJumpDuration) {
+					else if (hasDoubleJump && !hasAlreadyJumped /* && doubleJumpClock.getElapsedTime().asSeconds() < doubleJumpDuration*/) {
 						jumpSound.play();
 						// Doble salto
 						velocityY = jumpForce;
@@ -88,8 +88,8 @@
 			if (sprite.getGlobalBounds().left < 0) {
 				sprite.setPosition(sprite.getOrigin().x, sprite.getPosition().y);
 			}
-			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 8000) {
-				sprite.setPosition(8000 - sprite.getGlobalBounds().width, sprite.getPosition().y);
+			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 7600) {
+				sprite.setPosition(7600 - sprite.getGlobalBounds().width, sprite.getPosition().y);
 			}
 			if (velocityX < 0) {
 				sprite.setScale(-1, 1);
@@ -147,7 +147,7 @@
 
 		void Player::setHasDoubleJump(bool hasIt) {
 			hasDoubleJump = hasIt;
-			doubleJumpClock.restart();
+			//doubleJumpClock.restart();
 		}
 		void Player::setHasAlreadyJumped(bool hasIt) {
 			hasAlreadyJumped = hasIt;

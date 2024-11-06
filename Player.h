@@ -41,8 +41,8 @@ private:
     bool hasSpeed = false;
 
     //Tiempo de doble salto
-    sf::Clock doubleJumpClock;
-    float doubleJumpDuration = 10.0f; //Segundos
+    //sf::Clock doubleJumpClock;
+    //float doubleJumpDuration = 10.0f; //Segundos
 
     // AudioPlayer
     sf::Music jumpSound;

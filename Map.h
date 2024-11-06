@@ -26,7 +26,12 @@ private:
     sf::Texture chatTexture5;
     sf::Texture chatTexture6;
     sf::Texture chatTexture7;
+    sf::Texture chatTexture8;
     sf::Sprite chatSprite;
+
+    // Portal
+    sf::Texture portalTexture;
+    sf::Sprite portalSprite;
 
     // Ground
     sf::Texture groundTexture;
@@ -35,7 +40,7 @@ private:
     DoubleJump* doubleJump;  // Puntero que puede ser nullptr tras una colisión
 
     // Audio
-    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound;
+    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound;
 
     
 
@@ -49,6 +54,7 @@ public:
     sf::Sprite& getGround();
     sf::Sprite& getChat();
     sf::Sprite* getDoubleJump();
+    sf::Sprite& getPortal();
 
     // Settea sprite en la posicion elegida en x/y
     void setMapPosition(sf::Sprite& sprite, float x, float y);

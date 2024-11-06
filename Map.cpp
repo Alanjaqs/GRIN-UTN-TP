@@ -14,6 +14,10 @@ Map::Map(Player* player) {
     chatTexture5.loadFromFile("images\\chatTexto5.png");
     chatTexture6.loadFromFile("images\\chatTexto6.png");
     chatTexture7.loadFromFile("images\\chatTexto7.png");
+    chatTexture8.loadFromFile("images\\chatTexto8.png");
+    // Portal
+    portalTexture.loadFromFile("images\\portal.png");
+    portalSprite.setTexture(portalTexture);
 
     // Iniciar DoubleJump
     doubleJump = new DoubleJump(player);
@@ -25,6 +29,7 @@ Map::Map(Player* player) {
     tutorialMusic.openFromFile("audio\\tutoMusic.mp3");
     gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
     hitSound.openFromFile("audio\\golpeado.mp3");
+    gemSound.openFromFile("audio\\gemPick.mp3");
 }
 
 Map::~Map() {
@@ -47,6 +52,9 @@ sf::Sprite& Map::getChat() {
 sf::Sprite* Map::getDoubleJump() {
     return doubleJump ? &doubleJump->getSprite() : nullptr;  // Retorna nullptr si no existe
 }
+sf::Sprite& Map::getPortal() {
+    return portalSprite;
+}
 
 // Set chat
 void Map::setChatSprite(int n) {
@@ -57,6 +65,7 @@ void Map::setChatSprite(int n) {
     if (n == 5) { chatSprite.setTexture(chatTexture5); }
     if (n == 6) { chatSprite.setTexture(chatTexture6); }
     if (n == 7) { chatSprite.setTexture(chatTexture7); }
+    if (n == 8) { chatSprite.setTexture(chatTexture8); }
 }
 
 // Settea sprite en la posicion elegida en x/y
@@ -197,6 +206,7 @@ void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife,
 void Map::detectGemColission(Player& player, Gem& gem) {
     if (player.getHitbox().intersects(gem.getGemSprite().getGlobalBounds())) {
         if (!gem.getHasBeenPicked()) {
+            gemSound.play();
             gem.setVisible(false);
             gem.setHasBeenPicked(true);
             player.addPuntaje();

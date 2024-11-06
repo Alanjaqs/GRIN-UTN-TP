@@ -5,7 +5,7 @@ class Gem {
 private:
 	sf::Texture gemTexture;
 	sf::Sprite  gemSprite;
-	bool		visible = true;
+	bool visible = true;
 	bool hasBeenPicked = false;
 public:
 	Gem();
