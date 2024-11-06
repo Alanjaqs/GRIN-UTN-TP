@@ -34,7 +34,7 @@ private:
     DoubleJump* doubleJump;  // Puntero que puede ser nullptr tras una colisión
 
     // Audio
-    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound;
+    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound;
 
 public:
 

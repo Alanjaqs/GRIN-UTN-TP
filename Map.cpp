@@ -24,6 +24,7 @@ Map::Map(Player* player) {
     menuMusic.openFromFile("audio\\backMusic.mp3");
     tutorialMusic.openFromFile("audio\\tutoMusic.mp3");
     gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
+    hitSound.openFromFile("audio\\golpeado.mp3");
 }
 
 Map::~Map() {
@@ -144,14 +145,17 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
     float TIME_BEFORE_DAMAGE = 1.0f;
     if (enemy.getVisible()) {
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
-            enemy.setVisible(false);
             smashSound.play();
+            enemy.setVisible(false);
+            
         }
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() == 0) {
+            
             if (player.getCurrentLife() < 1 && player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
                 player.setIsDead(1);
             }
             else if (player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+                hitSound.play();
                 player.doDamage(1);
                 player.getDamageClock().restart();
             }

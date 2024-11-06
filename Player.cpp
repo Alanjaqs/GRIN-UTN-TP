@@ -18,6 +18,7 @@
 			// Sounds
 			jumpSound.openFromFile("audio\\jump.mp3");
 			dashSound.openFromFile("audio\\dash.mp3");
+			
 
 		}
 		// Metodos
@@ -186,6 +187,10 @@
 
 		void Player::doDamage(int damage) {
 			life -= 1;
+			if (life <= 0) {
+				life = 0;  // Asegurarse de que la vida no sea negativa
+				setIsDead(1);  // Marcar al jugador como muerto
+			}
 		}
 		int Player::getCurrentLife() {
 			return life;
