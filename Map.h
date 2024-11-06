@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Platform.h"
 #include "SpeedItem.h"
+#include "Gem.h"
 #include "Enemy.h"
 #include <iostream>
 
@@ -36,6 +37,8 @@ private:
     // Audio
     sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound;
 
+    
+
 public:
 
     Map(Player* player);
@@ -54,6 +57,7 @@ public:
     // Deteccion de colisiones varias
     void detectCollisions(Player* player); // DoubleJump
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
+    void detectGemColission(Player& player, Gem& gem);
     void collisionFloorCheck(Player& player); // Suelo
     void collisionPlatCheck(Player& player, Platform& platform); // Plataformas
     void collisionEnemyCheck(Player& player, Enemy& enemy);

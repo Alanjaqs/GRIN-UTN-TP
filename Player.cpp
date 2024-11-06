@@ -207,3 +207,9 @@
 		sf::Clock& Player::getDamageClock(){
 			return damageClock;
 		}
+
+		//Puntaje
+		void Player::setPuntaje(int p) { puntos = p; }
+		void Player::addPuntaje(int p) { puntos += p; }
+		int Player::getPuntaje() { return puntos; }
+		void Player::quitarPuntaje(int p) { puntos -= p; }

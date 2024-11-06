@@ -6,3 +6,8 @@ Gem::Gem() {
 }
 
 sf::Sprite& Gem::getGemSprite() { return gemSprite; }
+
+void Gem::setVisible(bool v) { visible = v; }
+void Gem::setHasBeenPicked(bool v) { hasBeenPicked = v; }
+bool Gem::getVisible() { return visible; }
+bool Gem::getHasBeenPicked() { return hasBeenPicked;}

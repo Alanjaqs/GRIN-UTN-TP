@@ -192,3 +192,14 @@ void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife,
         window.draw(heartSprite);
     }
 }
+
+
+void Map::detectGemColission(Player& player, Gem& gem) {
+    if (player.getHitbox().intersects(gem.getGemSprite().getGlobalBounds())) {
+        if (!gem.getHasBeenPicked()) {
+            gem.setVisible(false);
+            gem.setHasBeenPicked(true);
+            player.addPuntaje();
+        }
+    }
+}

@@ -58,7 +58,6 @@ int main()
     textNuevoNombre.setFillColor(color);
 
     //inicializacion de puntos prueba
-    int puntos=1000;
 
     sf::Clock clock;
     float decrementIntervalo = 1.0f; // Reducir el puntaje cada 1 segundo
@@ -358,8 +357,12 @@ int main()
             window.draw(platform4);
 
             // Dibujar gemas
-            map.setMapPosition(gem1.getGemSprite(), 550, 550);
-            window.draw(gem1.getGemSprite());
+            if(gem1.getVisible()){
+                map.setMapPosition(gem1.getGemSprite(), 550, 550);
+                window.draw(gem1.getGemSprite());
+            }
+            //Detectar colisiones con las gemas
+            map.detectGemColission(player, gem1);
 
             // Dibujar DoubleJump si no ha sido eliminado
             sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
@@ -392,12 +395,13 @@ int main()
             window.draw(player);
 
             // Sistema de reduccion de puntaje
+            int puntos = player.getPuntaje();
             elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
             if (elapsedTime >= decrementIntervalo) {
-                puntos-=10; // Reduce el puntaje cada segundo
+                player.quitarPuntaje(10); // Reduce el puntaje cada segundo
                 elapsedTime = 0.0f; // Reinicia el contador
                 if (puntos < 0) {
-                    puntos = 0;
+                    player.setPuntaje(0);
                 }
             }    
 

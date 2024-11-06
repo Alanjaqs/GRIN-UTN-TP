@@ -54,6 +54,8 @@ private:
     int totalLife = 3;
     sf::Clock damageClock;
 
+    // Puntaje
+    int puntos = 1000;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
@@ -100,6 +102,13 @@ public:
     void setTotalLife(int newTotalLife);
     void healLife(int healing = 1);
     sf::Clock& getDamageClock();
+
+    //Puntaje
+    void setPuntaje(int p);
+    void addPuntaje(int p = 100);
+    int getPuntaje();
+    void quitarPuntaje(int p = 10);
+
 };
 
 #endif 
