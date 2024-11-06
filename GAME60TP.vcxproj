@@ -137,6 +137,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameArchive.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Gem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuScene.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameArchive.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Gem.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="PickableItem.h" />

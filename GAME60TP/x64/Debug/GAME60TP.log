@@ -1,11 +1,6 @@
-﻿  DoubleJump.cpp
-  Map.cpp
-  Player.cpp
-  main.cpp
-N:\Desktop\Grin\GRIN-UTN-TP\main.cpp(209,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-N:\Desktop\Grin\GRIN-UTN-TP\main.cpp(212,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-N:\Desktop\Grin\GRIN-UTN-TP\main.cpp(215,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-N:\Desktop\Grin\GRIN-UTN-TP\main.cpp(74,16): warning C4101: 'data': variable local sin referencia
-  Generando código...
-N:\Desktop\Grin\GRIN-UTN-TP\Map.cpp(173,1): warning C4715: 'Map::getMusic': no todas las rutas de acceso de control devuelven un valor
-  GAME60TP.vcxproj -> N:\Desktop\Grin\GRIN-UTN-TP\x64\Debug\GAME60TP.exe
+﻿  main.cpp
+C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(226,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(229,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(232,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(91,16): warning C4101: 'data': variable local sin referencia
+  GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\x64\Debug\GAME60TP.exe

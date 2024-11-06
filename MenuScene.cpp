@@ -156,12 +156,10 @@ void MenuScene::MenuUpdate() {
 		// ENTER
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 			if (opcionMenu == 3 && enterReleased) {
-				std::cout << "Comenzar" << std::endl;
-				comenzar = true;
+				tipoMenu = 5;
 				enterReleased = false;
 			}
 			else if (opcionMenu == 4 && enterReleased) {
-				std::cout << "Rank" << std::endl;
 				tipoMenu = 3;
 				opcionMenu = 6;
 				enterReleased = false;
@@ -194,7 +192,6 @@ void MenuScene::MenuUpdate() {
 		// ENTER
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && keyReleased) {
 			if (opcionMenu == 6 && enterReleased) {
-				std::cout << "Ver Rank" << std::endl;
 				setTipoMenu(4);
 				enterReleased = false;
 			}

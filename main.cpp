@@ -10,13 +10,19 @@
 #include "Enemy.h"
 #include "DataPlayer.h"
 #include "GameArchive.h"
+#include "Gem.h"
 
 int main() 
 {
     // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
+    bool keyReleased = true;
+
     sf::Texture fullHeartTex, emptyHeartTex;
+    std::string nuevoNombre;
+    emptyHeartTex.loadFromFile("images\\empty_heart.png");
+    fullHeartTex.loadFromFile("images\\full_heart.png");
 
     // Manejo de textos en main
     // Fuente de texto puntaje
@@ -41,6 +47,15 @@ int main()
     textEnter.setFont(font);
     textEnter.setFillColor(color);
     textEnter.setString("Presiona ENTER para volver");
+    // Texto ingresar nombre
+    sf::Text textIngresarNombre;
+    textIngresarNombre.setFont(font);
+    textIngresarNombre.setFillColor(color);
+    textIngresarNombre.setString("Ingresa tu nombre (maximo 5 letras):");
+    // Texto Nuevo Nombre
+    sf::Text textNuevoNombre;
+    textNuevoNombre.setFont(font);
+    textNuevoNombre.setFillColor(color);
 
     //inicializacion de puntos prueba
     int puntos=1000;
@@ -57,6 +72,8 @@ int main()
     Enemy enemy;
     // Plataformas tutorial
     Platform platform, platform2, platform3, platform4;
+    // Gemas tutorial
+    Gem gem1, gem2;
     // Map render
     Map map(&player);
     SpeedItem speedIt;
@@ -217,6 +234,35 @@ int main()
                     }
                 }
             }
+            // Tipo Menu 5 Ingresar Nombre
+            else if (menu.getTipoMenu() == 5){    
+                window.draw(menu.getMenu2Back());
+                textIngresarNombre.setPosition(340, 60);
+                window.draw(textIngresarNombre);
+                textNuevoNombre.setPosition(540, 150);
+                window.draw(textNuevoNombre);
+                // Detecta texto ingresado
+                if (event.type == event.TextEntered) {
+                    if (event.text.unicode >= 'A' && event.text.unicode <= 'Z' || 
+                        event.text.unicode >= 'a' && event.text.unicode <= 'z') {
+                        if(nuevoNombre.size() < 5 && keyReleased){
+                            nuevoNombre += static_cast<char>(event.text.unicode);
+                            textNuevoNombre.setString(nuevoNombre);
+                            keyReleased = false;
+                        }
+                    }                
+                }
+                if (event.type != event.TextEntered) keyReleased = true;
+                // Verificar si nombre tiene al menos 1 caracter para seguir
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && nuevoNombre.size() >= 1 && nuevoNombre.size() <= 5) {
+                    menu.setComenzar(1);
+                }
+                if (menu.getComenzar()) {
+                    game.setGameState(2);
+                }
+                
+
+            }
             // Tipo Menu 6 Game Over
             else if (menu.getTipoMenu() == 6) {
                 window.draw(menu.getGameOver());
@@ -311,6 +357,10 @@ int main()
             platform4.setPlatPosition(3600, 350);
             window.draw(platform4);
 
+            // Dibujar gemas
+            map.setMapPosition(gem1.getGemSprite(), 550, 550);
+            window.draw(gem1.getGemSprite());
+
             // Dibujar DoubleJump si no ha sido eliminado
             sf::Sprite* doubleJumpSprite = map.getDoubleJump(); // Obtén el puntero
             if (doubleJumpSprite) { // Verifica si no es nullptr
@@ -361,7 +411,7 @@ int main()
                 window.draw(enemy);
             }
 
-            //Dibujar texto "Puntos" y el puntaje decreciendo
+            // Dibujar texto "Puntos" y el puntaje decreciendo
             window.setView(window.getDefaultView());
             textPuntos.setString("Puntos:");
             window.draw(textPuntos);
@@ -369,9 +419,11 @@ int main()
             text.setPosition(180, 0);
             window.draw(text);
 
-            //Dibujar 
-            emptyHeartTex.loadFromFile("images\\empty_heart.png");
-            fullHeartTex.loadFromFile("images\\full_heart.png");
+            // Dibujar nombre player
+            textNuevoNombre.setPosition(600, 0);
+            window.draw(textNuevoNombre);
+
+            //Dibujar Hearts
             int currentLife = player.getCurrentLife();
             int totalLife = player.getTotalLife();
             map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
