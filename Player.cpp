@@ -11,7 +11,11 @@
 			Player::textureRun.loadFromFile("images\\playerRun.png");
 			Player::textureRunJump.loadFromFile("images\\playerRunJump.png");
 			Player::sprite.setTexture(textureIdle);
-			sprite.setPosition(6500, 500);
+
+			
+
+			sprite.setPosition(7000, 500);
+
 			Player::updateHitbox();
 			sprite.setOrigin(getHitbox().width / 2, 0);
 

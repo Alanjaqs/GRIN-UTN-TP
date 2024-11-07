@@ -16,11 +16,16 @@
 
 int main() 
 {
+    
+    
+
+
+
     // Variables generales
     float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
     bool keyReleased = true;
-
+    bool nivel1 = true;
     sf::Texture fullHeartTex, emptyHeartTex;
     std::string nuevoNombre;
     emptyHeartTex.loadFromFile("images\\empty_heart.png");
@@ -31,7 +36,7 @@ int main()
 
     sf::Color color(0xD1CB95FF);
     sf::Font font;
-    sf::Text textPuntos, text;
+    sf::Text textPuntos, text, textNivel;
     font.loadFromFile("pixel.otf");
     text.setFillColor(color);
     textPuntos.setFillColor(color);
@@ -60,6 +65,17 @@ int main()
     textNuevoNombre.setFont(font);
     textNuevoNombre.setFillColor(color);
 
+    textNivel.setFont(font);
+    textNivel.setFillColor(color);
+    textNivel.setString("NIVEL 1");
+    textNivel.setScale(1.5, 1.5);
+
+
+
+
+
+    
+  
     //inicializacion de puntos prueba
 
     sf::Clock clock;
@@ -71,10 +87,10 @@ int main()
     MenuScene menu;
     GameScene game;
     Player player;
-    Enemy enemy, enemy2;
+    Enemy enemy, enemy2, enemy3, enemy4, enemy5;
     Spike spike;
     // Plataformas tutorial
-    Platform platform, platform2, platform3, platform4, platform5, platform6, platform7;
+    Platform platform , platform2, platform3, platform4, platform5, platform6, platform7, platform8, platform9;
     // Gemas tutorial
     Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7;
     // Map render
@@ -99,8 +115,8 @@ int main()
     // Por ahora hay 3 canciones, la idea es una para el menu y otra para el tutorial
     // Pero si se llama el play dentro del loop del juego se realentiza todo
     // Ver mas adelante como solucionar
-    //map.getMusic(2).play();
-    //map.getMusic(2).setLoop(1);
+    map.getMusic(2).play();
+    map.getMusic(2).setLoop(1);
 
     // Creacion de primer archivo
     archive.iniciarRank();
@@ -108,6 +124,7 @@ int main()
    // Definir estado para menu inicial
     game.setGameState(1);
 
+    
     // Game Loop (update del juego)
     while(window.isOpen())
     {
@@ -118,6 +135,9 @@ int main()
             if(event.type == sf::Event::Closed)
                 window.close();
         }
+
+
+
 
         // CLEAR
         window.clear();
@@ -310,6 +330,9 @@ int main()
             window.draw(map.getBackground());
             map.setMapPosition(map.getBackground(), 7680, 0);
             window.draw(map.getBackground());
+            
+
+            
 
 
             // Dibujar chats
@@ -459,10 +482,18 @@ int main()
             map.setMapPosition(map.getPortal(), 7500, 572);
             window.draw(map.getPortal());
             // Deteccion Portal
+            
             if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
-                player.getPlayerSprite().setPosition(300, 400);
+                // Si no se ha iniciado la transición, inicializamos el reloj
                 player.setCurrentLife(3);
+                player.getPlayerSprite().setPosition(300, 400);
                 game.setGameState(3);
+
+                // Reubicar al jugador (si es necesario)
+               
+                
+                
+
             }
 
             // Dibujar Player
@@ -533,34 +564,158 @@ int main()
         // RENDER LEVEL 1
         else if (game.getGameState() == 3) {
 
-         
+            std::cout<< player.getPlayerPosition().x <<std::endl;
+            std::cout << "y: "<<player.getPlayerPosition().y << std::endl;
 
             // Reiniciar Camara
             view.setCenter(winWidth / 2, winHeight / 2);
             window.setView(view);
 
-            // Camara sigue player
-            camPosition = player.getPlayerPosition();
+                // Camara sigue player
+                camPosition = player.getPlayerPosition();
 
-            // Player update
-            player.update();
-            player.moveJump(gravity);
+                // Player update
+                player.update();
+                player.moveJump(gravity);
 
-            // Evita que salga la camara para la izquierda (x < 0)
-            if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
-            view.setCenter(camPosition.x, 358);
-            window.setView(view);
-         
-            // Dibujar Backgrounds
-            map.setMapPosition(map.getBackground(), 0, 0);
-            window.draw(map.getBackground());
-            map.setMapPosition(map.getBackground(), 1280, 0);
-            window.draw(map.getBackground());
-            map.setMapPosition(map.getBackground(), 2560, 0);
-            window.draw(map.getBackground());
+                // Evita que salga la camara para la izquierda (x < 0)
+                if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
+                view.setCenter(camPosition.x, 358);
+                window.setView(view);
 
-            // Colision suelo y plataformas
-            map.collisionFloorCheck(player);
+                // Dibujar Backgrounds
+                map.setMapPosition(map.getBackground(), 0, 0);
+                window.draw(map.getBackground());
+                map.setMapPosition(map.getBackground(), 1280, 0);
+                window.draw(map.getBackground());
+                map.setMapPosition(map.getBackground(), 2560, 0);
+                window.draw(map.getBackground());
+                map.setMapPosition(map.getBackground(), 3840, 0);
+                window.draw(map.getBackground());
+
+                //Dibujar Grounds
+                map.setMapPosition(map.getGround(), 0, 650);
+                window.draw(map.getGround());
+                map.setMapPosition(map.getGround(), 1280, 650);
+                window.draw(map.getGround());
+                map.setMapPosition(map.getGround(), 2560, 650);
+                window.draw(map.getGround());
+                map.setMapPosition(map.getGround(), 3840, 650);
+                window.draw(map.getGround());
+                map.setMapPosition(map.getGround(), 5120, 650);
+                window.draw(map.getGround());
+                map.setMapPosition(map.getGround(), 6400, 650);
+                window.draw(map.getGround());
+                
+
+                //Dibujar plataformas
+                platform.updateHitbox();
+                platform.setPlatPosition(1390, 550);
+                window.draw(platform);
+
+                platform2.updateHitbox();
+                platform2.setPlatPosition(1700, 550);
+                window.draw(platform2);
+
+                platform3.updateHitbox();
+                platform3.setPlatPosition(2000, 470);
+                window.draw(platform3);
+
+                platform4.updateHitbox();
+                platform4.setPlatPosition(2200, 420);
+                window.draw(platform4);
+
+                platform5.updateHitbox();
+                platform5.setPlatPosition(2600, 420);
+                window.draw(platform5);
+
+                platform6.updateHitbox();
+                platform6.setPlatPosition(3000, 420);
+                window.draw(platform6);
+
+                platform7.updateHitbox();
+                platform7.setPlatPosition(4300, 550);
+                window.draw(platform7);
+
+                platform8.updateHitbox();
+                platform8.setPlatPosition(4650, 500);
+                window.draw(platform8);
+
+                if (enemy3.getSpawned()) {
+                    enemy3.respawnmanual(1470, 532);
+                    enemy3.setSpawned(false);
+                }
+                if (enemy3.getVisible()) {
+                    enemy3.update();
+                    window.draw(enemy3);
+                }
+                if (enemy4.getSpawned()) {
+                    enemy4.respawnmanual(2683, 402);
+                    enemy4.setSpawned(false);
+                }
+                if (enemy4.getVisible()) {
+                    enemy4.update();
+                    window.draw(enemy4);
+                }
+                if (enemy5.getSpawned()) {
+                    enemy5.respawnmanual(3082, 402);
+                    enemy5.setSpawned(false);
+                }
+                if (enemy5.getVisible()) {
+                    enemy5.update();
+                    window.draw(enemy5);
+                }
+
+                //Dibujar Spikes
+                map.setMapPosition(spike.getSpikeFive(), 1390, 625);
+                window.draw(spike.getSpikeFive());
+                map.collisionSpikeCheck(player, spike);
+
+                map.setMapPosition(spike.getSpikeFive(), 2400, 625);
+                window.draw(spike.getSpikeFive());
+                map.collisionSpikeCheck(player, spike);
+                
+                map.setMapPosition(spike.getSpikeFive(), 2800, 625);
+                window.draw(spike.getSpikeFive());
+                map.collisionSpikeCheck(player, spike);
+
+                map.setMapPosition(spike.getSpikeFive(), 3900, 625);
+                window.draw(spike.getSpikeFive());
+                map.collisionSpikeCheck(player, spike);
+
+
+                //Colision suelo y plataformas
+                map.collisionFloorCheck(player);
+                map.collisionPlatCheck(player, platform);
+                map.collisionPlatCheck(player, platform2);
+                map.collisionPlatCheck(player, platform3);
+                map.collisionPlatCheck(player, platform4);
+                map.collisionPlatCheck(player, platform5);
+                map.collisionPlatCheck(player, platform6);
+                map.collisionPlatCheck(player, platform7);
+                map.collisionPlatCheck(player, platform8);
+
+                // Colision Enemy
+                map.collisionEnemyCheck(player, enemy3);
+                map.collisionEnemyCheck(player, enemy4);
+                map.collisionEnemyCheck(player, enemy5);
+                
+                // Comprobar si player perdio
+                if (player.getIsDead()) {
+                    map.getMusic(2).stop();
+                    map.getMusic(3).play();
+                    menu.setTipoMenu(6);
+                    player.getPlayerSprite().setPosition(200, 500);
+                    game.setGameState(1);
+                }
+
+                textNivel.setPosition(430, 200);
+                window.draw(textNivel);
+
+
+
+                // Colision suelo y plataformas
+                map.collisionFloorCheck(player);
 
             // Dibujar Player
             window.draw(player);
@@ -571,7 +726,7 @@ int main()
             if (elapsedTime >= decrementIntervalo) {
                 player.quitarPuntaje(10); // Reduce el puntaje cada segundo
                 elapsedTime = 0.0f; // Reinicia el contador
-                if (puntos < 0) {
+                if (puntos <= 0) {
                     player.setPuntaje(0);
                 }
             }
@@ -584,6 +739,9 @@ int main()
             text.setPosition(180, 0);
             window.draw(text);
 
+
+
+
             // Dibujar nombre player
             textNuevoNombre.setPosition(600, 0);
             window.draw(textNuevoNombre);
@@ -593,8 +751,7 @@ int main()
             int totalLife = player.getTotalLife();
             map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
 
-            textIngresarNombre.setPosition(300, 300);
-            window.draw(textIngresarNombre);
+           
        
 
         }

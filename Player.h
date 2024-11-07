@@ -55,7 +55,7 @@ private:
     sf::Clock damageClock;
 
     // Puntaje
-    int puntos = 1000;
+    int puntos = 1010;
 
 public:
     // Constructor (carga textura, setea textura, setea posicion en pantalla, setea origen de sprite)
