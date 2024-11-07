@@ -24,6 +24,7 @@ Map::Map(Player* player) {
     doubleJump = new DoubleJump(player);
     doubleJump->getSprite().setPosition(2150, 500);
 
+
     // Music and sounds
     smashSound.openFromFile("audio\\smash.mp3");
     menuMusic.openFromFile("audio\\backMusic.mp3");
@@ -56,6 +57,7 @@ sf::Sprite* Map::getDoubleJump() {
 sf::Sprite& Map::getPortal() {
     return portalSprite;
 }
+DoubleJump* Map::getDoubleJumpPuntero() { return doubleJump; }
 // Set chat
 void Map::setChatSprite(int n) {
     if (n == 1) { chatSprite.setTexture(chatTexture1); }
@@ -154,6 +156,7 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
     float TIME_BEFORE_DAMAGE = 1.0f;
     if (enemy.getVisible()) {
         if (player.getHitbox().intersects(enemy.getSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
+            player.addPuntaje(150);
             smashSound.play();
             enemy.setVisible(false);
             

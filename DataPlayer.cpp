@@ -4,7 +4,7 @@
 void DataPlayer::setPosicion(int pos) {
 	posicion = pos;
 }
-void DataPlayer::setNombre(char* name) {
+void DataPlayer::setNombre(const char* name) {
 		strcpy(nombre, name);
 }
 void DataPlayer::setPuntaje(int p) {

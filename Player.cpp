@@ -12,9 +12,7 @@
 			Player::textureRunJump.loadFromFile("images\\playerRunJump.png");
 			Player::sprite.setTexture(textureIdle);
 
-			
-
-			sprite.setPosition(7000, 500);
+			sprite.setPosition(200, 500);
 
 			Player::updateHitbox();
 			sprite.setOrigin(getHitbox().width / 2, 0);
@@ -22,7 +20,6 @@
 			// Sounds
 			jumpSound.openFromFile("audio\\jump.mp3");
 			dashSound.openFromFile("audio\\dash.mp3");
-			
 
 		}
 		// Metodos

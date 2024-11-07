@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 class Enemy : public sf:: Drawable
 {
+private:
 	float velocityX = 2;
 	float rangeR;
 	float rangeL;

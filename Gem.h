@@ -9,7 +9,6 @@ private:
 	bool hasBeenPicked = false;
 public:
 	Gem();
-
 	// Setters
 	void setVisible(bool v);
 	void setHasBeenPicked(bool v);

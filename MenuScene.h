@@ -14,17 +14,6 @@ class MenuScene {
 		// Texturas botones selected
 		sf::Texture jugarSelTexture, salirSelTexture, comenzarSelTexture, rankSelTexture, volverSelTexture, verRankSelTexture, borrarRankSelTexture;
 		sf::Sprite jugarSelSprite, salirSelSprite, comenzarSelSprite, rankSelSprite, volverSelSprite, verRankSelSprite, borrarRankSelSprite;
-		// Atributos para manejar si esta seleccionado Jugar(1) o Salir(0) en el main
-		// Los booleanos se activan si se presiono Enter en la opcion seleccionada
-
-		// IDEA DE TIPOS DE MENU:
-		// 1. Menu Principal: Jugar - Salir
-		// 2. Sub Menu: Comenzar - Rank - Volver
-		// 3. Rank Menu: Cinco casilleros donde iran los nombres con puntajes
-		// Cuando aun no haya nombres podria haber algo como "1. AAAAA 0 pts"
-		// 4. Menu Comenzar: Seleccion de nombre del jugador (maximo 5 caracteres)
-
-		// NOTA: en el sub menu, tambien deberia estar la opcion continuar, si se hizo un save
 		int tipoMenu = 1;
 		// opcionMenu se encarga que sprites de botones se muestran segun seleccion con W y S
 		int opcionMenu = 1;

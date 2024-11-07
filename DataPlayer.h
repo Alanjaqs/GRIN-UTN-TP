@@ -7,11 +7,12 @@ private:
 	int posicion;
 	char nombre[6];
 	int puntaje;
+	int vecPos[4];
 
 public:
 	// Setters
 	void setPosicion(int pos);
-	void setNombre(char* name);
+	void setNombre(const char* name);
 	void setPuntaje(int p);
 	// Getters
 	int getPosicion();

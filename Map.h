@@ -34,7 +34,6 @@ private:
     sf::Texture portalTexture;
     sf::Sprite portalSprite;
 
-
     // Ground
     sf::Texture groundTexture;
     sf::Sprite groundSprite;
@@ -43,8 +42,6 @@ private:
 
     // Audio
     sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound;
-
-    
 
 public:
 
@@ -57,7 +54,7 @@ public:
     sf::Sprite& getChat();
     sf::Sprite* getDoubleJump();
     sf::Sprite& getPortal();
-
+    DoubleJump* getDoubleJumpPuntero();
     // Settea sprite en la posicion elegida en x/y
     void setMapPosition(sf::Sprite& sprite, float x, float y);
     void setChatSprite(int n);

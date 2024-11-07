@@ -29,7 +29,6 @@ bool DoubleJump::detectCollision() {
     float distance = std::sqrt(dx * dx + dy * dy);
 
     if (distance < 50.0f) {
-        std::cout << "COLISIONNNNN" << "\n";
         collided = true; 
         return true;
     }

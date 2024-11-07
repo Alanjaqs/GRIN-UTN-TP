@@ -48,7 +48,6 @@ private:
     sf::Music jumpSound;
     sf::Music dashSound;
     
-
     //Vida
     int life = 3;
     int totalLife = 3;

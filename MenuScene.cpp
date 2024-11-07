@@ -114,7 +114,7 @@ void MenuScene::setTipoMenu(int v) {
 // keyReleased y enterReleased validan que aunque se mantenga presionada la tecla, cuente como una sola accion
 void MenuScene::MenuUpdate() {
 	if (tipoMenu == 1) {
-		// W y S
+		// MENU JUGAR SALIR
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 			opcionMenu = 1;
 			soundSel.play();
@@ -137,7 +137,7 @@ void MenuScene::MenuUpdate() {
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}
-	// Comando menu 2
+	// MENU COMENZAR RANK VOLVER
 	if (tipoMenu == 2) {
 		// W y S
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && keyReleased) {
@@ -172,7 +172,7 @@ void MenuScene::MenuUpdate() {
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}
-	// Comando 3
+	// MENU VER BORRAR VOLVER
 	if (tipoMenu == 3) {
 		// W y S
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && keyReleased) {
@@ -207,6 +207,7 @@ void MenuScene::MenuUpdate() {
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}
+	// MENU LEER RANK
 	if (tipoMenu == 4) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
 			setTipoMenu(3);
@@ -215,6 +216,7 @@ void MenuScene::MenuUpdate() {
 		}
 		if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 	}
+	// MENU GAME OVER
 	if (tipoMenu == 6) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
 			opcionMenu = 1;
