@@ -17,11 +17,10 @@
 int main() 
 {
     // Variables generales
-    float gravity = 0.5f;
     float winWidth = 1280.0f, winHeight = 720.0f;
-    bool keyReleased = true;
-    bool enterReleased = true;
-    bool nivel1 = true;
+    bool keyReleased = true, enterReleased = true, nivel1 = true;
+
+    // Hearts
     sf::Texture fullHeartTex, emptyHeartTex;
     std::string nuevoNombre;
     emptyHeartTex.loadFromFile("images\\empty_heart.png");
@@ -86,8 +85,7 @@ int main()
     Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
     Spike spike;
     // Plataformas 
-    Platform platform, platform2, platform3, platform4, platform5, platform6, platform7, platform8, platform9,
-    platform10, platform11, platform12, platform13;
+    Platform platform;
     // Gemas tutorial
     Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7;
     // Map render
@@ -103,6 +101,8 @@ int main()
     int cantReg = 5;
     int maxPuntaje = 0;
     bool bdPuntaje = true;
+    int* vecPuntajes;
+    //vecPuntajes = new vecPuntajes[];
     std::string puntaje;
     DataPlayer* vecData;
     
@@ -289,7 +289,7 @@ int main()
 
             // Player update
             player.update();
-            player.moveJump(gravity);
+            player.moveJump();
 
             // Camara sigue player
             camPosition = player.getPlayerPosition();
@@ -355,34 +355,35 @@ int main()
             map.setMapPosition(map.getGround(), 6400, 650);
             window.draw(map.getGround());
 
-            //Dibujar plataforma
-            platform.updateHitbox();
-            platform.setPlatPosition(1500, 560);
-            window.draw(platform);
+            //Renderizado de plataformas con 1 solo objeto Platform
 
-            platform2.updateHitbox();
-            platform2.setPlatPosition(1800, 500);
-            window.draw(platform2);
+            map.setMapPosition(platform.getPlatform(1), 1500, 560);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
+          
+            map.setMapPosition(platform.getPlatform(1), 1800, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform3.updateHitbox();
-            platform3.setPlatPosition(3300, 500);
-            window.draw(platform3);
+            platform.setPlatPosition(3300, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform4.updateHitbox();
-            platform4.setPlatPosition(3600, 350);
-            window.draw(platform4);
+            platform.setPlatPosition(3600, 350);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform5.updateHitbox();
-            platform5.setPlatPosition(6200, 500);
-            window.draw(platform5);
+            platform.setPlatPosition(6200, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform6.updateHitbox();
-            platform6.setPlatPosition(6550, 350);
-            window.draw(platform6);
+            platform.setPlatPosition(6550, 350);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform7.updateHitbox();
-            platform7.setPlatPosition(7000, 350);
-            window.draw(platform7);
+            platform.setPlatPosition(7000, 350);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
             // Dibujar Spikes
             map.setMapPosition(spike.getSpikeFive(), 6820, 625);
@@ -449,13 +450,7 @@ int main()
 
             // Colision suelo y plataformas
             map.collisionFloorCheck(player);
-            map.collisionPlatCheck(player, platform);
-            map.collisionPlatCheck(player, platform2);
-            map.collisionPlatCheck(player, platform3);
-            map.collisionPlatCheck(player, platform4);
-            map.collisionPlatCheck(player, platform5);
-            map.collisionPlatCheck(player, platform6);
-            map.collisionPlatCheck(player, platform7);
+            //map.collisionPlatCheck(player, platform);
 
             // Dibujar Portal
             map.setMapPosition(map.getPortal(), 7500, 572);
@@ -567,7 +562,7 @@ int main()
 
             // Player update
             player.update();
-            player.moveJump(gravity);
+            player.moveJump();
 
             // Evita que salga la camara para la izquierda (x < 0)
             if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
@@ -605,57 +600,58 @@ int main()
             window.draw(map.getGround());
                 
             //Dibujar plataformas
-            platform.updateHitbox();
+
             platform.setPlatPosition(1390, 550);
-            window.draw(platform);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform2.updateHitbox();
-            platform2.setPlatPosition(1700, 550);
-            window.draw(platform2);
+            platform.setPlatPosition(1700, 550);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform3.updateHitbox();
-            platform3.setPlatPosition(2000, 470);
-            window.draw(platform3);
+            platform.setPlatPosition(2000, 470);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
+  
+            platform.setPlatPosition(2200, 420);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform4.updateHitbox();
-            platform4.setPlatPosition(2200, 420);
-            window.draw(platform4);
+            platform.setPlatPosition(2600, 420);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
+    
+            platform.setPlatPosition(3000, 420);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform5.updateHitbox();
-            platform5.setPlatPosition(2600, 420);
-            window.draw(platform5);
+            platform.setPlatPosition(4300, 550);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform6.updateHitbox();
-            platform6.setPlatPosition(3000, 420);
-            window.draw(platform6);
+            platform.setPlatPosition(4650, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
+      
+            platform.setPlatPosition(5300, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform7.updateHitbox();
-            platform7.setPlatPosition(4300, 550);
-            window.draw(platform7);
+            platform.setPlatPosition(6200, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
+  
+            platform.setPlatPosition(6000, 330);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform8.updateHitbox();
-            platform8.setPlatPosition(4650, 500);
-            window.draw(platform8);
+            platform.setPlatPosition(6400, 200);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
-            platform9.updateHitbox();
-            platform9.setPlatPosition(5300, 500);
-            window.draw(platform9);
-
-            platform10.updateHitbox();
-            platform10.setPlatPosition(6200, 500);
-            window.draw(platform10);
-
-            platform11.updateHitbox();
-            platform11.setPlatPosition(6000, 330);
-            window.draw(platform11);
-
-            platform12.updateHitbox();
-            platform12.setPlatPosition(6400, 200);
-            window.draw(platform12);
-
-            platform13.updateHitbox();
-            platform13.setPlatPosition(7200, 500);
-            window.draw(platform13);
+            platform.setPlatPosition(7200, 500);
+            window.draw(platform.getPlatform(1));
+            map.collisionPlatCheck(player, platform);
 
             // Dibujar enemigos
 
@@ -874,18 +870,6 @@ int main()
             //Colision suelo y plataformas
             map.collisionFloorCheck(player);
             map.collisionPlatCheck(player, platform);
-            map.collisionPlatCheck(player, platform2);
-            map.collisionPlatCheck(player, platform3);
-            map.collisionPlatCheck(player, platform4);
-            map.collisionPlatCheck(player, platform5);
-            map.collisionPlatCheck(player, platform6);
-            map.collisionPlatCheck(player, platform7);
-            map.collisionPlatCheck(player, platform8);
-            map.collisionPlatCheck(player, platform9);
-            map.collisionPlatCheck(player, platform10);
-            map.collisionPlatCheck(player, platform11);
-            map.collisionPlatCheck(player, platform12);
-            map.collisionPlatCheck(player, platform13);
 
             // Colision Enemy
             map.collisionEnemyCheck(player, enemy);
@@ -964,12 +948,6 @@ int main()
             data.setNombre(nuevoNombre.c_str());
             puntaje = textPuntosFinal.getString();
             data.setPuntaje(std::stoi(puntaje));
-            /*
-            if (maxPuntaje) {
-                if (data.getPuntaje() > maxPuntaje) {
-                    
-                }
-            }*/
 
             // Enter para continuar
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {

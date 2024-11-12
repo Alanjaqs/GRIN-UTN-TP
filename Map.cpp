@@ -101,21 +101,33 @@ void Map::collisionFloorCheck(Player& player) {
     }
 }
 
+// Detect spike 
+void Map::collisionSpikeCheck(Player& player, Spike& spike) {
+    if (player.getHitbox().intersects(spike.getSpikeFive().getGlobalBounds())) {
+        // Top 
+        if (player.getPlayerBottom() > spike.getSpikeFive().getGlobalBounds().top && player.getPlayerTop() <= spike.getSpikeFive().getGlobalBounds().top) {
+            if (player.getVelocityY() > 0) {
+                player.setIsDead(true);
+            }
+        }
+    }
+}
+
 // Detect collision platforms
 void Map::collisionPlatCheck(Player & player, Platform & platform) {
-        if (player.getHitbox().intersects(platform.getHitbox())) {
+        if (player.getHitbox().intersects(platform.getPlatform(1).getGlobalBounds())) {
             // Top 
-            if (player.getPlayerBottom() > platform.getPlatTop() && player.getPlayerTop() <= platform.getPlatTop()) {
+            if (player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top && player.getPlayerTop() <= platform.getPlatform(1).getGlobalBounds().top) {
                 if (player.getVelocityY() > 0) {
                     player.onFloor();
-                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatTop() - player.getHitbox().height + 13);
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height + 13);
                 }
             }
             // Bottom 
-            else if (player.getPlayerTop() < platform.getPlatBottom() && player.getPlayerBottom() > platform.getPlatBottom()) {
+            else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {
                 if (player.getVelocityY() < 0) {
                     player.setVelocityY(0);
-                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatBottom() - 15);
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height - 15);
                 }
             }
            
@@ -217,13 +229,3 @@ void Map::detectGemColission(Player& player, Gem& gem) {
     }
 }
 
-void Map::collisionSpikeCheck(Player& player, Spike& spike) {
-    if (player.getHitbox().intersects(spike.getSpikeFive().getGlobalBounds())) {
-        // Top 
-        if (player.getPlayerBottom() > spike.getSpikeFive().getGlobalBounds().top && player.getPlayerTop() <= spike.getSpikeFive().getGlobalBounds().top) {
-            if (player.getVelocityY() > 0) {
-                player.setIsDead(true);
-            }
-        }
-    }
-}

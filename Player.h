@@ -71,7 +71,7 @@ public:
     /* Explicacion: velocityY esta en negativo por la jumpForce aplicada, personaje subiendo
     se acumula la gravedad con valor positivo hasta que velocityY llega a 0
     cuando llega a 0, velocityY comienza a ser positivo por ende el sprite empieza a bajar */
-    void moveJump(float g);
+    void moveJump();
     // Deteccion de suelo, ya sea predeterminado o plataforma
     void onFloor();
     // Obtener la posición del jugador y el sprite

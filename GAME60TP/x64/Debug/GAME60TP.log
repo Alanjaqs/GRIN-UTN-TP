@@ -1,5 +1,22 @@
-﻿  main.cpp
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(235,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(238,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp(241,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\x64\Debug\GAME60TP.exe
+﻿  DataPlayer.cpp
+  DoubleJump.cpp
+  Enemy.cpp
+  GameArchive.cpp
+  GameScene.cpp
+  Gem.cpp
+  main.cpp
+C:\Users\Usuario\Desktop\GAME60TP\main.cpp(235,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\main.cpp(238,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\main.cpp(241,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\main.cpp(104,10): warning C4101: 'vecPuntajes': variable local sin referencia
+  Map.cpp
+  MenuScene.cpp
+  PickableItem.cpp
+  Platform.cpp
+  Player.cpp
+  SpeedItem.cpp
+  Spike.cpp
+  Generando código...
+C:\Users\Usuario\Desktop\GAME60TP\Platform.cpp(15,1): warning C4715: 'Platform::getPlatform': no todas las rutas de acceso de control devuelven un valor
+C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(197,1): warning C4715: 'Map::getMusic': no todas las rutas de acceso de control devuelven un valor
+  GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\GAME60TP\x64\Debug\GAME60TP.exe

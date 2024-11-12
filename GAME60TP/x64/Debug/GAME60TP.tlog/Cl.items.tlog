@@ -1,14 +1,14 @@
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\DataPlayer.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\DataPlayer.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\DoubleJump.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\DoubleJump.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Enemy.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Enemy.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GameArchive.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\GameArchive.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GameScene.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\GameScene.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Gem.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Gem.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\main.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\main.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Map.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Map.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\MenuScene.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\MenuScene.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\PickableItem.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\PickableItem.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Platform.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Platform.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Player.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Player.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\SpeedItem.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\SpeedItem.obj
-C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\Spike.cpp;C:\Users\Usuario\Desktop\Cursada Programacion\Segundo Cuatrimestre\Programacion II\GameTPSFML\GAME60TP\GAME60TP\x64\Debug\Spike.obj
+C:\Users\Usuario\Desktop\GAME60TP\DataPlayer.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\DataPlayer.obj
+C:\Users\Usuario\Desktop\GAME60TP\DoubleJump.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\DoubleJump.obj
+C:\Users\Usuario\Desktop\GAME60TP\Enemy.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Enemy.obj
+C:\Users\Usuario\Desktop\GAME60TP\GameArchive.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\GameArchive.obj
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\GameScene.obj
+C:\Users\Usuario\Desktop\GAME60TP\Gem.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Gem.obj
+C:\Users\Usuario\Desktop\GAME60TP\main.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\main.obj
+C:\Users\Usuario\Desktop\GAME60TP\Map.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Map.obj
+C:\Users\Usuario\Desktop\GAME60TP\MenuScene.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\MenuScene.obj
+C:\Users\Usuario\Desktop\GAME60TP\PickableItem.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\PickableItem.obj
+C:\Users\Usuario\Desktop\GAME60TP\Platform.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Platform.obj
+C:\Users\Usuario\Desktop\GAME60TP\Player.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Player.obj
+C:\Users\Usuario\Desktop\GAME60TP\SpeedItem.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\SpeedItem.obj
+C:\Users\Usuario\Desktop\GAME60TP\Spike.cpp;C:\Users\Usuario\Desktop\GAME60TP\GAME60TP\x64\Debug\Spike.obj

@@ -114,12 +114,12 @@
 		void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 			target.draw(sprite, states);
 		}
-		void Player::moveJump(float g) {
+		void Player::moveJump() {
 			if (!isRunning)
 				Player::sprite.setTexture(textureJump);
 			else
 				Player::sprite.setTexture(textureRunJump);
-			velocityY += g;
+			velocityY += 0.5f;
 			sprite.move(0, velocityY);
 			updateHitbox();
 		}
