@@ -6,23 +6,25 @@
 #include "Player.h"
 #include <cmath>
 
-class DoubleJump : public PickableItem {
+class DoubleJump {
 private:
     sf::Texture entityTexture;
     sf::Sprite sprite;
-    Player* player;
-    bool collided = false;  // Indica si ocurrió una colisión
-
-protected:
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+    bool visible = true;
+    bool hasBeenPicked = false;
 
 public:
-    DoubleJump(Player* player);
-    ~DoubleJump();
+    DoubleJump();
 
-    sf::Sprite& getSprite();
-    bool detectCollision();
-    bool hasCollided() const { return collided; }  // Getter para el estado de colisión
+    //setters
+    void setVisible(bool v);
+    void setHasBeenPicked(bool v);
+    // Getters
+    bool getVisible();
+    bool getHasBeenPicked();
+
+    sf::Sprite& getDoubleJumpSprite();
+
 };
 
 #endif  // DOUBLEJUMP_H

@@ -19,12 +19,6 @@ Map::Map(Player* player) {
     portalTexture.loadFromFile("images\\portal.png");
     portalSprite.setTexture(portalTexture);
 
-   
-    // Iniciar DoubleJump
-    doubleJump = new DoubleJump(player);
-    doubleJump->getSprite().setPosition(2150, 500);
-
-
     // Music and sounds
     smashSound.openFromFile("audio\\smash.mp3");
     menuMusic.openFromFile("audio\\backMusic.mp3");
@@ -35,10 +29,7 @@ Map::Map(Player* player) {
 }
 
 Map::~Map() {
-    if (doubleJump) {
-        delete doubleJump;
-        doubleJump = nullptr;
-    }
+
 }
 
 // Getters
@@ -51,13 +42,9 @@ sf::Sprite& Map::getGround() {
 sf::Sprite& Map::getChat() {
     return chatSprite;
 }
-sf::Sprite* Map::getDoubleJump() {
-    return doubleJump ? &doubleJump->getSprite() : nullptr;  // Retorna nullptr si no existe
-}
 sf::Sprite& Map::getPortal() {
     return portalSprite;
 }
-DoubleJump* Map::getDoubleJumpPuntero() { return doubleJump; }
 // Set chat
 void Map::setChatSprite(int n) {
     if (n == 1) { chatSprite.setTexture(chatTexture1); }
@@ -76,12 +63,11 @@ void Map::setMapPosition(sf::Sprite& sprite, float x, float y) {
 }
 
 // Detect collision double jump
-void Map::detectCollisions(Player* player) {
-    if (doubleJump && doubleJump->detectCollision()) {
+void Map::colissionDoubleJumpCheck(Player& player, DoubleJump& dj) {
+    if (player.getHitbox().intersects(dj.getDoubleJumpSprite().getGlobalBounds())) {
         // Si hay colisión, da el poder, borra el objeto y lo iguala a nullptr para que no se siga usando
-        player->setHasDoubleJump(true); 
-        delete doubleJump;
-        doubleJump = nullptr;
+        player.setHasDoubleJump(true);
+        dj.setVisible(false);
     }
 }
 

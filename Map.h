@@ -38,8 +38,6 @@ private:
     sf::Texture groundTexture;
     sf::Sprite groundSprite;
 
-    DoubleJump* doubleJump;  // Puntero que puede ser nullptr tras una colisión
-
     // Audio
     sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound;
 
@@ -52,15 +50,13 @@ public:
     sf::Sprite& getBackground();
     sf::Sprite& getGround();
     sf::Sprite& getChat();
-    sf::Sprite* getDoubleJump();
     sf::Sprite& getPortal();
-    DoubleJump* getDoubleJumpPuntero();
     // Settea sprite en la posicion elegida en x/y
     void setMapPosition(sf::Sprite& sprite, float x, float y);
     void setChatSprite(int n);
 
     // Deteccion de colisiones varias
-    void detectCollisions(Player* player); // DoubleJump
+    void colissionDoubleJumpCheck(Player& player, DoubleJump& dj); // DoubleJump
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
     void detectGemColission(Player& player, Gem& gem);
     void collisionFloorCheck(Player& player); // Suelo

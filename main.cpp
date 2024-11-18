@@ -86,6 +86,7 @@ int main()
     Spike spike;
     // Plataformas 
     Platform platform;
+    DoubleJump dj;
     // Gemas tutorial
     Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7;
     // Map render
@@ -429,16 +430,14 @@ int main()
             map.detectGemColission(player, gem7);
 
             // Dibujar DoubleJump si no ha sido eliminado
-            sf::Sprite* doubleJumpSprite = map.getDoubleJump();
-            if (doubleJumpSprite) { // Verifica si no es nullptr
-                map.setMapPosition(*doubleJumpSprite, 1850, 420);
-                window.draw(*doubleJumpSprite);
+            
+            if (dj.getVisible()) {
+                map.setMapPosition(dj.getDoubleJumpSprite(), 1850, 420);
+                window.draw(dj.getDoubleJumpSprite());
             }
-            else {
-                // Manejo opcional si doubleJump no existe
-            }
-            // Detectar colisiones para DoubleJump
-            map.detectCollisions(&player);
+            // Colision DoubleJump
+            map.colissionDoubleJumpCheck(player, dj);
+
 
             // Dibujar SpeedItem
             if (speedIt.getVisible()) {
@@ -860,12 +859,11 @@ int main()
             map.detectGemColission(player, gem7);
 
             //Dibujar icono doble salto
-            sf::Sprite* doubleJumpSprite = map.getDoubleJump();
-            if (doubleJumpSprite) {
-                map.setMapPosition(*doubleJumpSprite, 4700, 420);
-                window.draw(*doubleJumpSprite);
+            if (dj.getVisible()) {
+                map.setMapPosition(dj.getDoubleJumpSprite(), 4700, 420);
+                window.draw(dj.getDoubleJumpSprite());
             }
-            map.detectCollisions(&player);
+            map.colissionDoubleJumpCheck(player, dj);
 
             //Colision suelo y plataformas
             map.collisionFloorCheck(player);
