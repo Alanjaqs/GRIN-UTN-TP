@@ -22,20 +22,22 @@ bool GameArchive::agregarRank(DataPlayer& dataWrite, DataPlayer* vec) {
     FILE* pData;
     pData = fopen(nombreArchivo, "wb");
     if (pData == NULL) return false;
-
+    // Recorrer vector dinamico y comparar puntajes
     for (int i = 0; i < 5 && !bandera; i++) {
         if (dataWrite.getPuntaje() > vec[i].getPuntaje()) {
             dataWrite.setPosicion(i + 1);
-            for (int j = 4; j > i; j--) {
-                vec[j] = vec[j - 1];  // Desplazar elementos hacia abajo.
+            // Desplazar elementos hacia abajo
+            for (int y = 4; y > i; y--) {
+                vec[y - 1].setPosicion(y + 1);
+                vec[y] = vec[y - 1];
             }
             vec[i] = dataWrite;
             bandera = true;
         }
-        // Escribir el vector ya actualizado al archivo
-        for (int x = 0; x < 5; x++) {
-            fwrite(&vec[x], sizeof(DataPlayer), 1, pData);        
-        }
+    }
+    // Escribir el vector ya actualizado al archivo
+    for (int x = 0; x < 5; x++) {
+        fwrite(&vec[x], sizeof(DataPlayer), 1, pData);
     }
     fclose(pData);
     return true;

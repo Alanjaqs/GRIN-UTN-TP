@@ -196,7 +196,8 @@ void MenuScene::MenuUpdate() {
 				enterReleased = false;
 			}
 			else if (opcionMenu == 7 && enterReleased) {
-				std::cout << "Borrar Rank" << std::endl;
+				GameArchive archive;
+				archive.iniciarRank();
 				enterReleased = false;
 			}
 			else if (opcionMenu == 8 && enterReleased) {

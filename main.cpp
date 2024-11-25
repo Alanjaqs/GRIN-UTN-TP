@@ -18,7 +18,7 @@ int main()
 {
     // Variables generales
     float winWidth = 1280.0f, winHeight = 720.0f;
-    bool keyReleased = true, enterReleased = true, nivel1 = true;
+    bool keyReleased = true, enterReleased = true, nivel1 = true, agregado = false;
 
     // Hearts
     sf::Texture fullHeartTex, emptyHeartTex;
@@ -112,13 +112,15 @@ int main()
     GameArchive archive;
 
     // Music en map
-    // map.getMusic(2).play();
-    // map.getMusic(2).setLoop(1);
+    map.getMusic(2).play();
+    map.getMusic(2).setLoop(1);
 
     // Creacion de primer archivo
-    /* PARA PROBAR PUNTAJES: Ejecutar el juego una vez y luego comentar la linea de iniciarRank
-    Sino siempre se va a crear un rank nuevo vacio*/
-    archive.iniciarRank();
+    if (!archive.leerRank(vecData)) {
+        archive.iniciarRank();
+        std::cout << "Archivo.dat creado!" << std::endl;
+    }
+    std::cout << "Archivo.dat ya existe" << std::endl;
 
     // Definir estado para menu inicial
     game.setGameState(1);
@@ -949,7 +951,10 @@ int main()
             data.setPuntaje(std::stoi(puntaje));
             //
             archive.leerRank(vecData);
-            archive.agregarRank(data, vecData);
+            if (!agregado) {
+                archive.agregarRank(data, vecData);
+                agregado = true;
+            }
 
             // Enter para continuar
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
@@ -961,6 +966,7 @@ int main()
                 nuevoNombre = "";
                 player.setPuntaje(1010);
                 enterReleased = false;
+                agregado = false;
             }
             if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) enterReleased = true;
 
