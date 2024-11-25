@@ -7,8 +7,6 @@ private:
 	int posicion;
 	char nombre[6];
 	int puntaje;
-	int vecPos[4];
-
 public:
 	// Setters
 	void setPosicion(int pos);
@@ -20,4 +18,5 @@ public:
 	int getPuntaje();
 	// Data player default
 	void resetData(int pos);
+	void rankearPlayer(DataPlayer charged);
 };

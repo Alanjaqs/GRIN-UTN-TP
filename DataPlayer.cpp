@@ -5,7 +5,7 @@ void DataPlayer::setPosicion(int pos) {
 	posicion = pos;
 }
 void DataPlayer::setNombre(const char* name) {
-		strcpy(nombre, name);
+	strcpy(nombre, name);
 }
 void DataPlayer::setPuntaje(int p) {
 	puntaje = p;
@@ -21,4 +21,8 @@ void DataPlayer::resetData(int pos) {
 	posicion = pos;
 	strcpy(nombre, "AAAAA");
 	puntaje = 0;
+}
+
+void rankearPlayer(DataPlayer charged) {
+
 }

@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map(Player* player) {
+Map::Map() {
     backTexture.loadFromFile("images\\backGame.jpg");
     backSprite.setTexture(backTexture);
     groundTexture.loadFromFile("images\\ground.png");

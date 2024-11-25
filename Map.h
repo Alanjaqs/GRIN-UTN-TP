@@ -43,7 +43,7 @@ private:
 
 public:
 
-    Map(Player* player);
+    Map();
     ~Map();
 
     // Getters

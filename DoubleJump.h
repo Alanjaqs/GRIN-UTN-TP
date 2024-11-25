@@ -27,4 +27,5 @@ public:
 
 };
 
+
 #endif  // DOUBLEJUMP_H

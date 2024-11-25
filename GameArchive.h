@@ -5,13 +5,13 @@
 class GameArchive {
 private:
 	char nombreArchivo[50];
-
 public:
 	// Constructor con nombre de archivo hardcodeado
 	GameArchive(const char *nombre = "dataPlayer.dat");
 
 	// Inicio rank por default
 	bool iniciarRank();
+	bool agregarRank(DataPlayer& dataWrite, DataPlayer* vec);
 	// Lectura rank 
 	bool leerRank(DataPlayer* vec);
 };

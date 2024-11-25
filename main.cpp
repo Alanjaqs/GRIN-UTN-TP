@@ -90,7 +90,7 @@ int main()
     // Gemas tutorial
     Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7;
     // Map render
-    Map map(&player);
+    Map map;
     SpeedItem speedIt;
     // Ventana
     sf::RenderWindow window(sf::VideoMode(1280, 720), "GRIN");
@@ -106,7 +106,8 @@ int main()
     //vecPuntajes = new vecPuntajes[];
     std::string puntaje;
     DataPlayer* vecData;
-    
+    // Pedir memoria vector dinamico
+    vecData = new DataPlayer[cantReg];
     DataPlayer data;
     GameArchive archive;
 
@@ -115,6 +116,8 @@ int main()
     // map.getMusic(2).setLoop(1);
 
     // Creacion de primer archivo
+    /* PARA PROBAR PUNTAJES: Ejecutar el juego una vez y luego comentar la linea de iniciarRank
+    Sino siempre se va a crear un rank nuevo vacio*/
     archive.iniciarRank();
 
     // Definir estado para menu inicial
@@ -200,8 +203,6 @@ int main()
             // Tipo Menu 4 Rank
             else if (menu.getTipoMenu() == 4) {
                 window.draw(menu.getMenu2Back());
-                // Leer archivo y cargar vector dinamico
-                vecData = new DataPlayer[cantReg];
                 archive.leerRank(vecData);
                 // Textos del rank
                 textPos.setString("Posicion");
@@ -946,6 +947,9 @@ int main()
             data.setNombre(nuevoNombre.c_str());
             puntaje = textPuntosFinal.getString();
             data.setPuntaje(std::stoi(puntaje));
+            //
+            archive.leerRank(vecData);
+            archive.agregarRank(data, vecData);
 
             // Enter para continuar
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && enterReleased) {
@@ -966,6 +970,7 @@ int main()
         // DISPLAY
         window.display();
     }
+    delete[] vecData;
 
     // Liberacion del juego
 
