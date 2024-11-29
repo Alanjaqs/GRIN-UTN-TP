@@ -1,8 +1,7 @@
-﻿  GameArchive.cpp
+﻿  GameScene.cpp
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(156,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(159,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(162,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   main.cpp
-C:\Users\Usuario\Desktop\GAME60TP\main.cpp(239,60): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\main.cpp(242,62): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\main.cpp(245,64): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\main.cpp(105,10): warning C4101: 'vecPuntajes': variable local sin referencia
   Generando código...
   GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\GAME60TP\x64\Debug\GAME60TP.exe
