@@ -58,7 +58,7 @@ int GameScene::getGameState() {
 
 // METODOS DE LA ESTRUCTURA DEL JUEGO
 
-void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, MenuScene& menu, sf::Event& event) {
+void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& event) {
     menu.MenuUpdate();
     // Tipo Menu 1
     if (menu.getTipoMenu() == 1) {
@@ -205,7 +205,7 @@ void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, MenuScene& me
     }
 }
 
-void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view, MenuScene& menu) {
+void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     // Player update
     player.update();
     player.moveJump();
@@ -350,16 +350,16 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view, MenuScene& me
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
         map.setMapPosition(dj.getDoubleJumpSprite(), 1850, 420);
+        map.colissionDoubleJumpCheck(player, dj);
         window.draw(dj.getDoubleJumpSprite());
     }
-    map.colissionDoubleJumpCheck(player, dj);
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
         map.setMapPosition(speedIt.getSpeedSprite(), 3650, 270);
+        map.detectSpeedCollision(player, speedIt);
         window.draw(speedIt.getSpeedSprite());
     }
-    map.detectSpeedCollision(player, speedIt);
 
     // RENDER PORTAL
     map.setMapPosition(map.getPortal(), 7500, 572);
@@ -422,6 +422,10 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view, MenuScene& me
         gem6.setHasBeenPicked(false);
         gem7.setVisible(true);
         gem7.setHasBeenPicked(false);
+        dj.setVisible(true);
+        player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
         player.getPlayerSprite().setPosition(200, 500);
         setGameState(3);
     }
@@ -472,7 +476,7 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view, MenuScene& me
     }
 }
 
-void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu) {
+void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     std::cout << player.getPlayerPosition().x << std::endl;
     std::cout << "y: " << player.getPlayerPosition().y << std::endl;
 
@@ -492,7 +496,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     view.setCenter(camPosition.x, 358);
     window.setView(view);
 
-    // Dibujar Backgrounds
+    // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(), 0, 0);
     window.draw(map.getBackground());
     map.setMapPosition(map.getBackground(), 1280, 0);
@@ -508,7 +512,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     map.setMapPosition(map.getBackground(), 7680, 0);
     window.draw(map.getBackground());
 
-    //Dibujar Grounds
+    // RENDER GROUNDS
     map.setMapPosition(map.getGround(), 0, 650);
     window.draw(map.getGround());
     map.setMapPosition(map.getGround(), 1280, 650);
@@ -522,8 +526,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     map.setMapPosition(map.getGround(), 6400, 650);
     window.draw(map.getGround());
 
-    //Dibujar plataformas
-
+    // RENDER PLATFORMS
     platform.setPlatPosition(1390, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
@@ -576,8 +579,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    // Dibujar enemigos
-
+    // RENDER ENEMIES
     if (enemy.getSpawned()) {
         enemy.respawnmanual(1470, 532);
         enemy.setSpawned(false);
@@ -688,7 +690,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
         setGameState(4);
     }
 
-    //Dibujar Spikes
+    // RENDER SPIKES
     map.setMapPosition(spike.getSpikeFive(), 1390, 625);
     window.draw(spike.getSpikeFive());
     map.collisionSpikeCheck(player, spike);
@@ -757,7 +759,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     window.draw(spike.getSpikeFive());
     map.collisionSpikeCheck(player, spike);
 
-    // Dibujar gemas
+    // RENDER GEMS
     if (gem1.getVisible()) {
         map.setMapPosition(gem1.getGemSprite(), 2100, 420);
         window.draw(gem1.getGemSprite());
@@ -786,8 +788,6 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
         map.setMapPosition(gem7.getGemSprite(), 7050, 220);
         window.draw(gem7.getGemSprite());
     }
-
-    // Colision gemas
     map.detectGemColission(player, gem1);
     map.detectGemColission(player, gem2);
     map.detectGemColission(player, gem3);
@@ -796,12 +796,19 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     map.detectGemColission(player, gem6);
     map.detectGemColission(player, gem7);
 
-    //Dibujar icono doble salto
+    // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
         map.setMapPosition(dj.getDoubleJumpSprite(), 4700, 420);
+        map.colissionDoubleJumpCheck(player, dj);
         window.draw(dj.getDoubleJumpSprite());
     }
-    map.colissionDoubleJumpCheck(player, dj);
+
+    // RENDER SPEED ITEM
+    if (speedIt.getVisible()) {
+        map.setMapPosition(speedIt.getSpeedSprite(), 5650, 270);
+        map.detectSpeedCollision(player, speedIt);
+        window.draw(speedIt.getSpeedSprite());
+    }
 
     //Colision suelo y plataformas
     map.collisionFloorCheck(player);
@@ -868,7 +875,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu
     map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
 }
 
-void GameScene::DataScreen(sf::RenderWindow& window, sf::View& view, MenuScene& menu) {
+void GameScene::DataScreen(sf::RenderWindow& window, sf::View& view) {
     window.draw(menu.getMenu2Back());
     textGracias.setPosition(500, 150);
     window.draw(textGracias);

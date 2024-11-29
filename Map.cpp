@@ -26,6 +26,7 @@ Map::Map() {
     gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
     hitSound.openFromFile("audio\\golpeado.mp3");
     gemSound.openFromFile("audio\\gemPick.mp3");
+    powerUpSound.openFromFile("audio\\powerUpPick.mp3");
 }
 
 Map::~Map() {
@@ -68,6 +69,7 @@ void Map::colissionDoubleJumpCheck(Player& player, DoubleJump& dj) {
         // Si hay colisión, da el poder, borra el objeto y lo iguala a nullptr para que no se siga usando
         player.setHasDoubleJump(true);
         dj.setVisible(false);
+        powerUpSound.play();
     }
 }
 
@@ -76,6 +78,7 @@ void Map::detectSpeedCollision(Player& player, SpeedItem& speedIt) {
     if(player.getHitbox().intersects(speedIt.getSpeedSprite().getGlobalBounds())) {
         speedIt.setVisible(false);
         player.setHasSpeed(true);
+        powerUpSound.play();
     }
 }
 

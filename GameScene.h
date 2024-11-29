@@ -16,7 +16,6 @@
 
 class GameScene {
 private:
-	sf::RenderWindow window;
 	Player player;
 	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
 	Spike spike;
@@ -28,6 +27,7 @@ private:
 	DataPlayer data;
 	DataPlayer* vecData;
 	GameArchive archive;
+	MenuScene menu;
 	sf::Texture fullHeartTex, emptyHeartTex;
 	std::string nuevoNombre, puntaje;
 	sf::Vector2f camPosition;
@@ -72,11 +72,11 @@ public:
 	// METODOS DE LA ESTRUCTURA DEL JUEGO
 	
 	// GameMenu
-	void GameMenu(sf::RenderWindow& window, sf::View& view, MenuScene& menu, sf::Event& event);
+	void GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& event);
 	// Tutorial
-	void Tutorial(sf::RenderWindow& window, sf::View& view, MenuScene& menu);
+	void Tutorial(sf::RenderWindow& window, sf::View& view);
 	// Level 1
-	void Level1(sf::RenderWindow& window, sf::View& view, MenuScene& menu);
+	void Level1(sf::RenderWindow& window, sf::View& view);
 	// Data Screen
-	void DataScreen(sf::RenderWindow& window, sf::View& view, MenuScene& menu);
+	void DataScreen(sf::RenderWindow& window, sf::View& view);
 };

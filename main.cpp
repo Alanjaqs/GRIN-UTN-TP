@@ -18,7 +18,6 @@
 int main() 
 {
     GameScene game;
-    MenuScene menu;
     Map map;
 
     // Ventana
@@ -49,22 +48,22 @@ int main()
         // ESTADO 1: RENDER MENU
         if (game.getGameState() == 1)
         {      
-            game.GameMenu(window, view, menu, event);
+            game.GameMenu(window, view, event);
         }
    
         // ESTADO 2: RENDER TUTORIAL
         else if (game.getGameState() == 2) {
-            game.Tutorial(window, view, menu);
+            game.Tutorial(window, view);
         }
 
         // ESTADO 3: RENDER LEVEL 1
         else if (game.getGameState() == 3) {
-            game.Level1(window, view, menu);
+            game.Level1(window, view);
         }
 
         // ESTADO 4 PANTALLA DATOS
         else if (game.getGameState() == 4) {
-            game.DataScreen(window, view, menu);
+            game.DataScreen(window, view);
         }
         
         // DISPLAY
