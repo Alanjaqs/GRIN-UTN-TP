@@ -39,7 +39,8 @@ private:
     sf::Sprite groundSprite;
 
     // Audio
-    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound, powerUpSound;
+    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound
+        , powerUpSound, victorySound;
 
 public:
 

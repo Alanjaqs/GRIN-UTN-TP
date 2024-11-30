@@ -17,23 +17,23 @@
 class GameScene {
 private:
 	Player player;
-	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
+	DataPlayer data;
+	DataPlayer* vecData;
+	GameArchive archive;
+	Map map;
+	MenuScene menu;
 	Spike spike;
 	Platform platform;
 	DoubleJump dj;
 	SpeedItem speedIt;
-	Map map;
 	Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7;
-	DataPlayer data;
-	DataPlayer* vecData;
-	GameArchive archive;
-	MenuScene menu;
+	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8;
 	sf::Texture fullHeartTex, emptyHeartTex;
 	std::string nuevoNombre, puntaje;
 	sf::Vector2f camPosition;
 	sf::Clock clock;
 	sf::Text textPuntos, text, textNuevoNombre, textGracias, textPuntosFinal, textEnter;
-	sf::Text textPos, textName, textPoints, textIngresarNombre, textNivel;
+	sf::Text textPos, textName, textPoints, textIngresarNombre, textNivel, textBorrado;
 	sf::Font font;
 	sf::Color color;
 	float decrementIntervalo = 1.0f; // Reducir el puntaje cada 1 segundo
@@ -50,23 +50,23 @@ public:
 
 	/* ESTRUCTURA Y GUIA DE CREACION DE NIVEL
 	1. Manejo metodos player y view
-	2. Render backgrounds
-	3. Render chats (si los hay)
-	4. Render grounds + colision
-	5. Render platforms + colision
-	6. Render spikes + colision
-	7. Render gems + colision
-	8. Render double jump + colision
-	9. Render speed item + colision
-	10. Render portal
-	11. Render player
-	12. Sistema puntaje
-	13. Render enemies + colision
-	14. Portal colision + reinicio de variables respectivamente
+	2. Sistema puntaje
+	3. Render backgrounds
+	4. Render chats (si los hay)
+	5. Render grounds + colision
+	6. Render platforms + colision
+	7. Render spikes + colision
+	8. Render gems + colision
+	9.  Render enemies + colision
+	10. Render double jump + colision
+	11. Render speed item + colision
+	12. Render portal
+	13. Render player
+	14. Render player name
 	15. Render puntos decreciendo
-	16. Render player name
-	17. Render hearts
-	18. Fase game over
+	16. Render hearts
+	17.	Fase game over
+	18. Portal colision + reinicio de variables respectivamente
 	*/
 
 	// METODOS DE LA ESTRUCTURA DEL JUEGO

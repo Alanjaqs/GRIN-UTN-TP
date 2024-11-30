@@ -27,6 +27,7 @@ Map::Map() {
     hitSound.openFromFile("audio\\golpeado.mp3");
     gemSound.openFromFile("audio\\gemPick.mp3");
     powerUpSound.openFromFile("audio\\powerUpPick.mp3");
+    victorySound.openFromFile("audio\\victory.mp3");
 }
 
 Map::~Map() {
@@ -183,6 +184,7 @@ sf::Music& Map::getMusic(int v) {
      if (v == 1) return menuMusic;
      if (v == 2) return tutorialMusic;
      if (v == 3) return gameOverMusic;
+     if (v == 4) return victorySound;
 }
 
 void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex) {

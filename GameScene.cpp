@@ -9,6 +9,7 @@ GameScene::GameScene() {
     // Textos
     sf::Color color(0xD1CB95FF);
     font.loadFromFile("pixel.otf");
+
     text.setFont(font);
     text.setFillColor(color);
     textPuntos.setFont(font);
@@ -37,6 +38,9 @@ GameScene::GameScene() {
     textNivel.setFillColor(color);
     textNivel.setString("NIVEL 1");
     textNivel.setScale(1.5, 1.5);
+    textBorrado.setFont(font);
+    textBorrado.setFillColor(color);
+    textBorrado.setString("El rank se ha reiniciado");
 
     winWidth = 1280.0f, winHeight = 720.0f;
     setGameState(1);
@@ -111,13 +115,16 @@ void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& ev
             window.draw(menu.getVerRankButton());
             window.draw(menu.getBorrarRankSelButton());
             window.draw(menu.getVolverButton());
+            if (menu.getBorrarRank()) {
+                textBorrado.setPosition(350, 600);
+                window.draw(textBorrado);
+            }
         }
         else if (menu.getOpc() == 8) {
             window.draw(menu.getVerRankButton());
             window.draw(menu.getBorrarRankButton());
             window.draw(menu.getVolverSelButton());
         }
-
     }
     // Tipo Menu 4 Rank
     else if (menu.getTipoMenu() == 4) {
@@ -217,6 +224,17 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
     view.setCenter(camPosition.x, 358);
     window.setView(view);
+
+    // Sistema de reduccion de puntaje
+    int puntos = player.getPuntaje();
+    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
+    if (elapsedTime >= decrementIntervalo) {
+        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
+        elapsedTime = 0.0f; // Reinicia el contador
+        if (puntos < 0) {
+            player.setPuntaje(0);
+        }
+    }
 
     // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(), 0, 0);
@@ -347,38 +365,6 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     map.detectGemColission(player, gem6);
     map.detectGemColission(player, gem7);
 
-    // RENDER DOUBLE JUMP
-    if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 1850, 420);
-        map.colissionDoubleJumpCheck(player, dj);
-        window.draw(dj.getDoubleJumpSprite());
-    }
-
-    // RENDER SPEED ITEM
-    if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 3650, 270);
-        map.detectSpeedCollision(player, speedIt);
-        window.draw(speedIt.getSpeedSprite());
-    }
-
-    // RENDER PORTAL
-    map.setMapPosition(map.getPortal(), 7500, 572);
-    window.draw(map.getPortal());
-
-    // RENDER PLAYER
-    window.draw(player);
-
-    // Sistema de reduccion de puntaje
-    int puntos = player.getPuntaje();
-    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
-    if (elapsedTime >= decrementIntervalo) {
-        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
-        elapsedTime = 0.0f; // Reinicia el contador
-        if (puntos < 0) {
-            player.setPuntaje(0);
-        }
-    }
-
     // RENDER ENEMIES
     // Enemy 1
     if (enemy.getSpawned()) {
@@ -401,34 +387,30 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     map.collisionEnemyCheck(player, enemy);
     map.collisionEnemyCheck(player, enemy2);
 
-    // Deteccion Portal + reinicio para level 1   
-    if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
-        player.setCurrentLife(3);
-        enemy.setSpawned(true);
-        enemy.setVisible(true);
-        enemy2.setSpawned(true);
-        enemy2.setVisible(true);
-        gem1.setVisible(true);
-        gem1.setHasBeenPicked(false);
-        gem2.setVisible(true);
-        gem2.setHasBeenPicked(false);
-        gem3.setVisible(true);
-        gem3.setHasBeenPicked(false);
-        gem4.setVisible(true);
-        gem4.setHasBeenPicked(false);
-        gem5.setVisible(true);
-        gem5.setHasBeenPicked(false);
-        gem6.setVisible(true);
-        gem6.setHasBeenPicked(false);
-        gem7.setVisible(true);
-        gem7.setHasBeenPicked(false);
-        dj.setVisible(true);
-        player.setHasDoubleJump(false);
-        speedIt.setVisible(true);
-        player.setHasSpeed(false);
-        player.getPlayerSprite().setPosition(200, 500);
-        setGameState(3);
+    // RENDER DOUBLE JUMP
+    if (dj.getVisible()) {
+        map.setMapPosition(dj.getDoubleJumpSprite(), 1850, 420);
+        map.colissionDoubleJumpCheck(player, dj);
+        window.draw(dj.getDoubleJumpSprite());
     }
+
+    // RENDER SPEED ITEM
+    if (speedIt.getVisible()) {
+        map.setMapPosition(speedIt.getSpeedSprite(), 3650, 270);
+        map.detectSpeedCollision(player, speedIt);
+        window.draw(speedIt.getSpeedSprite());
+    }
+
+    // RENDER PORTAL
+    map.setMapPosition(map.getPortal(), 7500, 572);
+    window.draw(map.getPortal());
+
+    // RENDER PLAYER
+    window.draw(player);
+
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
 
     // RENDER PUNTOS DECRECIENDO
     window.setView(window.getDefaultView());
@@ -437,10 +419,6 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     text.setString(std::to_string(puntos));
     text.setPosition(180, 0);
     window.draw(text);
-
-    // RENDER PLAYER NAME
-    textNuevoNombre.setPosition(600, 0);
-    window.draw(textNuevoNombre);
 
     // RENDER HEARTS
     int currentLife = player.getCurrentLife();
@@ -474,11 +452,44 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
         gem7.setHasBeenPicked(false);
         setGameState(1);
     }
+
+    // Deteccion Portal + reinicio para level 1   
+    if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
+        player.setCurrentLife(3);
+        enemy.setSpawned(true);
+        enemy.setVisible(true);
+        enemy2.setSpawned(true);
+        enemy2.setVisible(true);
+        gem1.setVisible(true);
+        gem1.setHasBeenPicked(false);
+        gem2.setVisible(true);
+        gem2.setHasBeenPicked(false);
+        gem3.setVisible(true);
+        gem3.setHasBeenPicked(false);
+        gem4.setVisible(true);
+        gem4.setHasBeenPicked(false);
+        gem5.setVisible(true);
+        gem5.setHasBeenPicked(false);
+        gem6.setVisible(true);
+        gem6.setHasBeenPicked(false);
+        gem7.setVisible(true);
+        gem7.setHasBeenPicked(false);
+        dj.setVisible(true);
+        player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
+        player.getPlayerSprite().setPosition(200, 500);
+        setGameState(3);
+    }
 }
 
 void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     std::cout << player.getPlayerPosition().x << std::endl;
     std::cout << "y: " << player.getPlayerPosition().y << std::endl;
+
+    // Player update
+    player.update();
+    player.moveJump();
 
     // Reiniciar Camara
     view.setCenter(winWidth / 2, winHeight / 2);
@@ -487,14 +498,21 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     // Camara sigue player
     camPosition = player.getPlayerPosition();
 
-    // Player update
-    player.update();
-    player.moveJump();
-
     // Evita que salga la camara para la izquierda (x < 0)
     if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
     view.setCenter(camPosition.x, 358);
     window.setView(view);
+
+    // Sistema reduccion de puntaje
+    int puntos = player.getPuntaje();
+    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
+    if (elapsedTime >= decrementIntervalo) {
+        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
+        elapsedTime = 0.0f; // Reinicia el contador
+        if (puntos <= 0) {
+            player.setPuntaje(0);
+        }
+    }
 
     // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(), 0, 0);
@@ -579,116 +597,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    // RENDER ENEMIES
-    if (enemy.getSpawned()) {
-        enemy.respawnmanual(1470, 532);
-        enemy.setSpawned(false);
-    }
-    if (enemy.getVisible()) {
-        enemy.update();
-        window.draw(enemy);
-    }
-    if (enemy2.getSpawned()) {
-        enemy2.respawnmanual(2683, 402);
-        enemy2.setSpawned(false);
-    }
-    if (enemy2.getVisible()) {
-        enemy2.update();
-        window.draw(enemy2);
-    }
-    if (enemy3.getSpawned()) {
-        enemy3.respawnmanual(3082, 402);
-        enemy3.setSpawned(false);
-    }
-    if (enemy3.getVisible()) {
-        enemy3.update();
-        window.draw(enemy3);
-    }
-    if (enemy4.getSpawned()) {
-        enemy4.respawnmanual(5500, 625);
-        enemy4.setSpawned(false);
-    }
-    if (enemy4.getVisible()) {
-        enemy4.update();
-        window.draw(enemy4);
-    }
-
-    if (enemy5.getSpawned()) {
-        enemy5.respawnmanual(5700, 625);
-        enemy5.setSpawned(false);
-    }
-    if (enemy5.getVisible()) {
-        enemy5.update();
-        window.draw(enemy5);
-    }
-
-    if (enemy6.getSpawned()) {
-        enemy6.respawnmanual(6100, 625);
-        enemy6.setSpawned(false);
-    }
-    if (enemy6.getVisible()) {
-        enemy6.update();
-        window.draw(enemy6);
-    }
-    if (enemy7.getSpawned()) {
-        enemy7.respawnmanual(6300, 625);
-        enemy7.setSpawned(false);
-    }
-    if (enemy7.getVisible()) {
-        enemy7.update();
-        window.draw(enemy7);
-    }
-
-    if (enemy8.getSpawned()) {
-        enemy8.respawnmanual(5900, 625);
-        enemy8.setSpawned(false);
-    }
-    if (enemy8.getVisible()) {
-        enemy8.update();
-        window.draw(enemy8);
-    }
-
-    // Deteccion Portal       
-    if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
-        player.setCurrentLife(3);
-        player.setHasSpeed(false);
-        player.setHasDoubleJump(false);
-        enemy.setSpawned(true);
-        enemy.setVisible(true);
-        enemy2.setSpawned(true);
-        enemy2.setVisible(true);
-        enemy3.setSpawned(true);
-        enemy3.setVisible(true);
-        enemy4.setSpawned(true);
-        enemy4.setVisible(true);
-        enemy5.setSpawned(true);
-        enemy5.setVisible(true);
-        enemy6.setSpawned(true);
-        enemy6.setVisible(true);
-        enemy7.setSpawned(true);
-        enemy7.setVisible(true);
-        enemy8.setSpawned(true);
-        enemy8.setVisible(true);
-
-        gem1.setVisible(true);
-        gem1.setHasBeenPicked(false);
-        gem2.setVisible(true);
-        gem2.setHasBeenPicked(false);
-        gem3.setVisible(true);
-        gem3.setHasBeenPicked(false);
-        gem4.setVisible(true);
-        gem4.setHasBeenPicked(false);
-        gem5.setVisible(true);
-        gem5.setHasBeenPicked(false);
-        gem6.setVisible(true);
-        gem6.setHasBeenPicked(false);
-        gem7.setVisible(true);
-        gem7.setHasBeenPicked(false);
-        dj.setVisible(true);
-        speedIt.setVisible(true);
-        player.getPlayerSprite().setPosition(200, 500);
-        setGameState(4);
-    }
+    map.collisionFloorCheck(player);
 
     // RENDER SPIKES
     map.setMapPosition(spike.getSpikeFive(), 1390, 625);
@@ -796,6 +705,83 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     map.detectGemColission(player, gem6);
     map.detectGemColission(player, gem7);
 
+    // RENDER ENEMIES
+    if (enemy.getSpawned()) {
+        enemy.respawnmanual(1470, 532);
+        enemy.setSpawned(false);
+    }
+    if (enemy.getVisible()) {
+        enemy.update();
+        window.draw(enemy);
+    }
+    if (enemy2.getSpawned()) {
+        enemy2.respawnmanual(2683, 402);
+        enemy2.setSpawned(false);
+    }
+    if (enemy2.getVisible()) {
+        enemy2.update();
+        window.draw(enemy2);
+    }
+    if (enemy3.getSpawned()) {
+        enemy3.respawnmanual(3082, 402);
+        enemy3.setSpawned(false);
+    }
+    if (enemy3.getVisible()) {
+        enemy3.update();
+        window.draw(enemy3);
+    }
+    if (enemy4.getSpawned()) {
+        enemy4.respawnmanual(5500, 625);
+        enemy4.setSpawned(false);
+    }
+    if (enemy4.getVisible()) {
+        enemy4.update();
+        window.draw(enemy4);
+    }
+
+    if (enemy5.getSpawned()) {
+        enemy5.respawnmanual(5700, 625);
+        enemy5.setSpawned(false);
+    }
+    if (enemy5.getVisible()) {
+        enemy5.update();
+        window.draw(enemy5);
+    }
+
+    if (enemy6.getSpawned()) {
+        enemy6.respawnmanual(6100, 625);
+        enemy6.setSpawned(false);
+    }
+    if (enemy6.getVisible()) {
+        enemy6.update();
+        window.draw(enemy6);
+    }
+    if (enemy7.getSpawned()) {
+        enemy7.respawnmanual(6300, 625);
+        enemy7.setSpawned(false);
+    }
+    if (enemy7.getVisible()) {
+        enemy7.update();
+        window.draw(enemy7);
+    }
+
+    if (enemy8.getSpawned()) {
+        enemy8.respawnmanual(5900, 625);
+        enemy8.setSpawned(false);
+    }
+    if (enemy8.getVisible()) {
+        enemy8.update();
+        window.draw(enemy8);
+    }
+    map.collisionEnemyCheck(player, enemy);
+    map.collisionEnemyCheck(player, enemy2);
+    map.collisionEnemyCheck(player, enemy3);
+    map.collisionEnemyCheck(player, enemy4);
+    map.collisionEnemyCheck(player, enemy5);
+    map.collisionEnemyCheck(player, enemy6);
+    map.collisionEnemyCheck(player, enemy7);
+    map.collisionEnemyCheck(player, enemy8);
+
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
         map.setMapPosition(dj.getDoubleJumpSprite(), 4700, 420);
@@ -810,21 +796,35 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         window.draw(speedIt.getSpeedSprite());
     }
 
-    //Colision suelo y plataformas
-    map.collisionFloorCheck(player);
-    map.collisionPlatCheck(player, platform);
+    // CARTEL NIVEL 1
+    textNivel.setPosition(430, 200);
+    window.draw(textNivel);
 
-    // Colision Enemy
-    map.collisionEnemyCheck(player, enemy);
-    map.collisionEnemyCheck(player, enemy2);
-    map.collisionEnemyCheck(player, enemy3);
-    map.collisionEnemyCheck(player, enemy4);
-    map.collisionEnemyCheck(player, enemy5);
-    map.collisionEnemyCheck(player, enemy6);
-    map.collisionEnemyCheck(player, enemy7);
-    map.collisionEnemyCheck(player, enemy8);
+    // RENDER PORTAL
+    map.setMapPosition(map.getPortal(), 7500, 572);
+    window.draw(map.getPortal());
 
-    // Comprobar si player perdio
+    // RENDER PLAYER
+    window.draw(player);
+
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
+
+    // RENDER PUNTOS DECRECIENDO
+    window.setView(window.getDefaultView());
+    textPuntos.setString("Puntos:");
+    window.draw(textPuntos);
+    text.setString(std::to_string(puntos));
+    text.setPosition(180, 0);
+    window.draw(text);
+
+    // RENDER HEARTS
+    int currentLife = player.getCurrentLife();
+    int totalLife = player.getTotalLife();
+    map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
+
+    // GAME OVER
     if (player.getIsDead()) {
         map.getMusic(2).stop();
         map.getMusic(3).play();
@@ -835,44 +835,49 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         setGameState(1);
     }
 
-    // Cartel Nivel 1
-    textNivel.setPosition(430, 200);
-    window.draw(textNivel);
+    // Deteccion Portal       
+    if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
+        player.setCurrentLife(3);
+        player.setHasSpeed(false);
+        player.setHasDoubleJump(false);
+        enemy.setSpawned(true);
+        enemy.setVisible(true);
+        enemy2.setSpawned(true);
+        enemy2.setVisible(true);
+        enemy3.setSpawned(true);
+        enemy3.setVisible(true);
+        enemy4.setSpawned(true);
+        enemy4.setVisible(true);
+        enemy5.setSpawned(true);
+        enemy5.setVisible(true);
+        enemy6.setSpawned(true);
+        enemy6.setVisible(true);
+        enemy7.setSpawned(true);
+        enemy7.setVisible(true);
+        enemy8.setSpawned(true);
+        enemy8.setVisible(true);
 
-    // Dibujar Portal
-    map.setMapPosition(map.getPortal(), 7500, 572);
-    window.draw(map.getPortal());
-
-    // Dibujar Player
-    window.draw(player);
-
-    // Sistema de reduccion de puntaje
-    int puntos = player.getPuntaje();
-    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
-    if (elapsedTime >= decrementIntervalo) {
-        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
-        elapsedTime = 0.0f; // Reinicia el contador
-        if (puntos <= 0) {
-            player.setPuntaje(0);
-        }
+        gem1.setVisible(true);
+        gem1.setHasBeenPicked(false);
+        gem2.setVisible(true);
+        gem2.setHasBeenPicked(false);
+        gem3.setVisible(true);
+        gem3.setHasBeenPicked(false);
+        gem4.setVisible(true);
+        gem4.setHasBeenPicked(false);
+        gem5.setVisible(true);
+        gem5.setHasBeenPicked(false);
+        gem6.setVisible(true);
+        gem6.setHasBeenPicked(false);
+        gem7.setVisible(true);
+        gem7.setHasBeenPicked(false);
+        dj.setVisible(true);
+        speedIt.setVisible(true);
+        map.getMusic(4).play();
+        player.getPlayerSprite().setPosition(200, 500);
+        setGameState(4);
     }
 
-    // Dibujar texto "Puntos" y el puntaje decreciendo
-    window.setView(window.getDefaultView());
-    textPuntos.setString("Puntos:");
-    window.draw(textPuntos);
-    text.setString(std::to_string(puntos));
-    text.setPosition(180, 0);
-    window.draw(text);
-
-    // Dibujar nombre player
-    textNuevoNombre.setPosition(600, 0);
-    window.draw(textNuevoNombre);
-
-    //Dibujar Hearts
-    int currentLife = player.getCurrentLife();
-    int totalLife = player.getTotalLife();
-    map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
 }
 
 void GameScene::DataScreen(sf::RenderWindow& window, sf::View& view) {

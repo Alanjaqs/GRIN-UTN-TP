@@ -23,6 +23,7 @@ class MenuScene {
 		bool comenzar = false;
 		bool keyReleased = true;
 		bool enterReleased = true;
+		bool rankBorrado = false;
 		// AudioMenu
 		sf::Music soundSel;
 
@@ -35,6 +36,7 @@ class MenuScene {
 		bool getComenzar();
 		int getOpc();
 		int getTipoMenu();
+		bool getBorrarRank();
 
 		sf::Sprite& getMenuBack();
 		sf::Sprite& getMenu2Back();
@@ -59,6 +61,7 @@ class MenuScene {
 		void setTipoMenu(int v);
 		void setSalir(int v);
 		void setComenzar(int v);
+		void setBorrarRank(int v);
 
 		// Metodos
 		void MenuUpdate();

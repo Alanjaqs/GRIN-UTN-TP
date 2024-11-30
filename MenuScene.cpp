@@ -76,6 +76,7 @@ int MenuScene::getOpc() { return opcionMenu; }
 int MenuScene::getTipoMenu() { return tipoMenu; }
 bool MenuScene::getSalir() { return salir; }
 bool MenuScene::getComenzar() { return comenzar; }
+bool MenuScene::getBorrarRank() { return rankBorrado; }
 
 // Getters sprites
 sf::Sprite& MenuScene::getMenuBack() { return menuSprite; }
@@ -108,6 +109,9 @@ void MenuScene::setComenzar(int v) {
 }
 void MenuScene::setTipoMenu(int v) {
 	tipoMenu = v;
+}
+void MenuScene::setBorrarRank(int v) {
+	rankBorrado = v;
 }
 
 // Comando menu 1
@@ -193,16 +197,19 @@ void MenuScene::MenuUpdate() {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && keyReleased) {
 			if (opcionMenu == 6 && enterReleased) {
 				setTipoMenu(4);
+				setBorrarRank(0);
 				enterReleased = false;
 			}
 			else if (opcionMenu == 7 && enterReleased) {
 				GameArchive archive;
 				archive.iniciarRank();
+				setBorrarRank(1);
 				enterReleased = false;
 			}
 			else if (opcionMenu == 8 && enterReleased) {
 				opcionMenu = 3;
 				tipoMenu = 2;
+				setBorrarRank(0);
 				enterReleased = false;
 			}
 		}
