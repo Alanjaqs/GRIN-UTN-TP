@@ -3,6 +3,8 @@
 Map::Map() {
     backTexture.loadFromFile("images\\backGame.jpg");
     backSprite.setTexture(backTexture);
+    backTexture2.loadFromFile("images\\backGame2.jpg");
+    backSprite2.setTexture(backTexture2);
     groundTexture.loadFromFile("images\\ground.png");
     groundSprite.setTexture(groundTexture);
 
@@ -20,10 +22,11 @@ Map::Map() {
     portalSprite.setTexture(portalTexture);
 
     // Music and sounds
-    smashSound.openFromFile("audio\\smash.mp3");
-    menuMusic.openFromFile("audio\\backMusic.mp3");
-    tutorialMusic.openFromFile("audio\\tutoMusic.mp3");
+    menuMusic.openFromFile("audio\\menuMusic.mp3");
+    level1Music.openFromFile("audio\\level1Music.wav");
+    level2Music.openFromFile("audio\\level2Music.mp3");
     gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
+    smashSound.openFromFile("audio\\smash.mp3");
     hitSound.openFromFile("audio\\golpeado.mp3");
     gemSound.openFromFile("audio\\gemPick.mp3");
     powerUpSound.openFromFile("audio\\powerUpPick.mp3");
@@ -35,8 +38,9 @@ Map::~Map() {
 }
 
 // Getters
-sf::Sprite& Map::getBackground() {
-    return backSprite;
+sf::Sprite& Map::getBackground(int b) {
+    if(b==1) return backSprite;
+    if (b == 2) return backSprite2;
 }
 sf::Sprite& Map::getGround() {
     return groundSprite;
@@ -85,22 +89,31 @@ void Map::detectSpeedCollision(Player& player, SpeedItem& speedIt) {
 
 // Detect collision floor
 void Map::collisionFloorCheck(Player& player) {
-    if (player.getPlayerPosition().y >= 600) {
-        player.getPlayerSprite().setPosition(player.getPlayerPosition().x, 600);
+    if (player.getPlayerPosition().y >= 616) {
+        player.getPlayerSprite().setPosition(player.getPlayerPosition().x, 616);
         player.onFloor();
     }
 }
 
 // Detect spike 
 void Map::collisionSpikeCheck(Player& player, Spike& spike) {
-    if (player.getHitbox().intersects(spike.getSpikeFive().getGlobalBounds())) {
-        // Top 
-        if (player.getPlayerBottom() > spike.getSpikeFive().getGlobalBounds().top && player.getPlayerTop() <= spike.getSpikeFive().getGlobalBounds().top) {
-            if (player.getVelocityY() > 0) {
-                player.setIsDead(true);
-            }
-        }
+    float TIME_BEFORE_DAMAGE = 1.0f;
+    if (player.getHitbox().intersects(spike.getSpikeSprites(2).getGlobalBounds())) {
+        player.setIsDead(true);
     }
+    if (player.getHitbox().intersects(spike.getSpikeSprites(1).getGlobalBounds())) {
+
+         if (player.getCurrentLife() < 1 && player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+              player.setIsDead(1);
+         }
+         else if (player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+              hitSound.play();
+              player.doDamage(1);
+              player.getDamageClock().restart();
+         }
+    }
+
+    
 }
 
 // Detect collision platforms
@@ -110,47 +123,28 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
             if (player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top && player.getPlayerTop() <= platform.getPlatform(1).getGlobalBounds().top) {
                 if (player.getVelocityY() > 0) {
                     player.onFloor();
-                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height + 13);
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height);
                 }
             }
             // Bottom 
-            else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {
+            else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {    
                 if (player.getVelocityY() < 0) {
                     player.setVelocityY(0);
-                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height - 15);
-                }
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height);
+                }       
             }
            
             // Left (no funciona bien, ver solucion)
-            
-            
-
-            /*else if (player.getPlayerRight() > platform.getPlatLeft() && player.getPlayerLeft() < platform.getPlatLeft()) {
+            /*
+            if (player.getPlayerRight() > platform.getPlatform(1).getGlobalBounds().left && player.getPlayerLeft() < platform.getPlatform(1).getGlobalBounds().left) {
                 if (player.getVelocityX() > 0) {
                     player.setVelocityX(0);
-                    player.getPlayerSprite().setPosition((platform.getPlatLeft() - player.getHitbox().width), player.getPlayerPosition().y);
+                    player.getPlayerSprite().setPosition((platform.getPlatform(1).getGlobalBounds().left - player.getHitbox().width - 2), player.getPlayerPosition().y);
 
                 }
-            }*/
-            
-        }
-        /*if (p.getdraw().getglobanbounds().intersects(ob.getdraw().getglobalbounds(){
-            if(p.getprevposition().x<p.getdraw().getposition().x{
-                p.quieto(ob.getdraw().getglobalbounds().left-p.getdraw().getglobalbounds().width,p.getdraw().getposition().y;
-                      
             }
-            else if(p.getprevposition().x>p.getdraw().getposition().x{
-                p.quieto(ob.getdraw().getglobalbounds().left+ob.getdraw().getglobalbounds().width, p.getdraw().getpoistion().y); 
-            
-            } 
-        }*/
-  
-
-
-        /*
-        player.setVelocityY(0);
-        player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height);
-        player.onFloor(); */
+            */
+        }
 }
        
 // Detect collision enemy
@@ -182,9 +176,10 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
 // Music
 sf::Music& Map::getMusic(int v) {
      if (v == 1) return menuMusic;
-     if (v == 2) return tutorialMusic;
-     if (v == 3) return gameOverMusic;
-     if (v == 4) return victorySound;
+     if (v == 2) return level1Music;
+     if (v == 3) return level2Music;
+     if (v == 4) return gameOverMusic;
+     if (v == 5) return victorySound;
 }
 
 void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex) {

@@ -3,10 +3,10 @@
 
 class Spike {
 private:
-    sf::Texture spikeFiveTexture;
-    sf::Sprite spikeFiveSprite;
+    sf::Texture spikeFiveTexture, spikeOneTexture;
+    sf::Sprite spikeFiveSprite, spikeOneSprite;
 public:
     Spike();
-    sf::Sprite& getSpikeFive();
+    sf::Sprite& getSpikeSprites(int s);
 
 };

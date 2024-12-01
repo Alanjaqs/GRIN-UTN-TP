@@ -28,8 +28,7 @@ int main()
     sf::View view(sf::FloatRect(0, 0, 1280, 720));
 
     // Establecer musica principal del juego
-    map.getMusic(2).play();
-    map.getMusic(2).setLoop(1);
+
 
     // Game Loop (update del juego)
     while(window.isOpen())
@@ -61,8 +60,13 @@ int main()
             game.Level1(window, view);
         }
 
-        // ESTADO 4 PANTALLA DATOS
+        // ESTADO 4: RENDER LEVEL 2
         else if (game.getGameState() == 4) {
+            game.Level2(window, view);
+        }
+
+        // ESTADO 5: PANTALLA DATOS
+        else if (game.getGameState() == 5) {
             game.DataScreen(window, view);
         }
         

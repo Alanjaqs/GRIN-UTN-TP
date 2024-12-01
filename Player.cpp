@@ -79,7 +79,6 @@
 						// Doble salto
 						velocityY = jumpForce;
 						hasAlreadyJumped = true;
-						std::cout << "Doble salto realizado" << std::endl;
 					}
 				}
 			}

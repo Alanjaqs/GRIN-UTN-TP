@@ -16,8 +16,8 @@ class Map
 {
 private:
     // Background
-    sf::Texture backTexture;
-    sf::Sprite backSprite;
+    sf::Texture backTexture, backTexture2;
+    sf::Sprite backSprite, backSprite2;
 
     // Chats
     sf::Texture chatTexture1;
@@ -39,16 +39,15 @@ private:
     sf::Sprite groundSprite;
 
     // Audio
-    sf::Music menuMusic, tutorialMusic, gameOverMusic, smashSound, hitSound, gemSound
+    sf::Music menuMusic, level1Music, level2Music, gameOverMusic, smashSound, hitSound, gemSound
         , powerUpSound, victorySound;
 
 public:
-
     Map();
     ~Map();
 
     // Getters
-    sf::Sprite& getBackground();
+    sf::Sprite& getBackground(int b);
     sf::Sprite& getGround();
     sf::Sprite& getChat();
     sf::Sprite& getPortal();

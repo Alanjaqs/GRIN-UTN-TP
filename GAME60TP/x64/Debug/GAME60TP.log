@@ -1,7 +1,2 @@
-﻿  GameScene.cpp
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(163,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(166,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(169,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  main.cpp
-  Generando código...
+﻿  Player.cpp
   GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\GAME60TP\x64\Debug\GAME60TP.exe

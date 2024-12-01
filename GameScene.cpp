@@ -46,6 +46,8 @@ GameScene::GameScene() {
     setGameState(1);
     vecData = new DataPlayer[cantReg];
 
+    menuMusicBD = true, tutoMusicBD = false, level1MusicBD = false, level2MusicBD = false;
+
     // Creacion de primer archivo
     if (!archive.leerRank(vecData)) {
         archive.iniciarRank();
@@ -63,6 +65,13 @@ int GameScene::getGameState() {
 // METODOS DE LA ESTRUCTURA DEL JUEGO
 
 void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& event) {
+    if (menuMusicBD) {
+        map.getMusic(2).stop();
+        map.getMusic(3).stop();
+        map.getMusic(1).play();
+        map.getMusic(1).setLoop(1);
+        menuMusicBD = false;
+    }
     menu.MenuUpdate();
     // Tipo Menu 1
     if (menu.getTipoMenu() == 1) {
@@ -193,6 +202,7 @@ void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& ev
         // Verificar si nombre tiene al menos 1 caracter para seguir
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && nuevoNombre.size() >= 1 && nuevoNombre.size() <= 5) {
             menu.setComenzar(1);
+            tutoMusicBD = true;
         }
         if (menu.getComenzar()) {
             setGameState(2);
@@ -203,8 +213,65 @@ void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& ev
         window.draw(menu.getGameOver());
         textEnter.setPosition(300, 600);
         window.draw(textEnter);
+        // Reinicio de variables
+        // Camara
         view.setCenter(winWidth / 2, winHeight / 2);
         window.setView(view);
+        // Power ups
+        dj.setVisible(true);
+        player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
+        // Puntaje, vida, pos
+        player.setCurrentLife(3);
+        player.setPuntaje(1010);
+        player.getPlayerSprite().setPosition(200, 500);\
+        // Enemies
+        enemy.setSpawned(true);
+        enemy.setVisible(true);
+        enemy2.setSpawned(true);
+        enemy2.setVisible(true);
+        enemy3.setSpawned(true);
+        enemy3.setVisible(true);
+        enemy4.setSpawned(true);
+        enemy4.setVisible(true);
+        enemy5.setSpawned(true);
+        enemy5.setVisible(true);
+        enemy6.setSpawned(true);
+        enemy6.setVisible(true);
+        enemy7.setSpawned(true);
+        enemy7.setVisible(true);
+        enemy8.setSpawned(true);
+        enemy8.setVisible(true);
+        enemy9.setSpawned(true);
+        enemy9.setVisible(true);
+        // Gems
+        gem1.setVisible(true);
+        gem1.setHasBeenPicked(false);
+        gem2.setVisible(true);
+        gem2.setHasBeenPicked(false);
+        gem3.setVisible(true);
+        gem3.setHasBeenPicked(false);
+        gem4.setVisible(true);
+        gem4.setHasBeenPicked(false);
+        gem5.setVisible(true);
+        gem5.setHasBeenPicked(false);
+        gem6.setVisible(true);
+        gem6.setHasBeenPicked(false);
+        gem7.setVisible(true);
+        gem7.setHasBeenPicked(false);
+        gem8.setVisible(true);
+        gem8.setHasBeenPicked(false);
+        gem9.setVisible(true);
+        gem9.setHasBeenPicked(false);
+        gem10.setVisible(true);
+        gem10.setHasBeenPicked(false);
+        gem11.setVisible(true);
+        gem11.setHasBeenPicked(false);
+        gem12.setVisible(true);
+        gem12.setHasBeenPicked(false);
+        // Otros
+        menuMusicBD = true;
         nuevoNombre = "";
         player.setIsDead(0);
         menu.setComenzar(0);
@@ -213,6 +280,12 @@ void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& ev
 }
 
 void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
+    if (tutoMusicBD) {
+        map.getMusic(1).stop();
+        map.getMusic(2).play();
+        map.getMusic(2).setLoop(1);
+        tutoMusicBD = false;
+    }
     // Player update
     player.update();
     player.moveJump();
@@ -237,20 +310,20 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     }
 
     // RENDER BACKGROUNDS
-    map.setMapPosition(map.getBackground(), 0, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 1280, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 2560, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 3840, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 5120, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 6400, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 7680, 0);
-    window.draw(map.getBackground());
+    map.setMapPosition(map.getBackground(1), 0, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 1280, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 2560, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 3840, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 5120, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 6400, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 7680, 0);
+    window.draw(map.getBackground(1));
 
     // RENDER CHATS
     map.setChatSprite(1);
@@ -324,8 +397,8 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     map.collisionPlatCheck(player, platform);
 
     // RENDER SPIKES
-    map.setMapPosition(spike.getSpikeFive(), 6820, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6820, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
     // RENDER GEMS
@@ -389,14 +462,14 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
 
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 1850, 420);
+        map.setMapPosition(dj.getDoubleJumpSprite(), 1860, 420);
         map.colissionDoubleJumpCheck(player, dj);
         window.draw(dj.getDoubleJumpSprite());
     }
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 3650, 270);
+        map.setMapPosition(speedIt.getSpeedSprite(), 3660, 270);
         map.detectSpeedCollision(player, speedIt);
         window.draw(speedIt.getSpeedSprite());
     }
@@ -408,10 +481,6 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     // RENDER PLAYER
     window.draw(player);
 
-    // RENDER PLAYER NAME
-    textNuevoNombre.setPosition(600, 0);
-    window.draw(textNuevoNombre);
-
     // RENDER PUNTOS DECRECIENDO
     window.setView(window.getDefaultView());
     textPuntos.setString("Puntos:");
@@ -420,6 +489,10 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     text.setPosition(180, 0);
     window.draw(text);
 
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
+
     // RENDER HEARTS
     int currentLife = player.getCurrentLife();
     int totalLife = player.getTotalLife();
@@ -427,15 +500,9 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
 
     // GAME OVER
     if (player.getIsDead()) {
-        map.getMusic(3).play();
+        map.getMusic(2).stop();
+        map.getMusic(4).play();
         menu.setTipoMenu(6);
-        player.setCurrentLife(3);
-        player.setPuntaje(1010);
-        player.getPlayerSprite().setPosition(200, 500);
-        enemy.setSpawned(true);
-        enemy.setVisible(true);
-        enemy2.setSpawned(true);
-        enemy2.setVisible(true);
         gem1.setVisible(true);
         gem1.setHasBeenPicked(false);
         gem2.setVisible(true);
@@ -455,11 +522,38 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
 
     // Deteccion Portal + reinicio para level 1   
     if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
+        // Reinicio de variables
+        // Camara
+        view.setCenter(winWidth / 2, winHeight / 2);
+        window.setView(view);
+        // Power ups
+        dj.setVisible(true);
+        player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
+        // Puntaje, vida, pos
         player.setCurrentLife(3);
+        player.getPlayerSprite().setPosition(200, 500);
+        // Enemies
         enemy.setSpawned(true);
         enemy.setVisible(true);
         enemy2.setSpawned(true);
         enemy2.setVisible(true);
+        enemy3.setSpawned(true);
+        enemy3.setVisible(true);
+        enemy4.setSpawned(true);
+        enemy4.setVisible(true);
+        enemy5.setSpawned(true);
+        enemy5.setVisible(true);
+        enemy6.setSpawned(true);
+        enemy6.setVisible(true);
+        enemy7.setSpawned(true);
+        enemy7.setVisible(true);
+        enemy8.setSpawned(true);
+        enemy8.setVisible(true);
+        enemy9.setSpawned(true);
+        enemy9.setVisible(true);
+        // Gems
         gem1.setVisible(true);
         gem1.setHasBeenPicked(false);
         gem2.setVisible(true);
@@ -474,19 +568,21 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
         gem6.setHasBeenPicked(false);
         gem7.setVisible(true);
         gem7.setHasBeenPicked(false);
-        dj.setVisible(true);
-        player.setHasDoubleJump(false);
-        speedIt.setVisible(true);
-        player.setHasSpeed(false);
-        player.getPlayerSprite().setPosition(200, 500);
+        gem8.setVisible(true);
+        gem8.setHasBeenPicked(false);
+        gem9.setVisible(true);
+        gem9.setHasBeenPicked(false);
+        gem10.setVisible(true);
+        gem10.setHasBeenPicked(false);
+        gem11.setVisible(true);
+        gem11.setHasBeenPicked(false);
+        gem12.setVisible(true);
+        gem12.setHasBeenPicked(false);
         setGameState(3);
     }
 }
 
 void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
-    std::cout << player.getPlayerPosition().x << std::endl;
-    std::cout << "y: " << player.getPlayerPosition().y << std::endl;
-
     // Player update
     player.update();
     player.moveJump();
@@ -515,20 +611,20 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     }
 
     // RENDER BACKGROUNDS
-    map.setMapPosition(map.getBackground(), 0, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 1280, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 2560, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 3840, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 5120, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 6400, 0);
-    window.draw(map.getBackground());
-    map.setMapPosition(map.getBackground(), 7680, 0);
-    window.draw(map.getBackground());
+    map.setMapPosition(map.getBackground(1), 0, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 1280, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 2560, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 3840, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 5120, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 6400, 0);
+    window.draw(map.getBackground(1));
+    map.setMapPosition(map.getBackground(1), 7680, 0);
+    window.draw(map.getBackground(1));
 
     // RENDER GROUNDS
     map.setMapPosition(map.getGround(), 0, 650);
@@ -600,72 +696,72 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     map.collisionFloorCheck(player);
 
     // RENDER SPIKES
-    map.setMapPosition(spike.getSpikeFive(), 1390, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 1390, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 2400, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 2400, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 2800, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 2800, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 3900, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 3900, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 4830, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 4830, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 4940, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 4940, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 5050, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 5050, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 5160, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 5160, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 5270, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 5270, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6400, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6400, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6510, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6510, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6620, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6620, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6730, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6730, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6840, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6840, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 6950, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 6950, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 7060, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 7060, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeFive(), 7170, 625);
-    window.draw(spike.getSpikeFive());
+    map.setMapPosition(spike.getSpikeSprites(2), 7170, 625);
+    window.draw(spike.getSpikeSprites(2));
     map.collisionSpikeCheck(player, spike);
 
     // RENDER GEMS
@@ -738,7 +834,6 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         enemy4.update();
         window.draw(enemy4);
     }
-
     if (enemy5.getSpawned()) {
         enemy5.respawnmanual(5700, 625);
         enemy5.setSpawned(false);
@@ -747,7 +842,6 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         enemy5.update();
         window.draw(enemy5);
     }
-
     if (enemy6.getSpawned()) {
         enemy6.respawnmanual(6100, 625);
         enemy6.setSpawned(false);
@@ -764,7 +858,6 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         enemy7.update();
         window.draw(enemy7);
     }
-
     if (enemy8.getSpawned()) {
         enemy8.respawnmanual(5900, 625);
         enemy8.setSpawned(false);
@@ -784,14 +877,14 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
 
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 4700, 420);
+        map.setMapPosition(dj.getDoubleJumpSprite(), 4710, 420);
         map.colissionDoubleJumpCheck(player, dj);
         window.draw(dj.getDoubleJumpSprite());
     }
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 5650, 270);
+        map.setMapPosition(speedIt.getSpeedSprite(), 5660, 270);
         map.detectSpeedCollision(player, speedIt);
         window.draw(speedIt.getSpeedSprite());
     }
@@ -807,10 +900,6 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     // RENDER PLAYER
     window.draw(player);
 
-    // RENDER PLAYER NAME
-    textNuevoNombre.setPosition(600, 0);
-    window.draw(textNuevoNombre);
-
     // RENDER PUNTOS DECRECIENDO
     window.setView(window.getDefaultView());
     textPuntos.setString("Puntos:");
@@ -818,6 +907,10 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     text.setString(std::to_string(puntos));
     text.setPosition(180, 0);
     window.draw(text);
+
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
 
     // RENDER HEARTS
     int currentLife = player.getCurrentLife();
@@ -827,19 +920,26 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     // GAME OVER
     if (player.getIsDead()) {
         map.getMusic(2).stop();
-        map.getMusic(3).play();
-        menu.setTipoMenu(6);
-        player.setCurrentLife(3);
-        player.setPuntaje(1010);
-        player.getPlayerSprite().setPosition(200, 500);
+        map.getMusic(4).play();
+        menu.setTipoMenu(6);     
         setGameState(1);
     }
 
-    // Deteccion Portal       
+    // Deteccion Portal + reinicio para nivel 2
     if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
-        player.setCurrentLife(3);
-        player.setHasSpeed(false);
+        // Reinicio de variables
+        // Camara
+        view.setCenter(winWidth / 2, winHeight / 2);
+        window.setView(view);
+        // Power ups
+        dj.setVisible(true);
         player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
+        // Puntaje, vida, pos
+        player.setCurrentLife(3);
+        player.getPlayerSprite().setPosition(200, 500);
+        // Enemies
         enemy.setSpawned(true);
         enemy.setVisible(true);
         enemy2.setSpawned(true);
@@ -856,7 +956,9 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         enemy7.setVisible(true);
         enemy8.setSpawned(true);
         enemy8.setVisible(true);
-
+        enemy9.setSpawned(true);
+        enemy9.setVisible(true);
+        // Gems
         gem1.setVisible(true);
         gem1.setHasBeenPicked(false);
         gem2.setVisible(true);
@@ -871,13 +973,668 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
         gem6.setHasBeenPicked(false);
         gem7.setVisible(true);
         gem7.setHasBeenPicked(false);
-        dj.setVisible(true);
-        speedIt.setVisible(true);
-        map.getMusic(4).play();
-        player.getPlayerSprite().setPosition(200, 500);
+        gem8.setVisible(true);
+        gem8.setHasBeenPicked(false);
+        gem9.setVisible(true);
+        gem9.setHasBeenPicked(false);
+        gem10.setVisible(true);
+        gem10.setHasBeenPicked(false);
+        gem11.setVisible(true);
+        gem11.setHasBeenPicked(false);
+        gem12.setVisible(true);
+        gem12.setHasBeenPicked(false);
+        // Otros
+        level2MusicBD = true;
         setGameState(4);
     }
 
+}
+
+void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
+    if (level2MusicBD) {
+        map.getMusic(2).stop();
+        map.getMusic(3).play();
+        map.getMusic(3).setLoop(1);
+        level2MusicBD = false;
+    }
+    std::cout << "x:" << player.getPlayerPosition().x << std::endl;
+    std::cout << "y: " << player.getPlayerPosition().y << std::endl;
+
+    // Player update
+    player.update();
+    player.moveJump();
+
+    // Reiniciar Camara
+    view.setCenter(winWidth / 2, winHeight / 2);
+    window.setView(view);
+
+    // Camara sigue player
+    camPosition = player.getPlayerPosition();
+
+    // Evita que salga la camara para la izquierda (x < 0)
+    if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
+    view.setCenter(camPosition.x, 358);
+    window.setView(view);
+
+    // Sistema reduccion de puntaje
+    int puntos = player.getPuntaje();
+    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
+    if (elapsedTime >= decrementIntervalo) {
+        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
+        elapsedTime = 0.0f; // Reinicia el contador
+        if (puntos <= 0) {
+            player.setPuntaje(0);
+        }
+    }
+
+    // RENDER BACKGROUNDS
+    map.setMapPosition(map.getBackground(2), 0, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 1280, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 2560, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 3840, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 5120, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 6400, 0);
+    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(2), 7680, 0);
+    window.draw(map.getBackground(2));
+
+    // RENDER GROUNDS
+    map.setMapPosition(map.getGround(), 0, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 1280, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 2560, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 3840, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 5120, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 6400, 650);
+    window.draw(map.getGround());
+
+    map.collisionFloorCheck(player);
+
+    // RENDER PLATFORMS
+    platform.setPlatPosition(150, 550);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(500, 500);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(900, 500);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(1230, 400);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(1230, 300);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(1550, 200);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(1740, 550);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(2240, 385);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(2690, 550);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(3300, 550);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(3550, 400);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(4400, 550);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(5150, 420);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(6000, 420);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(6770, 420);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    platform.setPlatPosition(7400, 360);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    // RENDER SPIKES FIVE
+    map.setMapPosition(spike.getSpikeSprites(2), 0, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 110, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 220, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 330, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 440, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 740, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 1260, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 1480, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 1990, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2100, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2210, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2320, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2430, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2540, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 2900, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 3010, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 3120, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 4150, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 4260, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 4700, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 4810, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5000, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5110, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5300, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5410, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5800, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 5910, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 6200, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 6400, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 6700, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 6810, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 7400, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(2), 7510, 625);
+    window.draw(spike.getSpikeSprites(2));
+    map.collisionSpikeCheck(player, spike);
+
+    // RENDER SPIKES ONE
+    map.setMapPosition(spike.getSpikeSprites(1), 780, 425);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 1180, 300);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 1500, 320);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2080, 470);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2500, 400);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2500, 450);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2500, 500);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 180);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 230);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 280);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 330);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 380);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 2630, 430);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3100, 290);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3100, 410);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3250, 605);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3500, 420);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3500, 470);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3500, 520);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3765, 420);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3765, 470);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3765, 520);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3765, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3820, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3875, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3930, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 3985, 400);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 4040, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 4095, 570);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 5650, 390);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    map.setMapPosition(spike.getSpikeSprites(1), 6500, 320);
+    window.draw(spike.getSpikeSprites(1));
+    map.collisionSpikeCheck(player, spike);
+
+    // RENDER ENEMIES
+    if (enemy.getSpawned()) {
+        enemy.respawnmanual(586, 480);
+        enemy.setSpawned(false);
+    }
+    if (enemy.getVisible()) {
+        enemy.update();
+        window.draw(enemy);
+    }
+    if (enemy2.getSpawned()) {
+        enemy2.respawnmanual(985, 480);
+        enemy2.setSpawned(false);
+    }
+    if (enemy2.getVisible()) {
+        enemy2.update();
+        window.draw(enemy2);
+    }
+    if (enemy3.getSpawned()) {
+        enemy3.respawnmanual(1310, 283);
+        enemy3.setSpawned(false);
+    }
+    if (enemy3.getVisible()) {
+        enemy3.update();
+        window.draw(enemy3);
+    }
+    if (enemy4.getSpawned()) {
+        enemy4.respawnmanual(1700, 629);
+        enemy4.setSpawned(false);
+    }
+    if (enemy4.getVisible()) {
+        enemy4.update();
+        window.draw(enemy4);
+    }
+    if (enemy5.getSpawned()) {
+        enemy5.respawnmanual(2800, 531);
+        enemy5.setSpawned(false);
+    }
+    if (enemy5.getVisible()) {
+        enemy5.update();
+        window.draw(enemy5);
+    }
+    if (enemy6.getSpawned()) {
+        enemy6.respawnmanual(3380, 531);
+        enemy6.setSpawned(false);
+    }
+    if (enemy6.getVisible()) {
+        enemy6.update();
+        window.draw(enemy6);
+    }
+    if (enemy7.getSpawned()) {
+        enemy7.respawnmanual(3700, 629);
+        enemy7.setSpawned(false);
+    }
+    if (enemy7.getVisible()) {
+        enemy7.update();
+        window.draw(enemy7);
+    }
+    if (enemy8.getSpawned()) {
+        enemy8.respawnmanual(5250, 400);
+        enemy8.setSpawned(false);
+    }
+    if (enemy8.getVisible()) {
+        enemy8.update();
+        window.draw(enemy8);
+    }
+    if (enemy9.getSpawned()) {
+        enemy9.respawnmanual(6850, 400);
+        enemy9.setSpawned(false);
+    }
+    if (enemy9.getVisible()) {
+        enemy9.update();
+        window.draw(enemy9);
+    }
+    map.collisionEnemyCheck(player, enemy);
+    map.collisionEnemyCheck(player, enemy2);
+    map.collisionEnemyCheck(player, enemy3);
+    map.collisionEnemyCheck(player, enemy4);
+    map.collisionEnemyCheck(player, enemy5);
+    map.collisionEnemyCheck(player, enemy6);
+    map.collisionEnemyCheck(player, enemy7);
+    map.collisionEnemyCheck(player, enemy8);
+    map.collisionEnemyCheck(player, enemy9);
+
+    // RENDER GEMS
+    if (gem1.getVisible()) {
+        map.setMapPosition(gem1.getGemSprite(), 400, 420);
+        window.draw(gem1.getGemSprite());
+    }
+    if (gem2.getVisible()) {
+        map.setMapPosition(gem2.getGemSprite(), 1580, 150);
+        window.draw(gem2.getGemSprite());
+    }
+    if (gem3.getVisible()) {
+        map.setMapPosition(gem3.getGemSprite(), 1680, 150);
+        window.draw(gem3.getGemSprite());
+    }
+    if (gem4.getVisible()) {
+        map.setMapPosition(gem4.getGemSprite(), 2560, 400);
+        window.draw(gem4.getGemSprite());
+    }
+    if (gem5.getVisible()) {
+        map.setMapPosition(gem5.getGemSprite(), 2560, 500);
+        window.draw(gem5.getGemSprite());
+    }
+    if (gem6.getVisible()) {
+        map.setMapPosition(gem6.getGemSprite(), 3095, 350);
+        window.draw(gem6.getGemSprite());
+    }
+    if (gem7.getVisible()) {
+        map.setMapPosition(gem7.getGemSprite(), 3570, 470);
+        window.draw(gem7.getGemSprite());
+    }
+    if (gem8.getVisible()) {
+        map.setMapPosition(gem8.getGemSprite(), 3670, 470);
+        window.draw(gem8.getGemSprite());
+    }
+    if (gem9.getVisible()) {
+        map.setMapPosition(gem9.getGemSprite(), 3570, 540);
+        window.draw(gem9.getGemSprite());
+    }
+    if (gem10.getVisible()) {
+        map.setMapPosition(gem10.getGemSprite(), 3670, 540);
+        window.draw(gem10.getGemSprite());
+    }
+    if (gem11.getVisible()) {
+        map.setMapPosition(gem11.getGemSprite(), 5640, 330);
+        window.draw(gem11.getGemSprite());
+    }
+    if (gem12.getVisible()) {
+        map.setMapPosition(gem12.getGemSprite(), 6490, 390);
+        window.draw(gem12.getGemSprite());
+    }
+    map.detectGemColission(player, gem1);
+    map.detectGemColission(player, gem2);
+    map.detectGemColission(player, gem3);
+    map.detectGemColission(player, gem4);
+    map.detectGemColission(player, gem5);
+    map.detectGemColission(player, gem6);
+    map.detectGemColission(player, gem7);
+    map.detectGemColission(player, gem8);
+    map.detectGemColission(player, gem9);
+    map.detectGemColission(player, gem10);
+    map.detectGemColission(player, gem11);
+    map.detectGemColission(player, gem12);
+
+    // RENDER DOUBLE JUMP
+    if (dj.getVisible()) {
+        map.setMapPosition(dj.getDoubleJumpSprite(), 1800, 470);
+        map.colissionDoubleJumpCheck(player, dj);
+        window.draw(dj.getDoubleJumpSprite());
+    }
+
+    // RENDER SPEED ITEM
+    if (speedIt.getVisible()) {
+        map.setMapPosition(speedIt.getSpeedSprite(), 3605, 320);
+        map.detectSpeedCollision(player, speedIt);
+        window.draw(speedIt.getSpeedSprite());
+    }
+
+    // RENDER PORTAL
+    map.setMapPosition(map.getPortal(), 7500, 280);
+    window.draw(map.getPortal());
+
+    // RENDER PLAYER
+    window.draw(player);
+
+    // RENDER PUNTOS DECRECIENDO
+    window.setView(window.getDefaultView());
+    textPuntos.setString("Puntos:");
+    window.draw(textPuntos);
+    text.setString(std::to_string(puntos));
+    text.setPosition(180, 0);
+    window.draw(text);
+
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
+
+    // RENDER HEARTS
+    int currentLife = player.getCurrentLife();
+    int totalLife = player.getTotalLife();
+    map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
+
+    // GAME OVER    
+    if (player.getIsDead()) {
+        map.getMusic(3).stop();
+        map.getMusic(4).play();
+        menu.setTipoMenu(6);
+        setGameState(1);
+    }
+
+    // Deteccion Portal + reinicio fin del juego     
+    if (player.getHitbox().intersects(map.getPortal().getGlobalBounds())) {
+        // Reinicio de variables
+        // Camara
+        view.setCenter(winWidth / 2, winHeight / 2);
+        window.setView(view);
+        // Power ups
+        dj.setVisible(true);
+        player.setHasDoubleJump(false);
+        speedIt.setVisible(true);
+        player.setHasSpeed(false);
+        // Puntaje, vida, pos
+        player.setCurrentLife(3);
+        player.getPlayerSprite().setPosition(200, 500);
+        // Enemies
+        enemy.setSpawned(true);
+        enemy.setVisible(true);
+        enemy2.setSpawned(true);
+        enemy2.setVisible(true);
+        enemy3.setSpawned(true);
+        enemy3.setVisible(true);
+        enemy4.setSpawned(true);
+        enemy4.setVisible(true);
+        enemy5.setSpawned(true);
+        enemy5.setVisible(true);
+        enemy6.setSpawned(true);
+        enemy6.setVisible(true);
+        enemy7.setSpawned(true);
+        enemy7.setVisible(true);
+        enemy8.setSpawned(true);
+        enemy8.setVisible(true);
+        enemy9.setSpawned(true);
+        enemy9.setVisible(true);
+        // Gems
+        gem1.setVisible(true);
+        gem1.setHasBeenPicked(false);
+        gem2.setVisible(true);
+        gem2.setHasBeenPicked(false);
+        gem3.setVisible(true);
+        gem3.setHasBeenPicked(false);
+        gem4.setVisible(true);
+        gem4.setHasBeenPicked(false);
+        gem5.setVisible(true);
+        gem5.setHasBeenPicked(false);
+        gem6.setVisible(true);
+        gem6.setHasBeenPicked(false);
+        gem7.setVisible(true);
+        gem7.setHasBeenPicked(false);
+        gem8.setVisible(true);
+        gem8.setHasBeenPicked(false);
+        gem9.setVisible(true);
+        gem9.setHasBeenPicked(false);
+        gem10.setVisible(true);
+        gem10.setHasBeenPicked(false);
+        gem11.setVisible(true);
+        gem11.setHasBeenPicked(false);
+        gem12.setVisible(true);
+        gem12.setHasBeenPicked(false);
+        menuMusicBD = true;
+        map.getMusic(5).play();
+        setGameState(5);
+    }
 }
 
 void GameScene::DataScreen(sf::RenderWindow& window, sf::View& view) {
