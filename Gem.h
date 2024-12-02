@@ -3,10 +3,14 @@
 
 class Gem {
 private:
-	sf::Texture gemTexture;
-	sf::Sprite  gemSprite;
+	sf::Texture gemTexture, gemTexture2;
+	sf::Sprite  gemSprite, gemSprite2;
 	bool visible = true;
 	bool hasBeenPicked = false;
+	// Animation
+	sf::Clock clock;
+	float animationTime = 0.2f;
+	bool firstSprite = true;
 public:
 	Gem();
 	// Setters
@@ -15,6 +19,7 @@ public:
 	// Getters
 	bool getVisible();
 	bool getHasBeenPicked();
-	sf::Sprite& getGemSprite();
+	sf::Sprite& getGemSprite(int g);
+	bool getFirstSprite();
 
 };

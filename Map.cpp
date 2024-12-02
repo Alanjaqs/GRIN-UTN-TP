@@ -127,13 +127,14 @@ void Map::collisionPlatCheck(Player & player, Platform & platform) {
                 }
             }
             // Bottom 
+            
             else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {    
                 if (player.getVelocityY() < 0) {
                     player.setVelocityY(0);
                     player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height);
                 }       
             }
-           
+            
             // Left (no funciona bien, ver solucion)
             /*
             if (player.getPlayerRight() > platform.getPlatform(1).getGlobalBounds().left && player.getPlayerLeft() < platform.getPlatform(1).getGlobalBounds().left) {
@@ -205,7 +206,7 @@ void Map::renderHearts(sf::RenderWindow& window, int currentLife, int totalLife,
 
 
 void Map::detectGemColission(Player& player, Gem& gem) {
-    if (player.getHitbox().intersects(gem.getGemSprite().getGlobalBounds())) {
+    if (player.getHitbox().intersects(gem.getGemSprite(1).getGlobalBounds()) || player.getHitbox().intersects(gem.getGemSprite(2).getGlobalBounds())) {
         if (!gem.getHasBeenPicked()) {
             gemSound.play();
             gem.setVisible(false);

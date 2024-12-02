@@ -402,33 +402,64 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     map.collisionSpikeCheck(player, spike);
 
     // RENDER GEMS
+    // Objeto para obtener bool para animacion de gemas
+    gemAnim.getFirstSprite();
+    //
     if (gem1.getVisible()) {
-        map.setMapPosition(gem1.getGemSprite(), 950, 550);
-        window.draw(gem1.getGemSprite());
+        map.setMapPosition(gem1.getGemSprite(1), 950, 550);
+        map.setMapPosition(gem1.getGemSprite(2), 950, 550);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem1.getGemSprite(1));
+        else
+            window.draw(gem1.getGemSprite(2));
     }
     if (gem2.getVisible()) {
-        map.setMapPosition(gem2.getGemSprite(), 1600, 480);
-        window.draw(gem2.getGemSprite());
+        map.setMapPosition(gem2.getGemSprite(1), 1600, 480);
+        map.setMapPosition(gem2.getGemSprite(2), 1600, 480);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem2.getGemSprite(1));
+        else
+            window.draw(gem2.getGemSprite(2));
     }
     if (gem3.getVisible()) {
-        map.setMapPosition(gem3.getGemSprite(), 2800, 400);
-        window.draw(gem3.getGemSprite());
+        map.setMapPosition(gem3.getGemSprite(1), 2800, 400);
+        map.setMapPosition(gem3.getGemSprite(2), 2800, 400);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem3.getGemSprite(1));
+        else
+            window.draw(gem3.getGemSprite(2));
     }
     if (gem4.getVisible()) {
-        map.setMapPosition(gem4.getGemSprite(), 3500, 400);
-        window.draw(gem4.getGemSprite());
+        map.setMapPosition(gem4.getGemSprite(1), 3500, 400);
+        map.setMapPosition(gem4.getGemSprite(2), 3500, 400);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem4.getGemSprite(1));
+        else
+            window.draw(gem4.getGemSprite(2));
     }
     if (gem5.getVisible()) {
-        map.setMapPosition(gem5.getGemSprite(), 4000, 500);
-        window.draw(gem5.getGemSprite());
+        map.setMapPosition(gem5.getGemSprite(1), 4000, 500);
+        map.setMapPosition(gem5.getGemSprite(2), 4000, 500);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem5.getGemSprite(1));
+        else
+            window.draw(gem5.getGemSprite(2));
     }
     if (gem6.getVisible()) {
-        map.setMapPosition(gem6.getGemSprite(), 5000, 550);
-        window.draw(gem6.getGemSprite());
+        map.setMapPosition(gem6.getGemSprite(1), 5000, 550);
+        map.setMapPosition(gem6.getGemSprite(2), 5000, 550);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem6.getGemSprite(1));
+        else
+            window.draw(gem6.getGemSprite(2));
     }
     if (gem7.getVisible()) {
-        map.setMapPosition(gem7.getGemSprite(), 7050, 220);
-        window.draw(gem7.getGemSprite());
+        map.setMapPosition(gem7.getGemSprite(1), 7050, 220);
+        map.setMapPosition(gem7.getGemSprite(2), 7050, 220);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem7.getGemSprite(1));
+        else
+            window.draw(gem7.getGemSprite(2));
     }
     map.detectGemColission(player, gem1);
     map.detectGemColission(player, gem2);
@@ -765,33 +796,64 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     map.collisionSpikeCheck(player, spike);
 
     // RENDER GEMS
+    // Objeto para obtener bool para animacion de gemas
+    gemAnim.getFirstSprite();
+    //
     if (gem1.getVisible()) {
-        map.setMapPosition(gem1.getGemSprite(), 2100, 420);
-        window.draw(gem1.getGemSprite());
+        map.setMapPosition(gem1.getGemSprite(1), 2100, 420);
+        map.setMapPosition(gem1.getGemSprite(2), 2100, 420);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem1.getGemSprite(1));
+        else
+            window.draw(gem1.getGemSprite(2));
     }
     if (gem2.getVisible()) {
-        map.setMapPosition(gem2.getGemSprite(), 2570, 300);
-        window.draw(gem2.getGemSprite());
+        map.setMapPosition(gem2.getGemSprite(1), 2570, 300);
+        map.setMapPosition(gem2.getGemSprite(2), 2570, 300);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem2.getGemSprite(1));
+        else
+            window.draw(gem2.getGemSprite(2));
     }
     if (gem3.getVisible()) {
-        map.setMapPosition(gem3.getGemSprite(), 3000, 300);
-        window.draw(gem3.getGemSprite());
+        map.setMapPosition(gem3.getGemSprite(1), 3000, 300);
+        map.setMapPosition(gem3.getGemSprite(2), 3000, 300);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem3.getGemSprite(1));
+        else
+            window.draw(gem3.getGemSprite(2));
     }
     if (gem4.getVisible()) {
-        map.setMapPosition(gem4.getGemSprite(), 3500, 400);
-        window.draw(gem4.getGemSprite());
+        map.setMapPosition(gem4.getGemSprite(1), 3500, 400);
+        map.setMapPosition(gem4.getGemSprite(2), 3500, 400);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem4.getGemSprite(1));
+        else
+            window.draw(gem4.getGemSprite(2));
     }
     if (gem5.getVisible()) {
-        map.setMapPosition(gem5.getGemSprite(), 4000, 500);
-        window.draw(gem5.getGemSprite());
+        map.setMapPosition(gem5.getGemSprite(1), 4000, 500);
+        map.setMapPosition(gem5.getGemSprite(2), 4000, 500);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem5.getGemSprite(1));
+        else
+            window.draw(gem5.getGemSprite(2));
     }
     if (gem6.getVisible()) {
-        map.setMapPosition(gem6.getGemSprite(), 5100, 500);
-        window.draw(gem6.getGemSprite());
+        map.setMapPosition(gem6.getGemSprite(1), 5150, 500);
+        map.setMapPosition(gem6.getGemSprite(2), 5150, 500);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem6.getGemSprite(1));
+        else
+            window.draw(gem6.getGemSprite(2));
     }
     if (gem7.getVisible()) {
-        map.setMapPosition(gem7.getGemSprite(), 7050, 220);
-        window.draw(gem7.getGemSprite());
+        map.setMapPosition(gem7.getGemSprite(1), 7050, 220);
+        map.setMapPosition(gem7.getGemSprite(2), 7050, 220);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem7.getGemSprite(1));
+        else
+            window.draw(gem7.getGemSprite(2));
     }
     map.detectGemColission(player, gem1);
     map.detectGemColission(player, gem2);
@@ -1466,53 +1528,104 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     map.collisionEnemyCheck(player, enemy9);
 
     // RENDER GEMS
+    // Objeto para obtener bool para animacion de gemas
+    gemAnim.getFirstSprite();
+    //
     if (gem1.getVisible()) {
-        map.setMapPosition(gem1.getGemSprite(), 400, 420);
-        window.draw(gem1.getGemSprite());
+        map.setMapPosition(gem1.getGemSprite(1), 400, 420);
+        map.setMapPosition(gem1.getGemSprite(2), 400, 420);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem1.getGemSprite(1));
+        else
+            window.draw(gem1.getGemSprite(2));
     }
     if (gem2.getVisible()) {
-        map.setMapPosition(gem2.getGemSprite(), 1580, 150);
-        window.draw(gem2.getGemSprite());
+        map.setMapPosition(gem2.getGemSprite(1), 1580, 150);
+        map.setMapPosition(gem2.getGemSprite(2), 1580, 150);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem2.getGemSprite(1));
+        else
+            window.draw(gem2.getGemSprite(2));
     }
     if (gem3.getVisible()) {
-        map.setMapPosition(gem3.getGemSprite(), 1680, 150);
-        window.draw(gem3.getGemSprite());
+        map.setMapPosition(gem3.getGemSprite(1), 1680, 150);
+        map.setMapPosition(gem3.getGemSprite(2), 1680, 150);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem3.getGemSprite(1));
+        else
+            window.draw(gem3.getGemSprite(2));
     }
     if (gem4.getVisible()) {
-        map.setMapPosition(gem4.getGemSprite(), 2560, 400);
-        window.draw(gem4.getGemSprite());
+        map.setMapPosition(gem4.getGemSprite(1), 2560, 400);
+        map.setMapPosition(gem4.getGemSprite(2), 2560, 400);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem4.getGemSprite(1));
+        else
+            window.draw(gem4.getGemSprite(2));
     }
     if (gem5.getVisible()) {
-        map.setMapPosition(gem5.getGemSprite(), 2560, 500);
-        window.draw(gem5.getGemSprite());
+        map.setMapPosition(gem5.getGemSprite(1), 2560, 500);
+        map.setMapPosition(gem5.getGemSprite(2), 2560, 500);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem5.getGemSprite(1));
+        else
+            window.draw(gem5.getGemSprite(2));
     }
     if (gem6.getVisible()) {
-        map.setMapPosition(gem6.getGemSprite(), 3095, 350);
-        window.draw(gem6.getGemSprite());
+        map.setMapPosition(gem6.getGemSprite(1), 3095, 350);
+        map.setMapPosition(gem6.getGemSprite(2), 3095, 350);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem6.getGemSprite(1));
+        else
+            window.draw(gem6.getGemSprite(2));
     }
     if (gem7.getVisible()) {
-        map.setMapPosition(gem7.getGemSprite(), 3570, 470);
-        window.draw(gem7.getGemSprite());
+        map.setMapPosition(gem7.getGemSprite(1), 3570, 470);
+        map.setMapPosition(gem7.getGemSprite(2), 3570, 470);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem7.getGemSprite(1));
+        else
+            window.draw(gem7.getGemSprite(2));
     }
     if (gem8.getVisible()) {
-        map.setMapPosition(gem8.getGemSprite(), 3670, 470);
-        window.draw(gem8.getGemSprite());
+        map.setMapPosition(gem8.getGemSprite(1), 3670, 470);
+        map.setMapPosition(gem8.getGemSprite(2), 3670, 470);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem8.getGemSprite(1));
+        else
+            window.draw(gem8.getGemSprite(2));
     }
     if (gem9.getVisible()) {
-        map.setMapPosition(gem9.getGemSprite(), 3570, 540);
-        window.draw(gem9.getGemSprite());
+        map.setMapPosition(gem9.getGemSprite(1), 3570, 540);
+        map.setMapPosition(gem9.getGemSprite(2), 3570, 540);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem9.getGemSprite(1));
+        else
+            window.draw(gem9.getGemSprite(2));
     }
     if (gem10.getVisible()) {
-        map.setMapPosition(gem10.getGemSprite(), 3670, 540);
-        window.draw(gem10.getGemSprite());
+        map.setMapPosition(gem10.getGemSprite(1), 3670, 540);
+        map.setMapPosition(gem10.getGemSprite(2), 3670, 540);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem10.getGemSprite(1));
+        else
+            window.draw(gem10.getGemSprite(2));
     }
     if (gem11.getVisible()) {
-        map.setMapPosition(gem11.getGemSprite(), 5640, 330);
-        window.draw(gem11.getGemSprite());
+        map.setMapPosition(gem11.getGemSprite(1), 5640, 330);
+        map.setMapPosition(gem11.getGemSprite(2), 5640, 330);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem11.getGemSprite(1));
+        else
+            window.draw(gem11.getGemSprite(2));
     }
     if (gem12.getVisible()) {
-        map.setMapPosition(gem12.getGemSprite(), 6490, 390);
-        window.draw(gem12.getGemSprite());
+        map.setMapPosition(gem12.getGemSprite(1), 6490, 390);
+        map.setMapPosition(gem12.getGemSprite(2), 6490, 390);
+        if (gemAnim.getFirstSprite())
+            window.draw(gem12.getGemSprite(1));
+        else
+            window.draw(gem12.getGemSprite(2));
     }
     map.detectGemColission(player, gem1);
     map.detectGemColission(player, gem2);

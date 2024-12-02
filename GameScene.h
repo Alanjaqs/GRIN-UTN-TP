@@ -26,7 +26,7 @@ private:
 	Platform platform;
 	DoubleJump dj;
 	SpeedItem speedIt;
-	Gem gem1, gem2, gem3, gem4, gem5, gem6, gem7, gem8, gem9, gem10, gem11, gem12;
+	Gem gemAnim, gem1, gem2, gem3, gem4, gem5, gem6, gem7, gem8, gem9, gem10, gem11, gem12;
 	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9;
 	sf::Texture fullHeartTex, emptyHeartTex;
 	std::string nuevoNombre, puntaje;

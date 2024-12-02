@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameScene.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -19,28 +19,32 @@
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameScene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameArchive.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameArchive.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Gem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Gem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Map.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Gem.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameArchive.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameArchive.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameArchive.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:GameArchive.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -106,10 +110,6 @@
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:DataPlayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:Platform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|C:\\Users\\Usuario\\Desktop\\GAME60TP\\SpeedItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE234DD9-B62A-4651-8FF5-9147E01BBEA5}|GAME60TP.vcxproj|solutionrelative:SpeedItem.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -121,7 +121,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 27,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Bookmark",
@@ -129,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "string",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\string",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\include\\string",
@@ -141,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Spike.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Spike.cpp",
               "RelativeDocumentMoniker": "Spike.cpp",
@@ -153,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Spike.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Spike.h",
               "RelativeDocumentMoniker": "Spike.h",
@@ -171,27 +171,26 @@
               "RelativeDocumentMoniker": "Gem.cpp",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.cpp",
               "RelativeToolTip": "Gem.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T22:54:06.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.783Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Gem.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.h",
               "RelativeDocumentMoniker": "Gem.h",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Gem.h",
               "RelativeToolTip": "Gem.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-06T22:54:06.784Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "DataPlayer.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\DataPlayer.cpp",
               "RelativeDocumentMoniker": "DataPlayer.cpp",
@@ -203,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "DataPlayer.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\DataPlayer.h",
               "RelativeDocumentMoniker": "DataPlayer.h",
@@ -215,7 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "GameArchive.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameArchive.cpp",
               "RelativeDocumentMoniker": "GameArchive.cpp",
@@ -223,12 +222,11 @@
               "RelativeToolTip": "GameArchive.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T22:54:06.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.785Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "GameArchive.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameArchive.h",
               "RelativeDocumentMoniker": "GameArchive.h",
@@ -236,12 +234,11 @@
               "RelativeToolTip": "GameArchive.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-06T22:54:06.786Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.786Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Enemy.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Enemy.cpp",
               "RelativeDocumentMoniker": "Enemy.cpp",
@@ -253,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Enemy.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Enemy.h",
               "RelativeDocumentMoniker": "Enemy.h",
@@ -265,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 1,
               "Title": "Platform.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Platform.cpp",
               "RelativeDocumentMoniker": "Platform.cpp",
@@ -273,11 +270,12 @@
               "RelativeToolTip": "Platform.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T22:54:06.787Z"
+              "WhenOpened": "2024-11-06T22:54:06.787Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Platform.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Platform.h",
               "RelativeDocumentMoniker": "Platform.h",
@@ -289,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "DoubleJump.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\DoubleJump.cpp",
               "RelativeDocumentMoniker": "DoubleJump.cpp",
@@ -301,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "PickableItem.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\PickableItem.cpp",
               "RelativeDocumentMoniker": "PickableItem.cpp",
@@ -313,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "PickableItem.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\PickableItem.h",
               "RelativeDocumentMoniker": "PickableItem.h",
@@ -325,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "DoubleJump.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\DoubleJump.h",
               "RelativeDocumentMoniker": "DoubleJump.h",
@@ -337,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "MenuScene.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\MenuScene.cpp",
               "RelativeDocumentMoniker": "MenuScene.cpp",
@@ -349,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "MenuScene.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\MenuScene.h",
               "RelativeDocumentMoniker": "MenuScene.h",
@@ -361,20 +359,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Map.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.cpp",
               "RelativeDocumentMoniker": "Map.cpp",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.cpp",
               "RelativeToolTip": "Map.cpp",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAUwLUAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAArwH8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-06T22:54:06.822Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Map.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Map.h",
               "RelativeDocumentMoniker": "Map.h",
@@ -382,12 +380,11 @@
               "RelativeToolTip": "Map.h",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACwAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-06T22:54:06.875Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.875Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
@@ -395,8 +392,7 @@
               "RelativeToolTip": "main.cpp",
               "ViewState": "AgIAADYAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T22:54:06.876Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.876Z"
             },
             {
               "$type": "Document",
@@ -406,7 +402,7 @@
               "RelativeDocumentMoniker": "GameScene.h",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameScene.h",
               "RelativeToolTip": "GameScene.h",
-              "ViewState": "AgIAABYAAAAAAAAAAAAUwE4AAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-11-06T22:54:06.876Z",
               "EditorCaption": ""
@@ -419,14 +415,14 @@
               "RelativeDocumentMoniker": "GameScene.cpp",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\GameScene.cpp",
               "RelativeToolTip": "GameScene.cpp",
-              "ViewState": "AgIAAE8GAAAAAAAAAAAUwGUGAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAPkFAAAAAAAAAAArwD8GAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-06T22:54:06.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "SpeedItem.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\SpeedItem.h",
               "RelativeDocumentMoniker": "SpeedItem.h",
@@ -450,20 +446,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
               "ToolTip": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.cpp",
               "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T22:54:06.878Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.878Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Users\\Usuario\\Desktop\\GAME60TP\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
@@ -471,8 +466,7 @@
               "RelativeToolTip": "Player.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-06T22:54:06.879Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-06T22:54:06.879Z"
             }
           ]
         }
