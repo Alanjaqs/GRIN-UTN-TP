@@ -1,4 +1,10 @@
-﻿  Map.cpp
+﻿  GameScene.cpp
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(172,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(175,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(178,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Map.cpp
+  main.cpp
+  Generando código...
+C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(47,1): warning C4715: 'Map::getBackground': no todas las rutas de acceso de control devuelven un valor
 C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(184,1): warning C4715: 'Map::getMusic': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(44,1): warning C4715: 'Map::getBackground': no todas las rutas de acceso de control devuelven un valor
   GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\GAME60TP\x64\Debug\GAME60TP.exe

@@ -23,7 +23,7 @@ private:
 	Map map;
 	MenuScene menu;
 	Spike spike;
-	Platform platform;
+	Platform platform, platform2;
 	DoubleJump dj;
 	SpeedItem speedIt;
 	Gem gemAnim, gem1, gem2, gem3, gem4, gem5, gem6, gem7, gem8, gem9, gem10, gem11, gem12;

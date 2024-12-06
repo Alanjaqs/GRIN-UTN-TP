@@ -4,10 +4,9 @@
 class Platform
 {
 private:
-    sf::Texture platTexture1;
-    sf::Sprite platSprite1;
+    sf::Texture platTexture1, platTexture2;
+    sf::Sprite platSprite1, platSprite2;
 public:
     Platform();
     sf::Sprite& getPlatform(int tipoPlataforma);
-    void setPlatPosition(float x, float y);
 };

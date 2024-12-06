@@ -5,6 +5,8 @@ Map::Map() {
     backSprite.setTexture(backTexture);
     backTexture2.loadFromFile("images\\backGame2.jpg");
     backSprite2.setTexture(backTexture2);
+    backTexture3.loadFromFile("images\\backGame3.jpg");
+    backSprite3.setTexture(backTexture3);
     groundTexture.loadFromFile("images\\ground.png");
     groundSprite.setTexture(groundTexture);
 
@@ -39,8 +41,9 @@ Map::~Map() {
 
 // Getters
 sf::Sprite& Map::getBackground(int b) {
-    if(b==1) return backSprite;
+    if (b == 1) return backSprite;
     if (b == 2) return backSprite2;
+    if (b == 3) return backSprite3;
 }
 sf::Sprite& Map::getGround() {
     return groundSprite;
@@ -119,32 +122,29 @@ void Map::collisionSpikeCheck(Player& player, Spike& spike) {
 // Detect collision platforms
 void Map::collisionPlatCheck(Player & player, Platform & platform) {
         if (player.getHitbox().intersects(platform.getPlatform(1).getGlobalBounds())) {
-            // Top 
+            // Top
             if (player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top && player.getPlayerTop() <= platform.getPlatform(1).getGlobalBounds().top) {
                 if (player.getVelocityY() > 0) {
                     player.onFloor();
-                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height);
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top - player.getHitbox().height);                             
                 }
             }
-            // Bottom 
-            
-            else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {    
+            // Bottom            
+            else if (player.getPlayerTop() < platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom() > platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height && player.getPlayerBottom()) {
                 if (player.getVelocityY() < 0) {
                     player.setVelocityY(0);
                     player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(1).getGlobalBounds().top + platform.getPlatform(1).getGlobalBounds().height);
-                }       
-            }
-            
-            // Left (no funciona bien, ver solucion)
-            /*
-            if (player.getPlayerRight() > platform.getPlatform(1).getGlobalBounds().left && player.getPlayerLeft() < platform.getPlatform(1).getGlobalBounds().left) {
-                if (player.getVelocityX() > 0) {
-                    player.setVelocityX(0);
-                    player.getPlayerSprite().setPosition((platform.getPlatform(1).getGlobalBounds().left - player.getHitbox().width - 2), player.getPlayerPosition().y);
-
                 }
             }
-            */
+        }
+        if (player.getHitbox().intersects(platform.getPlatform(2).getGlobalBounds())) {
+            // Top
+            if (player.getPlayerBottom() > platform.getPlatform(2).getGlobalBounds().top && player.getPlayerTop() <= platform.getPlatform(2).getGlobalBounds().top) {
+                if (player.getVelocityY() > 0) {
+                    player.onFloor();
+                    player.getPlayerSprite().setPosition(player.getPlayerPosition().x, platform.getPlatform(2).getGlobalBounds().top - player.getHitbox().height);
+                }
+            }
         }
 }
        

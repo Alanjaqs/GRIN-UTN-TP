@@ -339,10 +339,10 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     map.setMapPosition(map.getChat(), 3150, 200);
     window.draw(map.getChat());
     map.setChatSprite(5);
-    map.setMapPosition(map.getChat(), 3800, 200);
+    map.setMapPosition(map.getChat(), 3850, 200);
     window.draw(map.getChat());
     map.setChatSprite(6);
-    map.setMapPosition(map.getChat(), 5000, 200);
+    map.setMapPosition(map.getChat(), 5100, 200);
     window.draw(map.getChat());
     map.setChatSprite(7);
     map.setMapPosition(map.getChat(), 5600, 200);
@@ -376,23 +376,23 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(3300, 500);
+    map.setMapPosition(platform.getPlatform(1), 3300, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(3600, 350);
+    map.setMapPosition(platform.getPlatform(1), 3600, 350);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(6200, 500);
+    map.setMapPosition(platform.getPlatform(2), 6200, 500);
+    window.draw(platform.getPlatform(2));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 6550, 350);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(6550, 350);
-    window.draw(platform.getPlatform(1));
-    map.collisionPlatCheck(player, platform);
-
-    platform.setPlatPosition(7000, 350);
+    map.setMapPosition(platform.getPlatform(1), 7000, 350);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
@@ -672,55 +672,55 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     window.draw(map.getGround());
 
     // RENDER PLATFORMS
-    platform.setPlatPosition(1390, 550);
+    map.setMapPosition(platform.getPlatform(1), 1390, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(1700, 550);
+    map.setMapPosition(platform.getPlatform(2), 1700, 550);
+    window.draw(platform.getPlatform(2));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 2000, 470);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(2000, 470);
+    map.setMapPosition(platform.getPlatform(1), 2200, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(2200, 420);
+    map.setMapPosition(platform.getPlatform(1), 2600, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(2600, 420);
+    map.setMapPosition(platform.getPlatform(1), 3000, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(3000, 420);
+    map.setMapPosition(platform.getPlatform(1), 4300, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(4300, 550);
+    map.setMapPosition(platform.getPlatform(1), 4650, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(4650, 500);
+    map.setMapPosition(platform.getPlatform(1), 5300, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(5300, 500);
+    map.setMapPosition(platform.getPlatform(2), 6200, 500);
+    window.draw(platform.getPlatform(2));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 6000, 330);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(6200, 500);
+    map.setMapPosition(platform.getPlatform(1), 6400, 200);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(6000, 330);
-    window.draw(platform.getPlatform(1));
-    map.collisionPlatCheck(player, platform);
-
-    platform.setPlatPosition(6400, 200);
-    window.draw(platform.getPlatform(1));
-    map.collisionPlatCheck(player, platform);
-
-    platform.setPlatPosition(7200, 500);
+    map.setMapPosition(platform.getPlatform(1), 7200, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
@@ -1059,9 +1059,6 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
         map.getMusic(3).setLoop(1);
         level2MusicBD = false;
     }
-    std::cout << "x:" << player.getPlayerPosition().x << std::endl;
-    std::cout << "y: " << player.getPlayerPosition().y << std::endl;
-
     // Player update
     player.update();
     player.moveJump();
@@ -1096,8 +1093,8 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     window.draw(map.getBackground(2));
     map.setMapPosition(map.getBackground(2), 2560, 0);
     window.draw(map.getBackground(2));
-    map.setMapPosition(map.getBackground(2), 3840, 0);
-    window.draw(map.getBackground(2));
+    map.setMapPosition(map.getBackground(3), 3840, 0);
+    window.draw(map.getBackground(3));
     map.setMapPosition(map.getBackground(2), 5120, 0);
     window.draw(map.getBackground(2));
     map.setMapPosition(map.getBackground(2), 6400, 0);
@@ -1122,67 +1119,67 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     map.collisionFloorCheck(player);
 
     // RENDER PLATFORMS
-    platform.setPlatPosition(150, 550);
+    map.setMapPosition(platform.getPlatform(1), 150, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(500, 500);
+    map.setMapPosition(platform.getPlatform(1), 500, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(900, 500);
+    map.setMapPosition(platform.getPlatform(1), 900, 500);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(1230, 400);
+    map.setMapPosition(platform.getPlatform(1), 1230, 400);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(1230, 300);
+    map.setMapPosition(platform.getPlatform(2), 1230, 300);
+    window.draw(platform.getPlatform(2));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 1550, 200);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(1550, 200);
+    map.setMapPosition(platform.getPlatform(1), 1740, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(1740, 550);
+    map.setMapPosition(platform.getPlatform(1), 2240, 385);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(2240, 385);
+    map.setMapPosition(platform.getPlatform(1), 2690, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(2690, 550);
+    map.setMapPosition(platform.getPlatform(2), 3300, 550);
+    window.draw(platform.getPlatform(2));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 3550, 400);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(3300, 550);
+    map.setMapPosition(platform.getPlatform(1), 4400, 550);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(3550, 400);
+    map.setMapPosition(platform.getPlatform(1), 5150, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(4400, 550);
+    map.setMapPosition(platform.getPlatform(1), 6000, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(5150, 420);
+    map.setMapPosition(platform.getPlatform(1), 6770, 420);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    platform.setPlatPosition(6000, 420);
-    window.draw(platform.getPlatform(1));
-    map.collisionPlatCheck(player, platform);
-
-    platform.setPlatPosition(6770, 420);
-    window.draw(platform.getPlatform(1));
-    map.collisionPlatCheck(player, platform);
-
-    platform.setPlatPosition(7400, 360);
+    map.setMapPosition(platform.getPlatform(1), 7400, 360);
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
@@ -1328,7 +1325,7 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     window.draw(spike.getSpikeSprites(1));
     map.collisionSpikeCheck(player, spike);
 
-    map.setMapPosition(spike.getSpikeSprites(1), 1500, 320);
+    map.setMapPosition(spike.getSpikeSprites(1), 1445, 300);
     window.draw(spike.getSpikeSprites(1));
     map.collisionSpikeCheck(player, spike);
 
@@ -1612,16 +1609,16 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
             window.draw(gem10.getGemSprite(2));
     }
     if (gem11.getVisible()) {
-        map.setMapPosition(gem11.getGemSprite(1), 5640, 330);
-        map.setMapPosition(gem11.getGemSprite(2), 5640, 330);
+        map.setMapPosition(gem11.getGemSprite(1), 5644, 330);
+        map.setMapPosition(gem11.getGemSprite(2), 5644, 330);
         if (gemAnim.getFirstSprite())
             window.draw(gem11.getGemSprite(1));
         else
             window.draw(gem11.getGemSprite(2));
     }
     if (gem12.getVisible()) {
-        map.setMapPosition(gem12.getGemSprite(1), 6490, 390);
-        map.setMapPosition(gem12.getGemSprite(2), 6490, 390);
+        map.setMapPosition(gem12.getGemSprite(1), 6494, 390);
+        map.setMapPosition(gem12.getGemSprite(2), 6494, 390);
         if (gemAnim.getFirstSprite())
             window.draw(gem12.getGemSprite(1));
         else

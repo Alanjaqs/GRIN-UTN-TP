@@ -16,8 +16,8 @@ class Map
 {
 private:
     // Background
-    sf::Texture backTexture, backTexture2;
-    sf::Sprite backSprite, backSprite2;
+    sf::Texture backTexture, backTexture2, backTexture3;
+    sf::Sprite backSprite, backSprite2, backSprite3;
 
     // Chats
     sf::Texture chatTexture1;
