@@ -8,5 +8,4 @@ private:
 public:
     Spike();
     sf::Sprite& getSpikeSprites(int s);
-
 };

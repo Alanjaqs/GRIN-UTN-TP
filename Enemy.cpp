@@ -3,9 +3,9 @@
 
 Enemy::Enemy()
 {
-	texture.loadFromFile("images\\enemy.png");
-	sprite.setTexture(texture);
-	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+	enemyTexture.loadFromFile("images\\enemy.png");
+	enemySprite.setTexture(enemyTexture);
+	enemySprite.setOrigin(enemySprite.getGlobalBounds().width / 2, enemySprite.getGlobalBounds().height / 2);
 }
 
 void Enemy::setSpawned(bool v) {
@@ -19,38 +19,34 @@ bool Enemy::getVisible() { return visible; }
 
 void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(sprite, states);
+	target.draw(enemySprite, states);
 }
-/*void Enemy::respawn()
-{
-	sprite.setPosition(std::rand() % 1180 + sprite.getGlobalBounds().width, std::rand() % 620 + sprite.getGlobalBounds().height);
-}*/
 void Enemy::respawnmanual(float x, float y)
 {
-	sprite.setPosition(x, y);
+	enemySprite.setPosition(x, y);
 	rangeR = x + 70;
 	rangeL = x - 70;
 }
 sf::FloatRect Enemy::getBounds() const
 {
-	return sprite.getGlobalBounds();
+	return enemySprite.getGlobalBounds();
 }
 
-sf::Sprite Enemy::getSprite() { return sprite; }
+sf::Sprite& Enemy::getEnemySprite() { return enemySprite; }
 
 void Enemy::update()
 {
 	if (moveRight) {
-		sprite.setScale(1, 1);
-		sprite.move(velocityX, 0);
-		if (sprite.getPosition().x > rangeR) {
+		enemySprite.setScale(1, 1);
+		enemySprite.move(velocityX, 0);
+		if (enemySprite.getPosition().x > rangeR) {
 			moveRight = false;
 		}
 	}
 	else {
-		sprite.move(-velocityX, 0);
-		sprite.setScale(-1, 1);
-		if (sprite.getPosition().x < rangeL) {
+		enemySprite.move(-velocityX, 0);
+		enemySprite.setScale(-1, 1);
+		if (enemySprite.getPosition().x < rangeL) {
 			moveRight = true;
 		}
 	}

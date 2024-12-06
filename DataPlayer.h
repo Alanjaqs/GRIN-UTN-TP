@@ -16,7 +16,6 @@ public:
 	int getPosicion();
 	char* getNombre();
 	int getPuntaje();
-	// Data player default
+	// Otro
 	void resetData(int pos);
-	void rankearPlayer(DataPlayer charged);
 };

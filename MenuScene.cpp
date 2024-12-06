@@ -65,8 +65,6 @@ MenuScene::MenuScene() {
 	MenuScene::borrarRankSelTexture.loadFromFile("images\\borrarRankSelected.png");
 	MenuScene::borrarRankSelSprite.setTexture(borrarRankSelTexture);
 	borrarRankSelSprite.setPosition(550, 250);
-
-
 	// Audio
 	soundSel.openFromFile("audio\\menuSel.mp3");
 }
@@ -98,21 +96,11 @@ sf::Sprite& MenuScene::getBorrarRankButton() { return borrarRankSprite; }
 sf::Sprite& MenuScene::getBorrarRankSelButton() { return borrarRankSelSprite; }
 
 // Setters
-void MenuScene::setOpc(int v) {
-	opcionMenu = v;
-}
-void MenuScene::setSalir(int v) {
-	salir = v;
-}
-void MenuScene::setComenzar(int v) {
-	comenzar = v;
-}
-void MenuScene::setTipoMenu(int v) {
-	tipoMenu = v;
-}
-void MenuScene::setBorrarRank(int v) {
-	rankBorrado = v;
-}
+void MenuScene::setOpc(int v) { opcionMenu = v; }
+void MenuScene::setSalir(int v) { salir = v; }
+void MenuScene::setComenzar(int v) { comenzar = v; }
+void MenuScene::setTipoMenu(int v) { tipoMenu = v; }
+void MenuScene::setBorrarRank(int v) { rankBorrado = v; }
 
 // Comando menu 1
 // keyReleased y enterReleased validan que aunque se mantenga presionada la tecla, cuente como una sola accion

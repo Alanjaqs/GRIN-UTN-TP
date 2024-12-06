@@ -4,8 +4,6 @@
 #include "GameArchive.h"
 
 class MenuScene {
-
-	// Atributos
 	private:
 		// Background 1 y 2
 		sf::Texture menuTexture, menuTexture2, gameOverTexture;
@@ -26,18 +24,15 @@ class MenuScene {
 		bool rankBorrado = false;
 		// AudioMenu
 		sf::Music soundSel;
-
 	public:
 		// Constructor
 		MenuScene();
-
 		// Getters
 		bool getSalir();
 		bool getComenzar();
 		int getOpc();
 		int getTipoMenu();
 		bool getBorrarRank();
-
 		sf::Sprite& getMenuBack();
 		sf::Sprite& getMenu2Back();
 		sf::Sprite& getGameOver();
@@ -55,14 +50,12 @@ class MenuScene {
 		sf::Sprite& getVerRankSelButton();
 		sf::Sprite& getBorrarRankButton();
 		sf::Sprite& getBorrarRankSelButton();
-
 		// Setters
 		void setOpc(int v);
 		void setTipoMenu(int v);
 		void setSalir(int v);
 		void setComenzar(int v);
 		void setBorrarRank(int v);
-
 		// Metodos
 		void MenuUpdate();
 };

@@ -10,7 +10,7 @@ private:
 	// Animation
 	sf::Clock clock;
 	float animationTime = 0.2f;
-	bool firstSprite = true;
+	bool animationFrame = true;
 public:
 	Gem();
 	// Setters
@@ -20,6 +20,6 @@ public:
 	bool getVisible();
 	bool getHasBeenPicked();
 	sf::Sprite& getGemSprite(int g);
-	bool getFirstSprite();
+	bool getAnimationFrame();
 
 };

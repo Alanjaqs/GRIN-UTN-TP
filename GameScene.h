@@ -44,7 +44,7 @@ private:
 	bool menuMusicBD, tutoMusicBD, level1MusicBD, level2MusicBD;
 	int state;
 public:
-	// Constructor
+	// Constructor, set/get
 	GameScene();
 	void setGameState(int e);
 	int getGameState();

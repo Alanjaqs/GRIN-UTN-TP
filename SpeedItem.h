@@ -7,7 +7,6 @@ private:
     sf::Texture speedTexture;
     sf::Sprite speedSprite;
     bool visible = true;
-
 public:
     SpeedItem();
     // Setters

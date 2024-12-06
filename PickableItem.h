@@ -3,13 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
-class PickableItem : public sf::Drawable {
-protected:
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override = 0;
+class PickableItem {
 
-public:
-    virtual ~PickableItem() {}
-    virtual bool detectCollision() = 0;
 };
 
 #endif  // PICKABLEITEM_H

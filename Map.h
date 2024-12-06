@@ -18,7 +18,6 @@ private:
     // Background
     sf::Texture backTexture, backTexture2, backTexture3;
     sf::Sprite backSprite, backSprite2, backSprite3;
-
     // Chats
     sf::Texture chatTexture1;
     sf::Texture chatTexture2;
@@ -29,44 +28,35 @@ private:
     sf::Texture chatTexture7;
     sf::Texture chatTexture8;
     sf::Sprite chatSprite;
-
     // Portal
     sf::Texture portalTexture;
     sf::Sprite portalSprite;
-
     // Ground
     sf::Texture groundTexture;
     sf::Sprite groundSprite;
-
     // Audio
-    sf::Music menuMusic, level1Music, level2Music, gameOverMusic, smashSound, hitSound, gemSound
-        , powerUpSound, victorySound;
-
+    sf::Music menuMusic, level1Music, level2Music, gameOverMusic, smashSound, hitSound, gemSound, powerUpSound, victorySound;
 public:
     Map();
-    ~Map();
-
     // Getters
     sf::Sprite& getBackground(int b);
     sf::Sprite& getGround();
     sf::Sprite& getChat();
     sf::Sprite& getPortal();
+    // Music
+    sf::Music& getMusic(int v);
+    // Setters
     // Settea sprite en la posicion elegida en x/y
     void setMapPosition(sf::Sprite& sprite, float x, float y);
     void setChatSprite(int n);
-
     // Deteccion de colisiones varias
-    void colissionDoubleJumpCheck(Player& player, DoubleJump& dj); // DoubleJump
+    void colissionDoubleJumpCheck(Player& player, DoubleJump& dj);
     void detectSpeedCollision(Player& player, SpeedItem& speedIt);
-    void detectGemColission(Player& player, Gem& gem);
-    void collisionFloorCheck(Player& player); // Suelo
-    void collisionPlatCheck(Player& player, Platform& platform); // Plataformas
+    void detectGemColission(Player& player, Gem& gem); 
+    void collisionFloorCheck(Player& player); 
+    void collisionPlatCheck(Player& player, Platform& platform);
     void collisionEnemyCheck(Player& player, Enemy& enemy);
     void collisionSpikeCheck(Player& player, Spike& spike);
-
-    // Music
-    sf::Music& getMusic(int v);
-
     // Renderizar corazones
     void renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex);
 };
