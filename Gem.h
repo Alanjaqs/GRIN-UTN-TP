@@ -1,25 +1,22 @@
-#pragma once
-#include <SFML/Graphics.hpp>
+#ifndef GEM_H
+#define GEM_H
 
-class Gem {
+#include "PickableItem.h"
+
+class Gem : public PickableItem {
 private:
-	sf::Texture gemTexture, gemTexture2;
-	sf::Sprite  gemSprite, gemSprite2;
-	bool visible = true;
-	bool hasBeenPicked = false;
-	// Animation
-	sf::Clock clock;
-	float animationTime = 0.2f;
-	bool animationFrame = true;
+    sf::Texture gemTexture2;
+    sf::Sprite gemSprite2;
+    // Animation
+    sf::Clock clock;
+    float animationTime = 0.2f;
+    bool animationFrame = true;
 public:
-	Gem();
-	// Setters
-	void setVisible(bool v);
-	void setHasBeenPicked(bool v);
-	// Getters
-	bool getVisible();
-	bool getHasBeenPicked();
-	sf::Sprite& getGemSprite(int g);
-	bool getAnimationFrame();
+    Gem();
 
+    // Getters
+    bool getAnimationFrame();
+    sf::Sprite& getGemSprite(int g);
 };
+
+#endif // GEM_H

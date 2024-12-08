@@ -72,7 +72,7 @@ void Map::setMapPosition(sf::Sprite& sprite, float x, float y) {
 // COLISIONES
 // Double Jump
 void Map::colissionDoubleJumpCheck(Player& player, DoubleJump& dj) {
-    if (player.getHitbox().intersects(dj.getDoubleJumpSprite().getGlobalBounds())) {
+    if (player.getHitbox().intersects(dj.getSprite().getGlobalBounds())) {
         player.setHasDoubleJump(true);
         dj.setVisible(false);
         powerUpSound.play();
@@ -81,7 +81,7 @@ void Map::colissionDoubleJumpCheck(Player& player, DoubleJump& dj) {
 
 // Speed Item
 void Map::detectSpeedCollision(Player& player, SpeedItem& speedIt) {
-    if(player.getHitbox().intersects(speedIt.getSpeedSprite().getGlobalBounds())) {
+    if(player.getHitbox().intersects(speedIt.getSprite().getGlobalBounds())) {
         speedIt.setVisible(false);
         player.setHasSpeed(true);
         powerUpSound.play();
