@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "utils.h"
 
 // Constructor
 GameScene::GameScene() {
@@ -380,8 +381,8 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     window.draw(platform.getPlatform(1));
     map.collisionPlatCheck(player, platform);
 
-    map.setMapPosition(platform.getPlatform(1), 3600, 350);
-    window.draw(platform.getPlatform(1));
+    map.setMapPosition(platform.getPlatform(2), 3600, 350);
+    window.draw(platform.getPlatform(2));
     map.collisionPlatCheck(player, platform);
 
     map.setMapPosition(platform.getPlatform(2), 6200, 500);
@@ -493,16 +494,16 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
 
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 1860, 420);
+        map.setMapPosition(dj.getSprite(), 1860, 420);
         map.colissionDoubleJumpCheck(player, dj);
-        window.draw(dj.getDoubleJumpSprite());
+        window.draw(dj.getSprite());
     }
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 3660, 270);
+        map.setMapPosition(speedIt.getSprite(), 3660, 270);
         map.detectSpeedCollision(player, speedIt);
-        window.draw(speedIt.getSpeedSprite());
+        window.draw(speedIt.getSprite());
     }
 
     // RENDER PORTAL
@@ -631,15 +632,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     window.setView(view);
 
     // Sistema reduccion de puntaje
-    int puntos = player.getPuntaje();
-    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
-    if (elapsedTime >= decrementIntervalo) {
-        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
-        elapsedTime = 0.0f; // Reinicia el contador
-        if (puntos <= 0) {
-            player.setPuntaje(0);
-        }
-    }
+    calcularPuntaje(clock, decrementIntervalo, player, elapsedTime);
 
     // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(1), 0, 0);
@@ -939,16 +932,16 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
 
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 4710, 420);
+        map.setMapPosition(dj.getSprite(), 4710, 420);
         map.colissionDoubleJumpCheck(player, dj);
-        window.draw(dj.getDoubleJumpSprite());
+        window.draw(dj.getSprite());
     }
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 5660, 270);
+        map.setMapPosition(speedIt.getSprite(), 5660, 270);
         map.detectSpeedCollision(player, speedIt);
-        window.draw(speedIt.getSpeedSprite());
+        window.draw(speedIt.getSprite());
     }
 
     // CARTEL NIVEL 1
@@ -966,7 +959,7 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     window.setView(window.getDefaultView());
     textPuntos.setString("Puntos:");
     window.draw(textPuntos);
-    text.setString(std::to_string(puntos));
+    text.setString(std::to_string(player.getPuntaje()));
     text.setPosition(180, 0);
     window.draw(text);
 
@@ -1076,15 +1069,8 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     window.setView(view);
 
     // Sistema reduccion de puntaje
-    int puntos = player.getPuntaje();
-    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
-    if (elapsedTime >= decrementIntervalo) {
-        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
-        elapsedTime = 0.0f; // Reinicia el contador
-        if (puntos <= 0) {
-            player.setPuntaje(0);
-        }
-    }
+    
+    calcularPuntaje(clock, decrementIntervalo, player, elapsedTime);
 
     // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(2), 0, 0);
@@ -1639,16 +1625,16 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
 
     // RENDER DOUBLE JUMP
     if (dj.getVisible()) {
-        map.setMapPosition(dj.getDoubleJumpSprite(), 1800, 470);
+        map.setMapPosition(dj.getSprite(), 1800, 470);
         map.colissionDoubleJumpCheck(player, dj);
-        window.draw(dj.getDoubleJumpSprite());
+        window.draw(dj.getSprite());
     }
 
     // RENDER SPEED ITEM
     if (speedIt.getVisible()) {
-        map.setMapPosition(speedIt.getSpeedSprite(), 3605, 320);
+        map.setMapPosition(speedIt.getSprite(), 3605, 320);
         map.detectSpeedCollision(player, speedIt);
-        window.draw(speedIt.getSpeedSprite());
+        window.draw(speedIt.getSprite());
     }
 
     // RENDER PORTAL
@@ -1662,7 +1648,7 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     window.setView(window.getDefaultView());
     textPuntos.setString("Puntos:");
     window.draw(textPuntos);
-    text.setString(std::to_string(puntos));
+    text.setString(std::to_string(player.getPuntaje()));
     text.setPosition(180, 0);
     window.draw(text);
 
