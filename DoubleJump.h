@@ -5,7 +5,6 @@
 class DoubleJump: public PickableItem{
 public:
 	DoubleJump() : PickableItem("images\\doubleJump.png") {}
-
 };
 
 #endif  // DOUBLEJUMP_H

@@ -8,6 +8,8 @@ Map::Map() {
     backSprite2.setTexture(backTexture2);
     backTexture3.loadFromFile("images\\backGame3.jpg");
     backSprite3.setTexture(backTexture3);
+    backTexture4.loadFromFile("images\\backGame4.jpg");
+    backSprite4.setTexture(backTexture4);
     groundTexture.loadFromFile("images\\ground.png");
     groundSprite.setTexture(groundTexture);
     //Chats
@@ -27,6 +29,8 @@ Map::Map() {
     level1Music.openFromFile("audio\\level1Music.wav");
     level2Music.openFromFile("audio\\level2Music.mp3");
     gameOverMusic.openFromFile("audio\\gameOverMusic.mp3");
+    winningMusic.openFromFile("audio\\winningMusic.mp3");
+    bossMusic.openFromFile("audio\\bossMusic.wav");
     smashSound.openFromFile("audio\\smash.mp3");
     hitSound.openFromFile("audio\\golpeado.mp3");
     gemSound.openFromFile("audio\\gemPick.mp3");
@@ -42,6 +46,8 @@ sf::Sprite& Map::getBackground(int b) {
     if (b == 1) return backSprite;
     if (b == 2) return backSprite2;
     if (b == 3) return backSprite3;
+    if (b == 4) return backSprite4;
+    if (b == 5) return backSprite5;
 }
 // Music
 sf::Music& Map::getMusic(int v) {
@@ -50,6 +56,8 @@ sf::Music& Map::getMusic(int v) {
     if (v == 3) return level2Music;
     if (v == 4) return gameOverMusic;
     if (v == 5) return victorySound;
+    if (v == 6) return bossMusic;
+    if (v == 7) return winningMusic;
 }
 
 // Set chat
@@ -171,6 +179,39 @@ void Map::collisionEnemyCheck(Player& player, Enemy& enemy) {
     }
     
 }
+// Boss
+void Map::collisionBossCheck(Player& player, Enemy& boss) {
+    float TIME_BEFORE_DAMAGE = 2.0f;
+    if (boss.getVisible()) {
+        if (player.getHitbox().intersects(boss.getBossSprite().getGlobalBounds()) && player.getVelocityY() > 0) {
+            // Hit a boss
+            if (player.getPlayerBottom() > boss.getBossSprite().getGlobalBounds().top && player.getPlayerTop() < boss.getBossSprite().getGlobalBounds().top && !boss.getBossHitted()) {
+                boss.restarVidaBoss(1);
+                boss.setBossHitted(true);
+                player.getDamageClock().restart();
+                player.addPuntaje(200);
+                smashSound.play();
+                if (boss.getVidaBoss() == 0) {
+                    boss.setVisible(false);
+                }
+            }
+        }
+        // Hit a player
+        if (player.getHitbox().intersects(boss.getBossSprite().getGlobalBounds()) && player.getVelocityY() <= 0) {
+            if (player.getCurrentLife() < 1 && player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+                player.setIsDead(1);
+            }
+            else if (player.getDamageClock().getElapsedTime().asSeconds() > TIME_BEFORE_DAMAGE) {
+                hitSound.play();
+                player.doDamage(1);
+                player.getDamageClock().restart();
+            }
+        }
+        if (player.getVelocityY() <= 0) boss.setBossHitted(false);
+    }
+}
+
+
 
 // Gems
 void Map::detectGemColission(Player& player, Gem& gem) {

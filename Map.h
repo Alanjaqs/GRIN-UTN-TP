@@ -16,8 +16,8 @@ class Map
 {
 private:
     // Background
-    sf::Texture backTexture, backTexture2, backTexture3;
-    sf::Sprite backSprite, backSprite2, backSprite3;
+    sf::Texture backTexture, backTexture2, backTexture3, backTexture4, backTexture5;
+    sf::Sprite backSprite, backSprite2, backSprite3, backSprite4, backSprite5;
     // Chats
     sf::Texture chatTexture1;
     sf::Texture chatTexture2;
@@ -35,7 +35,7 @@ private:
     sf::Texture groundTexture;
     sf::Sprite groundSprite;
     // Audio
-    sf::Music menuMusic, level1Music, level2Music, gameOverMusic, smashSound, hitSound, gemSound, powerUpSound, victorySound;
+    sf::Music menuMusic, level1Music, level2Music, gameOverMusic, winningMusic, bossMusic, smashSound, hitSound, gemSound, powerUpSound, victorySound;
 public:
     Map();
     // Getters
@@ -56,6 +56,7 @@ public:
     void collisionFloorCheck(Player& player); 
     void collisionPlatCheck(Player& player, Platform& platform);
     void collisionEnemyCheck(Player& player, Enemy& enemy);
+    void collisionBossCheck(Player& player, Enemy& boss);
     void collisionSpikeCheck(Player& player, Spike& spike);
     // Renderizar corazones
     void renderHearts(sf::RenderWindow& window, int currentLife, int totalLife, sf::Texture& emptyHeartTex, sf::Texture& fullHeartTex);

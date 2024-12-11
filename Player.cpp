@@ -85,12 +85,16 @@
 			else {
 				spaceReleased = true;  // Marcar que se soltó la tecla
 			}
+			// Limites left y right
 			if (sprite.getGlobalBounds().left < 0) {
 				sprite.setPosition(sprite.getOrigin().x, sprite.getPosition().y);
 			}
+			
 			if ((sprite.getPosition().x + sprite.getGlobalBounds().width) > 7600) {
 				sprite.setPosition(7600 - sprite.getGlobalBounds().width, sprite.getPosition().y);
 			}
+			
+			// Flip player
 			if (velocityX < 0) {
 				sprite.setScale(-1, 1);
 			}

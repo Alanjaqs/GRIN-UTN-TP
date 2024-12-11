@@ -65,8 +65,13 @@ int main()
             game.Level2(window, view);
         }
 
-        // ESTADO 5: PANTALLA DATOS
+        // ESTADO 5: BOSS LEVEL
         else if (game.getGameState() == 5) {
+            game.BossLevel(window, view);
+        }
+
+        // ESTADO 6: PANTALLA DATOS
+        else if (game.getGameState() == 6) {
             game.DataScreen(window, view);
         }
         

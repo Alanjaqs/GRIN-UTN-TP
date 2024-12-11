@@ -63,6 +63,8 @@ int GameScene::getGameState() {
 	return state;
 }
 
+float GameScene::getBossDefeatedTime() { return bossDefeatedTime; }
+
 // METODOS DE LA ESTRUCTURA DEL JUEGO
 
 void GameScene::GameMenu(sf::RenderWindow& window, sf::View& view, sf::Event& event) {
@@ -299,16 +301,8 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     view.setCenter(camPosition.x, 358);
     window.setView(view);
 
-    // Sistema de reduccion de puntaje
-    int puntos = player.getPuntaje();
-    elapsedTime += clock.restart().asSeconds(); // Reinicia el reloj y suma el tiempo transcurrido
-    if (elapsedTime >= decrementIntervalo) {
-        player.quitarPuntaje(10); // Reduce el puntaje cada segundo
-        elapsedTime = 0.0f; // Reinicia el contador
-        if (puntos < 0) {
-            player.setPuntaje(0);
-        }
-    }
+    // Sistema reduccion de puntaje
+    calcularPuntaje(clock, decrementIntervalo, player, elapsedTime);
 
     // RENDER BACKGROUNDS
     map.setMapPosition(map.getBackground(1), 0, 0);
@@ -517,7 +511,7 @@ void GameScene::Tutorial(sf::RenderWindow& window, sf::View& view) {
     window.setView(window.getDefaultView());
     textPuntos.setString("Puntos:");
     window.draw(textPuntos);
-    text.setString(std::to_string(puntos));
+    text.setString(std::to_string(player.getPuntaje()));
     text.setPosition(180, 0);
     window.draw(text);
 
@@ -945,8 +939,8 @@ void GameScene::Level1(sf::RenderWindow& window, sf::View& view) {
     }
 
     // CARTEL NIVEL 1
-    textNivel.setPosition(430, 200);
-    window.draw(textNivel);
+    //textNivel.setPosition(430, 200);
+    //window.draw(textNivel);
 
     // RENDER PORTAL
     map.setMapPosition(map.getPortal(), 7500, 572);
@@ -1069,7 +1063,6 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
     window.setView(view);
 
     // Sistema reduccion de puntaje
-    
     calcularPuntaje(clock, decrementIntervalo, player, elapsedTime);
 
     // RENDER BACKGROUNDS
@@ -1677,9 +1670,9 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
         window.setView(view);
         // Power ups
         dj.setVisible(true);
-        player.setHasDoubleJump(false);
+        player.setHasDoubleJump(true);
         speedIt.setVisible(true);
-        player.setHasSpeed(false);
+        player.setHasSpeed(true);
         // Puntaje, vida, pos
         player.setCurrentLife(3);
         player.getPlayerSprite().setPosition(200, 500);
@@ -1727,10 +1720,148 @@ void GameScene::Level2(sf::RenderWindow& window, sf::View& view) {
         gem11.setHasBeenPicked(false);
         gem12.setVisible(true);
         gem12.setHasBeenPicked(false);
-        menuMusicBD = true;
-        map.getMusic(5).play();
+        bossLevelMusicBD = true;
         setGameState(5);
     }
+}
+
+void GameScene::BossLevel(sf::RenderWindow & window, sf::View & view) {
+    if (bossLevelMusicBD) {
+        map.getMusic(3).stop();
+        map.getMusic(6).play();
+        map.getMusic(6).setLoop(1);
+        bossLevelMusicBD = false;
+    }
+    // Player update
+    player.update();
+    player.moveJump();
+    // Limite right antes
+    if ((player.getPlayerSprite().getPosition().x + player.getPlayerSprite().getGlobalBounds().width) > 1280) {
+        player.getPlayerSprite().setPosition(1280 - player.getPlayerSprite().getGlobalBounds().width, player.getPlayerSprite().getPosition().y);
+    }
+
+    // Reiniciar Camara
+    view.setCenter(winWidth / 2, winHeight / 2);
+    window.setView(view);
+
+    // Camara sigue player
+    camPosition = player.getPlayerPosition();
+
+    // Evita que salga la camara para la izquierda (x < 0)
+    if (camPosition.x - winWidth / 2 < 0) camPosition.x = winWidth / 2;
+    else if (camPosition.x + winWidth / 2 > 1280) camPosition.x = 1280 - winWidth / 2;
+    view.setCenter(camPosition.x, 358);
+    window.setView(view);
+
+    // Sistema reduccion de puntaje
+    calcularPuntaje(clock, decrementIntervalo, player, elapsedTime);
+
+    // RENDER BACKGROUND
+    if (bossEnemy.getVisible()) {
+        map.setMapPosition(map.getBackground(4), 0, 0);
+        window.draw(map.getBackground(4));
+    }
+    else {
+        map.setMapPosition(map.getBackground(1), 0, 0);
+        window.draw(map.getBackground(1));
+    }
+
+    // RENDER GROUNDS
+    map.setMapPosition(map.getGround(), 0, 650);
+    window.draw(map.getGround());
+    map.setMapPosition(map.getGround(), 1280, 650);
+    window.draw(map.getGround());
+
+    map.collisionFloorCheck(player);
+
+    // RENDER BOSS
+    if (bossEnemy.getSpawned()) {
+        bossEnemy.spawnBoss(630, 520);
+        bossEnemy.setSpawned(false);
+    }
+    if (bossEnemy.getVisible()) {
+        bossEnemy.bossUpdate();
+        window.draw(bossEnemy.getBossSprite());
+    }
+
+    map.collisionBossCheck(player, bossEnemy);
+
+    // RENDER PLATFORMS
+    map.setMapPosition(platform.getPlatform(1), 10, 480);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 230, 300);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 855, 300);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    map.setMapPosition(platform.getPlatform(1), 1080, 480);
+    window.draw(platform.getPlatform(1));
+    map.collisionPlatCheck(player, platform);
+
+    // RENDER PLAYER
+    window.draw(player);
+
+    // RENDER PUNTOS DECRECIENDO
+    window.setView(window.getDefaultView());
+    textPuntos.setString("Puntos:");
+    window.draw(textPuntos);
+    text.setString(std::to_string(player.getPuntaje()));
+    text.setPosition(180, 0);
+    window.draw(text);
+
+    // RENDER PLAYER NAME
+    textNuevoNombre.setPosition(600, 0);
+    window.draw(textNuevoNombre);
+
+    // RENDER HEARTS
+    int currentLife = player.getCurrentLife();
+    int totalLife = player.getTotalLife();
+    map.renderHearts(window, currentLife, totalLife, emptyHeartTex, fullHeartTex);
+
+    // GAME OVER    
+    if (player.getIsDead()) {
+        map.getMusic(3).stop();
+        map.getMusic(4).play();
+        menu.setTipoMenu(6);
+        setGameState(1);
+    }
+
+    // BOSS DEFEATED
+    if (!bossEnemy.getVisible()) {
+        if (winningMusicBD) {
+            clockBoss.restart();
+            map.getMusic(6).stop();
+            map.getMusic(7).play();
+            winningMusicBD = false;
+        }
+        if (clockBoss.getElapsedTime().asSeconds() > getBossDefeatedTime()) {
+            setGameState(6);
+            bossEnemy.setSpawned(true);
+            bossEnemy.setVisible(true);
+            bossEnemy.setVidaBoss(3);
+            winningMusicBD = true;
+            // Reinicio de variables
+            // Camara
+            view.setCenter(winWidth / 2, winHeight / 2);
+            window.setView(view);
+            // Power ups
+            dj.setVisible(true);
+            player.setHasDoubleJump(false);
+            speedIt.setVisible(true);
+            player.setHasSpeed(false);
+            // Puntaje, vida, pos
+            player.setCurrentLife(3);
+            player.getPlayerSprite().setPosition(200, 500);
+            menuMusicBD = true;
+        }
+    }
+
+
 }
 
 void GameScene::DataScreen(sf::RenderWindow& window, sf::View& view) {

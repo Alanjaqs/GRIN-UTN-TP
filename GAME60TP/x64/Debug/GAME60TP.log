@@ -1,16 +1,5 @@
-﻿  DoubleJump.cpp
-  GameScene.cpp
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(172,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(175,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(178,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-  Map.cpp
-  MenuScene.cpp
-  PickableItem.cpp
-  SpeedItem.cpp
-  Spike.cpp
-  main.cpp
-  Generando código...
-C:\Users\Usuario\Desktop\GAME60TP\Spike.cpp(13,1): warning C4715: 'Spike::getSpikeSprites': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(45,1): warning C4715: 'Map::getBackground': no todas las rutas de acceso de control devuelven un valor
-C:\Users\Usuario\Desktop\GAME60TP\Map.cpp(53,1): warning C4715: 'Map::getMusic': no todas las rutas de acceso de control devuelven un valor
+﻿  GameScene.cpp
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(175,53): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(178,54): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Desktop\GAME60TP\GameScene.cpp(181,56): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   GAME60TP.vcxproj -> C:\Users\Usuario\Desktop\GAME60TP\x64\Debug\GAME60TP.exe

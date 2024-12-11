@@ -27,27 +27,29 @@ private:
 	DoubleJump dj;
 	SpeedItem speedIt;
 	Gem gemAnim, gem1, gem2, gem3, gem4, gem5, gem6, gem7, gem8, gem9, gem10, gem11, gem12;
-	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9;
+	Enemy enemy, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, bossEnemy;
 	sf::Texture fullHeartTex, emptyHeartTex;
 	std::string nuevoNombre, puntaje;
 	sf::Vector2f camPosition;
-	sf::Clock clock;
 	sf::Text textPuntos, text, textNuevoNombre, textGracias, textPuntosFinal, textEnter;
 	sf::Text textPos, textName, textPoints, textIngresarNombre, textNivel, textBorrado;
 	sf::Font font;
 	sf::Color color;
+	sf::Clock clock, clockBoss;
+	float bossDefeatedTime = 6.0f;
 	float decrementIntervalo = 1.0f; // Reducir el puntaje cada 1 segundo
 	float elapsedTime = 0.0f;
 	float winWidth, winHeight;
 	int cantReg = 5;
 	bool enterReleased = true, agregado = false, keyReleased = true;
-	bool menuMusicBD, tutoMusicBD, level1MusicBD, level2MusicBD;
+	bool menuMusicBD, tutoMusicBD, level1MusicBD, level2MusicBD, bossLevelMusicBD, winningMusicBD = true;
 	int state;
 public:
 	// Constructor, set/get
 	GameScene();
 	void setGameState(int e);
 	int getGameState();
+	float getBossDefeatedTime();
 
 	/* ESTRUCTURA Y GUIA DE CREACION DE NIVEL
 	1. Manejo metodos player y view
@@ -80,6 +82,8 @@ public:
 	void Level1(sf::RenderWindow& window, sf::View& view);
 	// Level 2
 	void Level2(sf::RenderWindow& window, sf::View& view);
+	// Boss Level
+	void BossLevel(sf::RenderWindow& window, sf::View& view);
 	// Data Screen
 	void DataScreen(sf::RenderWindow& window, sf::View& view);
 };
